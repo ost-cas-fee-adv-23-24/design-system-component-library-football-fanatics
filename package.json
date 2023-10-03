@@ -45,4 +45,7 @@
     "storybook": "^7.4.2",
     "typescript": "^5.2.2"
   },
+  "files": [
+    "dist/**/*"
+  ]
 }
