@@ -1,0 +1,7 @@
+# ignore single files
+package-lock.json
+
+# ignore artifacts
+build
+coverage
+
