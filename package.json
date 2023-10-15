@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "npm run build:clean && npm run build:esm && npm run build:cjs && npm run build:tailwind",
     "build:esm": "tsc -p ./tsconfig.esm.json",
-    "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/components/cjs/index.js lib/components/cjs/index.cjs",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/cjs/components/index.js lib/cjs/components/index.cjs",
     "build:tailwind": "npx tailwindcss -i ./app/globals.css -o ./lib/globals.css --minify && cp ./tailwind.config.js ./lib",
     "build:clean": "rm -rf ./lib",
     "start": "next start",
