@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "clean": "rm -rf ./lib",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build": "npm run build:clean && npm run build:esm && npm run build:cjs && npm run build:tailwind",
     "build:esm": "tsc -p ./tsconfig.esm.json",
     "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/cjs/index.js lib/cjs/index.cjs",
+    "build:tailwind": "npx tailwindcss -i ./app/globals.css -o ./lib/globals.css --minify && cp ./tailwind.config.js ./lib",
+    "build:clean": "rm -rf ./lib",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
