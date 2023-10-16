@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '../components/button';
-
+import { Button } from '../components/button/button';
+import { EButtonSizes, EButtonTypes } from '../components/button/button.enum';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
@@ -15,9 +15,18 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    type: {
+      options: [
+        EButtonTypes.PRIMARY,
+        EButtonTypes.SECONDARY,
+        EButtonTypes.TERTIARY,
+      ],
+    },
+    size: {
+      options: [EButtonSizes.SMALL, EButtonSizes.MEDIUM, EButtonSizes.LARGE],
+    },
   },
-}
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,27 +34,30 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    primary: true,
+    type: EButtonTypes.PRIMARY,
     label: 'Button',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    label: 'Button',
+    size: EButtonSizes.LARGE,
+    type: EButtonTypes.SECONDARY,
+    label: 'Button secondary',
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'large',
-    label: 'Button',
+    size: EButtonSizes.MEDIUM,
+    type: EButtonTypes.TERTIARY,
+    label: 'Button large',
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'small',
-    label: 'Button',
+    size: EButtonSizes.SMALL,
+    label: 'Button small',
   },
 };

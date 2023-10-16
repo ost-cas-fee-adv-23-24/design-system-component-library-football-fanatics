@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .c-button {
+    @apply rounded-full p-2 min-w-[300px];
+  }
+
+  .c-button.c-button--primary {
+    background: black;
+    color: red;
+  }
+  .c-button.c-button--secondary {
+    background: gray;
+    color: blue;
+  }
+  .c-button.c-button--tertiary {
+    background: yellow;
+    color: greenyellow;
+  }
+}
