@@ -4,7 +4,7 @@
     "plugin:storybook/recommended",
     "prettier"
   ],
-  "plugins": ["simple-import-sort", "prettier"],
+  "plugins": ["simple-import-sort"],
   "rules": {
     "logical-assignment-operators": "error",
     "react/jsx-newline": "error",
