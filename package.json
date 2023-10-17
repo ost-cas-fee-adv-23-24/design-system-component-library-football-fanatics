@@ -9,7 +9,7 @@
     "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/cjs/components/index.js lib/cjs/components/index.cjs",
     "build:tailwind": "npx tailwindcss -i ./app/globals.css -o ./lib/globals.css --minify && cp ./tailwind.config.ts ./lib",
     "build:clean": "rm -rf ./lib",
-    "start": "next start",
+    "start": "storybook dev -p 6006",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -30,7 +30,6 @@
     "@storybook/addon-essentials": "^7.4.2",
     "@storybook/addon-interactions": "^7.4.2",
     "@storybook/addon-links": "^7.4.2",
-    "@storybook/addon-onboarding": "^1.0.8",
     "@storybook/blocks": "^7.4.2",
     "@storybook/nextjs": "^7.4.2",
     "@storybook/react": "^7.4.2",

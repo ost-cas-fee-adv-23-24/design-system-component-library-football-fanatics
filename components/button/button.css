@@ -4,19 +4,19 @@
 
 @layer components {
   .c-button {
-    @apply rounded-full p-2 min-w-[300px];
+    @apply rounded-full p-2 bg-indigo-100 min-w-[300px];
   }
 
-  .c-button.c-button--primary {
-    background: black;
-    color: red;
+  .c-button--primary {
+    @apply bg-red-100;
   }
-  .c-button.c-button--secondary {
-    background: gray;
-    color: blue;
+
+  .c-button--secondary {
+    @apply bg-red-100;
   }
-  .c-button.c-button--tertiary {
-    background: yellow;
-    color: greenyellow;
+
+  .c-button--tertiary {
+    @apply bg-green-100;
   }
 }
+
