@@ -47,17 +47,10 @@ export const Secondary: Story = {
   },
 };
 
-export const Large: Story = {
+export const Tertiary: Story = {
   args: {
     size: EButtonSizes.MEDIUM,
     type: EButtonTypes.TERTIARY,
-    label: 'Button large',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: EButtonSizes.SMALL,
-    label: 'Button small',
+    label: 'Button tertiary',
   },
 };

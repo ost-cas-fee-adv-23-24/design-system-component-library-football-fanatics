@@ -18,18 +18,20 @@ export const Button = ({
   const cssClasses = useMemo(() => {
     const modifier = [];
     modifier.push(`${componentName}--${type}`);
-
-    return `${componentName} ${modifier.join(' ')} `;
+    console.log('type changed: ', type);
+    return `${componentName} ${modifier.join(' ')}`;
   }, [type, size]);
   return (
-    <button className={cssClasses} onClick={onClickEvent} type="button">
-      {icon && iconPosition === EButtonIconPosition.LEFT && (
-        <span className="c-button__icon">{icon}</span>
-      )}
-      <span className="c-button__text">{label}</span>
-      {icon && iconPosition === EButtonIconPosition.RIGHT && (
-        <span className="c-button__icon">{icon}</span>
-      )}
-    </button>
+    <div>
+      <button className={cssClasses} onClick={onClickEvent} type="button">
+        {icon && iconPosition === EButtonIconPosition.LEFT && (
+          <span className="c-button__icon">{icon}</span>
+        )}
+        <span className="c-button__text">{label}</span>
+        {icon && iconPosition === EButtonIconPosition.RIGHT && (
+          <span className="c-button__icon">{icon}</span>
+        )}
+      </button>
+    </div>
   );
 };

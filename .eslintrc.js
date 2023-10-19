@@ -4,8 +4,6 @@ module.exports = {
     'plugin:storybook/recommended',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-
-    'prettier',
   ],
   plugins: [
     '@typescript-eslint',
@@ -13,6 +11,5 @@ module.exports = {
     'react-hooks',
     'jsx-a11y',
     'simple-import-sort',
-    'prettier',
   ],
 };
