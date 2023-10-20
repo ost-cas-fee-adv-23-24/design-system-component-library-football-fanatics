@@ -4,9 +4,21 @@
 
 @layer components {
   .c-button {
-    @apply rounded-full px-1 py-1 min-w-[300px] bg-gray-100;
-    font-size: 23px;
+    @apply rounded px-8 py-4 min-w-[300px] bg-gray-100 flex items-center justify-center;
+    font-size: 16px;
+    line-height: 16px;
   }
+
+  .c-button .c-button__icon {
+    @apply h-5 w-5;
+    line-height: 16px;
+  }
+
+  /* see how to apply margin left to nth-child(2) only */
+  .c-button .c-button__text {
+    @apply mr-4 ml-4;
+  }
+
 
   .c-button--primary {
     @apply c-button;
@@ -22,7 +34,7 @@
 
   .c-button--tertiary {
     @apply c-button;
-    color: green;
+    color: white;
     @apply bg-blue-500;
   }
 }

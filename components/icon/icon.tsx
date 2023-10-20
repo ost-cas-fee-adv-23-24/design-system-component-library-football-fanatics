@@ -19,16 +19,18 @@ import {
 interface IProps {
   type: EIConTypes;
   color?: EIconColors;
-  size: EIconSizes;
+  size?: EIconSizes;
 }
 
-const Icon = ({ type, size = EIconSizes.MD, color }: IProps) => {
+const Icon = ({ type, size, color }: IProps) => {
   const componentName = 'c-icon';
   const cssClasses = useMemo(() => {
     const decorations = [];
     if (size) {
       decorations.push(`h-${size}`);
       decorations.push(`w-${size}`);
+    } else {
+      decorations.push(`c-icon--fit-parent`);
     }
 
     if (color) {

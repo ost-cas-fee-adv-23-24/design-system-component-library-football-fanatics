@@ -51,7 +51,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
-    label: 'Button',
+    label: 'Button Primary',
   },
 };
 
@@ -60,6 +60,8 @@ export const Secondary: Story = {
     size: EButtonSizes.LARGE,
     type: EButtonTypes.SECONDARY,
     label: 'Button secondary',
+    icon: EIConTypes.ARROW_DOWN,
+    iconPosition: EButtonIconPosition.RIGHT,
   },
 };
 
@@ -68,5 +70,7 @@ export const Tertiary: Story = {
     size: EButtonSizes.MEDIUM,
     type: EButtonTypes.TERTIARY,
     label: 'Button tertiary',
+    icon: EIConTypes.ARROW_RIGHT,
+    iconPosition: EButtonIconPosition.LEFT,
   },
 };

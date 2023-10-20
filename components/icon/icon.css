@@ -1,4 +1,17 @@
-.c-icon {
-  fill: currentColor;
-  pointer-events: none;
+@tailwind components;
+
+@layer components {
+  .c-icon {
+    display: inline-flex;
+    fill: currentColor;
+    pointer-events: none;
+    line-height: 0;
+  }
+
+  .c-icon--fit-parent {
+    width: inherit;
+    height: inherit;
+    font-size: inherit;
+  }
 }
+

@@ -3,7 +3,6 @@ import { IButtonProps } from './button.interface';
 import { EButtonIconPosition, EButtonSizes, EButtonTypes } from './button.enum';
 import { useMemo } from 'react';
 import Icon from '../icon/icon';
-import { EIconSizes } from '../icon/icon.enum';
 
 /**
  * Primary UI component for user interaction
@@ -24,28 +23,29 @@ export const Button = ({
     return `${componentName} ${modifier.join(' ')}`;
   }, [type, size]);
 
-  const iconSize = useMemo(() => {
-    if (size === EButtonSizes.SMALL) {
-      return EIconSizes.SM;
-    } else if (size === EButtonSizes.MEDIUM) {
-      return EIconSizes.MD;
-    } else if (size === EButtonSizes.LARGE) {
-      return EIconSizes.LG;
-    } else {
-      // default
-      return EIconSizes.MD;
-    }
-  }, [size]);
-
   return (
     <div>
+      {/*ccs will not be loaded if classes are not to find in markup ... ¯\_(ツ)_/¯*/}
+      {/*<button className="c-button c-button--primary">*/}
+      {/*  <span className="c-button__text">Primary</span>*/}
+      {/*</button>*/}
+      {/*<button className="c-button c-button--secondary">*/}
+      {/*  <span className="c-button__text">Primary</span>*/}
+      {/*</button>*/}
+      {/*<button className="c-button c-button--tertiary">*/}
+      {/*  <span className="c-button__text">Primary</span>*/}
+      {/*</button>*/}
       <button className={cssClasses} onClick={onClickEvent} type="button">
         {icon && iconPosition === EButtonIconPosition.LEFT && (
-          <Icon type={icon} size={iconSize} />
+          <span className="c-button__icon">
+            <Icon type={icon} />
+          </span>
         )}
         <span className="c-button__text">{label}</span>
         {icon && iconPosition === EButtonIconPosition.RIGHT && (
-          <Icon type={icon} size={iconSize} />
+          <span className="c-button__icon">
+            <Icon type={icon} />
+          </span>
         )}
       </button>
     </div>
