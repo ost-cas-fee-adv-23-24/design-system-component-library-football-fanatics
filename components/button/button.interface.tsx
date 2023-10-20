@@ -1,11 +1,11 @@
 import { EButtonIconPosition, EButtonSizes, EButtonTypes } from './button.enum';
-import React from 'react';
+import { EIConTypes } from '../icon/icon.enum';
 
 export interface IButtonProps {
   type: EButtonTypes;
   size: EButtonSizes;
   label: string;
   onClickEvent: () => void;
-  icon?: React.ReactNode;
-  iconPosition: EButtonIconPosition;
+  icon?: EIConTypes;
+  iconPosition?: EButtonIconPosition;
 }

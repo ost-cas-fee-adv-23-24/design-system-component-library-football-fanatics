@@ -4,24 +4,25 @@
 
 @layer components {
   .c-button {
-    @apply rounded-full p-2 min-w-[300px] bg-gray-100;
+    @apply rounded-full px-1 py-1 min-w-[300px] bg-gray-100;
     font-size: 23px;
   }
 
   .c-button--primary {
     @apply c-button;
-    color: blue;
+    @apply bg-purple-200;
+    color: black;
   }
 
   .c-button--secondary {
     @apply c-button;
     color: white;
-    @apply bg-indigo-500;
+    @apply bg-red-500;
   }
 
   .c-button--tertiary {
     @apply c-button;
     color: green;
-    @apply bg-yellow-500;
+    @apply bg-blue-500;
   }
 }

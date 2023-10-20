@@ -7,6 +7,7 @@
  */
 
 import React, { useMemo } from 'react';
+import './icon.css';
 import { EIconColors, EIconSizes, EIConTypes } from './icon.enum';
 import {
   ArrowLeftIcon,
@@ -17,7 +18,7 @@ import {
 
 interface IProps {
   type: EIConTypes;
-  color: EIconColors;
+  color?: EIconColors;
   size: EIconSizes;
 }
 
@@ -33,7 +34,7 @@ const Icon = ({ type, size = EIconSizes.MD, color }: IProps) => {
     if (color) {
       decorations.push(`text-${color}-500`);
     } else {
-      decorations.push(`text-gray-500`);
+      decorations.push(`text-inherit`);
     }
 
     return `${componentName} ${decorations.join(' ')} `;

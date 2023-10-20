@@ -6,9 +6,9 @@ export enum EIConTypes {
 }
 
 export enum EIconSizes {
-  LG = '24',
-  MD = '14',
-  SM = '4',
+  LG = '6',
+  MD = '4',
+  SM = '2',
 }
 
 export enum EIconColors {
