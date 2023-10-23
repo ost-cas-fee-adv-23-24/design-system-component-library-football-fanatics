@@ -4,7 +4,7 @@
 
 @layer components {
   .c-button {
-    @apply rounded px-8 py-4 min-w-[300px] bg-gray-100 flex items-center justify-center;
+    @apply rounded px-8 py-4 min-w-[250px] bg-gray-100 flex items-center justify-center;
     font-size: 16px;
     line-height: 16px;
   }
@@ -19,21 +19,45 @@
     @apply mr-4 ml-4;
   }
 
+  .c-button--sm {
+    @apply px-4 py-2;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .c-button--sm .c-button__icon {
+    @apply h-4 w-4;
+  }
+
+  .c-button--md {
+    @apply px-8 py-4;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .c-button--lg {
+    @apply px-8 py-6;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .c-button--lg .c-button__icon {
+    @apply h-6 w-6;
+  }
 
   .c-button--primary {
-    @apply c-button;
     @apply bg-purple-200;
     color: black;
   }
 
   .c-button--secondary {
-    @apply c-button;
+
     color: white;
     @apply bg-red-500;
   }
 
   .c-button--tertiary {
-    @apply c-button;
+
     color: white;
     @apply bg-blue-500;
   }

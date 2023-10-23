@@ -3,7 +3,7 @@ import { EIConTypes } from '../icon/icon.enum';
 
 export interface IButtonProps {
   type: EButtonTypes;
-  size: EButtonSizes;
+  size?: EButtonSizes;
   label: string;
   onClickEvent: () => void;
   icon?: EIConTypes;

@@ -9,7 +9,7 @@ import Icon from '../icon/icon';
  */
 export const Button = ({
   type = EButtonTypes.PRIMARY,
-  size = EButtonSizes.MEDIUM,
+  size,
   iconPosition = EButtonIconPosition.LEFT,
   icon,
   label,
@@ -19,20 +19,26 @@ export const Button = ({
   const cssClasses = useMemo(() => {
     const modifier = [];
     modifier.push(`${componentName}--${type}`);
-    console.log('type changed: ', type);
+
+    if (size) {
+      modifier.push(`${componentName}--${size}`);
+    } else {
+      modifier.push(`${componentName}--${EButtonSizes.MEDIUM}`);
+    }
+
     return `${componentName} ${modifier.join(' ')}`;
   }, [type, size]);
 
   return (
     <div>
       {/*ccs will not be loaded if classes are not to find in markup ... ¯\_(ツ)_/¯*/}
-      {/*<button className="c-button c-button--primary">*/}
+      {/*<button className="c-button c-button--primary c-button--sm">*/}
       {/*  <span className="c-button__text">Primary</span>*/}
       {/*</button>*/}
-      {/*<button className="c-button c-button--secondary">*/}
+      {/*<button className="c-button c-button--secondary c-button--md">*/}
       {/*  <span className="c-button__text">Primary</span>*/}
       {/*</button>*/}
-      {/*<button className="c-button c-button--tertiary">*/}
+      {/*<button className="c-button c-button--tertiary c-button--lg">*/}
       {/*  <span className="c-button__text">Primary</span>*/}
       {/*</button>*/}
       <button className={cssClasses} onClick={onClickEvent} type="button">
