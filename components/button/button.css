@@ -9,6 +9,12 @@
     line-height: 16px;
   }
 
+  .c-button:disabled {
+    @apply bg-gray-200;
+    @apply text-gray-300;
+    cursor: not-allowed;
+  }
+
   .c-button .c-button__icon {
     @apply h-5 w-5;
     line-height: 16px;
@@ -51,13 +57,11 @@
   }
 
   .c-button--secondary {
-
     color: white;
     @apply bg-red-500;
   }
 
   .c-button--tertiary {
-
     color: white;
     @apply bg-blue-500;
   }
