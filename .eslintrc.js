@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   extends: [
     'next/core-web-vitals',
     'plugin:storybook/recommended',
@@ -12,4 +12,5 @@ module.exports = {
     'jsx-a11y',
     'simple-import-sort',
   ],
-};
+}
+export default config;

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .c-button--md {
+    @apply px-8 py-4;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}

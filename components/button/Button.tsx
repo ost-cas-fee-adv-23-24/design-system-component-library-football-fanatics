@@ -1,13 +1,16 @@
-import './button.css';
 import { IButtonProps } from './button.interface';
 import { EButtonIconPosition, EButtonSizes, EButtonTypes } from './button.enum';
 import { useMemo } from 'react';
 import Icon from '../icon/Icon';
+import './button.css';
+// import './css/modifier/md.css';
+// import './css/modifier/sm.css';
+// import './css/modifier/lg.css';
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
+const Button = ({
   type = EButtonTypes.PRIMARY,
   size,
   iconPosition = EButtonIconPosition.LEFT,
@@ -72,3 +75,5 @@ export const Button = ({
     );
   }
 };
+
+export default Button;

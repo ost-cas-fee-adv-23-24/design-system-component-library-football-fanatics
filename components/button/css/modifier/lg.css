@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .c-button--lg {
+    @apply px-8 py-6;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .c-button--lg .c-button__icon {
+    @apply h-6 w-6;
+  }
+}

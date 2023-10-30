@@ -1,7 +1,13 @@
 {
   "name": "elbmum-design",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "roll-up/cjs/bundle.js",
+  "module": "roll-up/esm/bundle.js",
+  "types": "roll-up/esm/types/index.d.ts",
+  "files": [
+    "roll-up"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "npm run build:clean && npm run build:esm && npm run build:cjs && npm run build:tailwind",
@@ -12,7 +18,13 @@
     "start": "storybook dev -p 6006",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "rollup": "rollup -c rollup.config.mjs"
+  },
+
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
@@ -22,11 +34,15 @@
     "@types/react-dom": "18.2.7",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.22.15",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@rollup/plugin-url": "^8.0.2",
     "@storybook/addon-essentials": "^7.4.2",
     "@storybook/addon-interactions": "^7.4.2",
     "@storybook/addon-links": "^7.4.2",
@@ -41,15 +57,15 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.13",
-    "postcss": "^8.4.30",
+    "postcss": "^8.4.31",
     "prettier": "3.0.3",
+    "rollup": "^4.1.5",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^7.4.2",
     "typescript": "^5.2.2"
   },
   "release": {
     "branches": "main"
-  },
-  "files": [
-    "dist/**/*"
-  ]
+  }
 }

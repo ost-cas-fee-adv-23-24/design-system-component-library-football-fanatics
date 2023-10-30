@@ -4,8 +4,10 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "outDir": "./lib/esm",
+    "outDir": "./roll-up",
     "declaration": true,
-    "declarationDir": "./lib/esm/types"
+    "declarationDir": "./types"
   }
 }
+
+// exclude all but components

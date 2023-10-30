@@ -1,0 +1,124 @@
+import typescript from 'rollup-plugin-typescript2';
+import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import copy from 'rollup-plugin-copy';
+import postcss from 'rollup-plugin-postcss';
+import resolve from 'rollup-plugin-node-resolve';
+import url from 'rollup-plugin-url';
+import svgr from '@svgr/rollup';
+
+const ProjectWorkspace = require('./scripts/configuration').ProjectWorkspace;
+
+
+const fs = require('fs');
+const find = require('find');
+const path = require('path');
+
+// exclude declaration (*.d.ts) and test (*.test.ts | *.test.tsx) files from compilation
+const tsxFiles = find.fileSync(/^(?!.*\.(d|test)\.tsx$).*\.tsx$/, path.resolve(__dirname, ProjectWorkspace.srcDir));
+const tsFiles = find.fileSync(/^(?!.*\.(d|test)\.ts$).*\.ts$/, path.resolve(__dirname, ProjectWorkspace.srcDir));
+const lessFiles = find.fileSync(/\.less$/, path.resolve(__dirname, ProjectWorkspace.srcDir));
+
+let target;
+let source;
+let input = {};
+for (const ts of tsFiles) {
+  target = ts
+    .replace(__dirname, '')
+    .replace('\\src\\', '')
+    .replace('.ts', '');
+  source = ts.replace(__dirname, '');
+
+  input[target] = source;
+}
+for (const tsx of tsxFiles) {
+  target = tsx
+    .replace(__dirname, '')
+    .replace('\\src\\', '')
+    .replace('.tsx', '');
+  source = tsx.replace(__dirname, '');
+
+  input[target] = source;
+}
+
+console.log('inputs');
+console.log(input);
+
+let targetEsm;
+let targetLib;
+let cssTargets = [];
+for (const less of lessFiles) {
+  targetEsm = path.normalize(ProjectWorkspace.esmDir + '/' + less.replace(__dirname, '').replace(`\\${ProjectWorkspace.srcDir}\\`, ''));
+  targetLib = path.normalize(ProjectWorkspace.libDir + '/' + less.replace(__dirname, '').replace(`\\${ProjectWorkspace.srcDir}\\`, ''));
+  source = path.normalize(less.replace(__dirname, '').replace(`\\${ProjectWorkspace.srcDir}`, `${ProjectWorkspace.srcDir}`));
+
+  // convert all path separators with '/'
+  targetEsm = targetEsm
+    .split('\\')
+    .join('/')
+    .replace(/\/[\w]*\.less$/, '');
+  targetLib = targetLib
+    .split('\\')
+    .join('/')
+    .replace(/\/[\w]*\.less$/, '');
+  source = source.split('\\').join('/');
+
+  cssTargets.push({
+    src: source,
+    dest: [targetEsm, targetLib]
+  });
+}
+console.log(cssTargets);
+
+export default {
+  input: input,
+  output: [
+    {
+      dir: ProjectWorkspace.libDir,
+      entryFileNames: '[name].js',
+      format: 'cjs',
+      exports: 'named'
+    },
+    {
+      dir: ProjectWorkspace.esmDir,
+      entryFileNames: '[name].js',
+      format: 'esm',
+      exports: 'named'
+    }
+  ],
+  plugins: [
+    peerDepsExternal(),
+    url(),
+    svgr(),
+    resolve(),
+    typescript({
+      rollupCommonJSResolveHack: true,
+      clean: true,
+      tsconfig: 'tsconfig.json'
+    }),
+    babel({
+      babelrc: false,
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      exclude: /\**node_modules\**/,
+      plugins: [
+        ['@babel/plugin-proposal-object-rest-spread'],
+        ['react-intl', { messagesDir: `./${ProjectWorkspace.tmpDir}/messages` }]    // Copy all messages used by components in tmpDir
+      ]
+    }),
+    commonjs({
+      namedExports: {
+        'prop-types': ['bool', 'number', 'string', 'shape', 'func', 'any', 'node']  // Solved resolution for non static evaluable module exports
+      }
+    }),
+    postcss({
+      extensions: ['.css', '.less'],
+      extract: true,
+      use: [['less', { javascriptEnabled: true }]]
+    }),
+    copy({
+      targets: [...cssTargets],
+      verbose: true
+    })
+  ]
+};

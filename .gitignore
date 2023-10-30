@@ -3,6 +3,7 @@
 
 # Jetbrains Products
 .idea
+.rollup.cache
 
 # dependencies
 /node_modules
