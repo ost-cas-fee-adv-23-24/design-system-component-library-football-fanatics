@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '../components/button';
-
+import {
+  EButtonIconPosition,
+  EButtonSizes,
+  EButtonTypes,
+} from '../components/button/button.enum';
+import { EIConTypes } from '../components/icon/icon.enum';
+import Button from '../components/button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
@@ -15,9 +20,29 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    type: {
+      options: [
+        EButtonTypes.PRIMARY,
+        EButtonTypes.SECONDARY,
+        EButtonTypes.TERTIARY,
+      ],
+    },
+    size: {
+      options: [EButtonSizes.SMALL, EButtonSizes.MEDIUM, EButtonSizes.LARGE],
+    },
+    icon: {
+      options: [
+        EIConTypes.ARROW_DOWN,
+        EIConTypes.ARROW_LEFT,
+        EIConTypes.ARROW_RIGHT,
+        EIConTypes.ARROW_UP,
+      ],
+    },
+    iconPosition: {
+      options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
+    },
   },
-}
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,27 +50,27 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    primary: true,
-    label: 'Button',
+    type: EButtonTypes.PRIMARY,
+    label: 'Button Primary',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    label: 'Button',
+    size: EButtonSizes.LARGE,
+    type: EButtonTypes.SECONDARY,
+    label: 'Button secondary',
+    icon: EIConTypes.ARROW_DOWN,
+    iconPosition: EButtonIconPosition.RIGHT,
   },
 };
 
-export const Large: Story = {
+export const Tertiary: Story = {
   args: {
-    size: 'large',
-    label: 'Button',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: 'small',
-    label: 'Button',
+    size: EButtonSizes.MEDIUM,
+    type: EButtonTypes.TERTIARY,
+    label: 'Button tertiary',
+    icon: EIConTypes.ARROW_RIGHT,
+    iconPosition: EButtonIconPosition.LEFT,
   },
 };
