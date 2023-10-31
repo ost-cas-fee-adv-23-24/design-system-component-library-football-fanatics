@@ -17,9 +17,13 @@ import {
 } from '@heroicons/react/24/solid';
 
 interface IProps {
-  type: EIConTypes;
-  color?: EIconColors;
-  size?: EIconSizes;
+  type:
+    | EIConTypes.ARROW_DOWN
+    | EIConTypes.ARROW_LEFT
+    | EIConTypes.ARROW_RIGHT
+    | EIConTypes.ARROW_UP;
+  color?: EIconColors.PRIMARY | EIconColors.SECONDARY;
+  size?: EIconSizes.LG | EIconSizes.MD | EIconSizes.SM;
 }
 
 const Icon = ({ type, size, color }: IProps) => {

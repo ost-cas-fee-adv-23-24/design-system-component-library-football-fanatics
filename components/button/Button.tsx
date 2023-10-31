@@ -7,7 +7,7 @@ import Icon from '../icon/Icon';
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
+const Button = ({
   type = EButtonTypes.PRIMARY,
   size,
   iconPosition = EButtonIconPosition.LEFT,
@@ -19,13 +19,41 @@ export const Button = ({
 }: IButtonProps) => {
   const componentName = 'c-button';
   const cssClasses = useMemo(() => {
+    const availableClasses = {
+      sizeBig: 'c-button--lg',
+      sizeMedium: 'c-button--md',
+      sizeSmall: 'c-button--sm',
+      typePrimary: 'c-button--primary',
+      typeSecondary: 'c-button--secondary',
+      typeTertiary: 'c-button--tertiary',
+    };
     const modifier = [];
-    modifier.push(`${componentName}--${type}`);
+    switch (size) {
+      case EButtonSizes.LARGE:
+        modifier.push(availableClasses.sizeBig);
+        break;
+      case EButtonSizes.MEDIUM:
+        modifier.push(availableClasses.sizeMedium);
+        break;
+      case EButtonSizes.SMALL:
+        modifier.push(availableClasses.sizeSmall);
+        break;
+      default:
+        modifier.push(availableClasses.sizeMedium);
+    }
 
-    if (size) {
-      modifier.push(`${componentName}--${size}`);
-    } else {
-      modifier.push(`${componentName}--${EButtonSizes.MEDIUM}`);
+    switch (type) {
+      case EButtonTypes.PRIMARY:
+        modifier.push(availableClasses.typePrimary);
+        break;
+      case EButtonTypes.SECONDARY:
+        modifier.push(availableClasses.typeSecondary);
+        break;
+      case EButtonTypes.TERTIARY:
+        modifier.push(availableClasses.typeTertiary);
+        break;
+      default:
+        modifier.push(availableClasses.typePrimary);
     }
 
     return `${componentName} ${modifier.join(' ')}`;
@@ -58,17 +86,9 @@ export const Button = ({
         {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
         <span className="c-button__text">{label}</span>
         {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
-        {/*ccs will not be loaded if classes are not to find in markup ... ¯\_(ツ)_/¯*/}
-        {/*<button className="c-button c-button--primary c-button--sm">*/}
-        {/*  <span className="c-button__text">Primary</span>*/}
-        {/*</button>*/}
-        {/*<button className="c-button c-button--secondary c-button--md">*/}
-        {/*  <span className="c-button__text">Primary</span>*/}
-        {/*</button>*/}
-        {/*<button className="c-button c-button--tertiary c-button--lg">*/}
-        {/*  <span className="c-button__text">Primary</span>*/}
-        {/*</button>*/}
       </button>
     );
   }
 };
+
+export default Button;
