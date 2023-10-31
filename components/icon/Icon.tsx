@@ -8,25 +8,17 @@
 
 import React, { useMemo } from 'react';
 import './icon.css';
-import { EIconColors, EIconSizes, EIConTypes } from './icon.enum';
+import { EIConTypes } from './icon.enum';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowDownIcon,
   ArrowUpIcon,
 } from '@heroicons/react/24/solid';
+import {IIconProps} from "./icon.interface";
 
-interface IProps {
-  type:
-    | EIConTypes.ARROW_DOWN
-    | EIConTypes.ARROW_LEFT
-    | EIConTypes.ARROW_RIGHT
-    | EIConTypes.ARROW_UP;
-  color?: EIconColors.PRIMARY | EIconColors.SECONDARY;
-  size?: EIconSizes.LG | EIconSizes.MD | EIconSizes.SM;
-}
 
-const Icon = ({ type, size, color }: IProps) => {
+const Icon = ({ type, size, color }: IIconProps) => {
   const componentName = 'c-icon';
   const cssClasses = useMemo(() => {
     const decorations = [];

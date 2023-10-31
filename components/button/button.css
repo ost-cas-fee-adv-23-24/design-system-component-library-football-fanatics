@@ -10,9 +10,7 @@
   }
 
   .c-button:disabled {
-    @apply bg-gray-200;
-    @apply text-gray-300;
-    cursor: not-allowed;
+    @apply bg-gray-200 text-gray-300 cursor-not-allowed;
   }
 
   .c-button .c-button__icon {
@@ -52,17 +50,14 @@
   }
 
   .c-button--primary {
-    @apply bg-purple-200;
-    color: black;
+    @apply bg-red-200;
   }
 
   .c-button--secondary {
-    color: white;
-    @apply bg-red-500;
+    @apply bg-red-500 text-white;
   }
 
   .c-button--tertiary {
-    color: white;
-    @apply bg-blue-500;
+    @apply bg-blue-500 text-white;
   }
 }
