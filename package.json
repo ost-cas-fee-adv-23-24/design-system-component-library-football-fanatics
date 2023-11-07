@@ -2,6 +2,22 @@
   "name": "@ost-cas-fee-adv-23-24/elbmum-design",
   "version": "0.1.0",
   "description": "Design System Component Library",
+  "keywords": ["tailwindcss", "storybook", "typescript", "design system", "component library", "react", "nextjs"],
+  "contributors": [
+    {
+      "name": "Patrick Lehmann",
+      "url": "https://github.com/lehmi11"
+    },
+    {
+      "name": "Bladimir Ardiles Cruz",
+      "url": "https://github.com/bladicito"
+    }
+  ],
+  "homepage": "https://github.com/ost-cas-fee-adv-23-24/design-system-component-library-football-fanatics",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ost-cas-fee-adv-23-24/design-system-component-library-football-fanatics.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "npm-run-all build:**",
