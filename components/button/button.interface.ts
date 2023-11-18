@@ -1,4 +1,9 @@
-import { EButtonIconPosition, EButtonSizes, EButtonTypes } from './button.enum';
+import {
+  EButtonIconPosition,
+  EButtonKinds,
+  EButtonSizes,
+  EButtonTypes,
+} from './button.enum';
 import { EIConTypes } from '../icon/icon.enum';
 
 export interface IButtonProps {
@@ -10,4 +15,5 @@ export interface IButtonProps {
   iconPosition?: EButtonIconPosition.LEFT | EButtonIconPosition.RIGHT;
   href?: string;
   disabled?: boolean;
+  kind?: EButtonKinds;
 }

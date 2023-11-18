@@ -14,3 +14,9 @@ export enum EButtonIconPosition {
   LEFT = 'left',
   RIGHT = 'right',
 }
+
+export enum EButtonKinds {
+  BUTTON = 'button',
+  LINK = 'link',
+  REACT_ROUTER_LINK = 'reactRouterLink',
+}

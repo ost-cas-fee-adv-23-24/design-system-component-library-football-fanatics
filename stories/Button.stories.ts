@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import {
   EButtonIconPosition,
+  EButtonKinds,
   EButtonSizes,
   EButtonTypes,
 } from '../components/button/button.enum';
@@ -25,6 +26,13 @@ const meta: Meta<typeof Button> = {
         EButtonTypes.PRIMARY,
         EButtonTypes.SECONDARY,
         EButtonTypes.TERTIARY,
+      ],
+    },
+    kind: {
+      options: [
+        EButtonKinds.LINK,
+        EButtonKinds.REACT_ROUTER_LINK,
+        EButtonKinds.BUTTON,
       ],
     },
     size: {
@@ -52,6 +60,8 @@ export const Primary: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
     label: 'Button Primary',
+    kind: EButtonKinds.LINK,
+    href: '/text',
   },
 };
 
