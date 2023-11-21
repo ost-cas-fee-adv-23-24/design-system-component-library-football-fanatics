@@ -9,7 +9,7 @@ const btnBase = {
     'text-white',
   ],
   iconContainer: ['h-5', 'w-5'],
-  textContainer: ['mr-4', 'ml-4'],
+  textContainer: ['mr-4', 'ml-4', 'font-poppins'],
   disabledState: [
     'disabled:bg-gray-200',
     'disabled:cursor-not-allowed',

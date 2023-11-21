@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import Button from '../components/button/Button';
 import {
   EButtonIconPosition,
   EButtonKinds,
@@ -7,7 +8,6 @@ import {
   EButtonTypes,
 } from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
-import Button from '../components/button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
