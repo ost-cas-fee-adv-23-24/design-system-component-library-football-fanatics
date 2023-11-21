@@ -26,7 +26,11 @@
     "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/cjs/components/index.js lib/cjs/components/index.cjs",
     "build:tailwind": "npx tailwindcss -i ./app/globals.css -o ./lib/globals.css --minify && cp ./tailwind.config.ts ./lib",
     "start": "storybook dev -p 6006",
-    "lint": "next lint",
+    "lint": "next lint --fix --dir .",
+    "format:check": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "type:check": "tsc --noEmit",
+    "code:fix": "npm run lint && npm run format:fix && npm run type:check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
