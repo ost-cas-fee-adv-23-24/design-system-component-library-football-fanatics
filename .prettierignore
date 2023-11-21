@@ -6,4 +6,5 @@ package.json
 # ignore artifacts
 build
 coverage
+storybook-static
 

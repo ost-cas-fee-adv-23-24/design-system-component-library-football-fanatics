@@ -29,11 +29,7 @@ const meta: Meta<typeof Button> = {
       ],
     },
     kind: {
-      options: [
-        EButtonKinds.LINK,
-        EButtonKinds.REACT_ROUTER_LINK,
-        EButtonKinds.BUTTON,
-      ],
+      options: [EButtonKinds.LINK, EButtonKinds.BUTTON],
     },
     size: {
       options: [EButtonSizes.SMALL, EButtonSizes.MEDIUM, EButtonSizes.LARGE],

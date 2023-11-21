@@ -3,13 +3,15 @@ const btnBase = {
     'rounded px-8',
     'min-w-[250px]',
     'bg-gray-100',
-    'flex items-center',
+    'flex',
+    'items-center',
     'justify-center',
+    'text-white',
   ],
-  iconContainer: ['h-5 w-5'],
-  textContainer: ['mr-4 ml-4'],
+  iconContainer: ['h-5', 'w-5'],
+  textContainer: ['mr-4', 'ml-4'],
   disabledState: [
-    'disabled:bg-gray-200 ',
+    'disabled:bg-gray-200',
     'disabled:cursor-not-allowed',
     'disabled:text-gray-300',
   ],
@@ -33,4 +35,10 @@ export const lg = {
   topContainer: ['px-8', 'py-6', 'text-base'],
   iconContainer: ['h-6', ' w-6'],
   textContainer: [],
+};
+
+export const colors = {
+  primary: ['bg-red-200'],
+  secondary: ['bg-red-500'],
+  tertiary: ['bg-red-600'],
 };

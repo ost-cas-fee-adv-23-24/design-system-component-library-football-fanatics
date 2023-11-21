@@ -7,14 +7,7 @@ import {
 } from './button.enum';
 import { useMemo } from 'react';
 import Icon from '../icon/Icon';
-import btnBase, { lg, md, sm } from './css';
-import { Link } from 'react-router-dom';
-
-const colors = {
-  primary: ['bg-red-200', 'text-white'],
-  secondary: ['bg-red-500', 'text-white'],
-  tertiary: ['bg-blue-500', 'text-white'],
-};
+import btnBase, { colors, lg, md, sm } from './css';
 
 /**
  * Primary UI component for user interaction
@@ -48,19 +41,18 @@ const Button = ({
     }
 
     switch (type) {
+      case EButtonTypes.TERTIARY:
+        modifier = [...modifier, ...colors.tertiary];
+        break;
       case EButtonTypes.PRIMARY:
         modifier = [...modifier, ...colors.primary];
         break;
       case EButtonTypes.SECONDARY:
         modifier = [...modifier, ...colors.secondary];
         break;
-      case EButtonTypes.TERTIARY:
-        modifier = [...modifier, ...colors.tertiary];
-        break;
       default:
         modifier = [...modifier, ...colors.primary];
     }
-
     return `${componentName} ${modifier.join(' ')}`;
   }, [type, size, disabled]);
 
@@ -113,14 +105,6 @@ const Button = ({
         <span className="c-button__text">{label}</span>
         {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
       </button>
-    );
-  } else if (kind === EButtonKinds.REACT_ROUTER_LINK) {
-    return (
-      <Link className={cssClasses} to={href ? href : '/'}>
-        {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-        <span className="c-button__text">{label}</span>
-        {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
-      </Link>
     );
   } else {
     console.log(`button kind ${kind} is not supported`);

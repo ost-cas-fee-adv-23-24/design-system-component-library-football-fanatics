@@ -36,7 +36,7 @@
     "start": "storybook dev -p 6006",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "export": "storybook build"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
