@@ -1,4 +1,4 @@
-import {EIconColors, EIconSizes, EIConTypes} from "./icon.enum";
+import { EIconColors, EIconSizes, EIConTypes } from './icon.enum';
 
 export interface IIconProps {
   type:
