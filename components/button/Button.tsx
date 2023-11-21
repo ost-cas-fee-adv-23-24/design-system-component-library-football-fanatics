@@ -87,7 +87,9 @@ const Button = ({
     return (
       <a className={cssClasses} href={href} target="_blank">
         {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-        <span className="c-button__text">{label}</span>
+        <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
+          {label}
+        </span>
         {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
       </a>
     );
@@ -102,7 +104,9 @@ const Button = ({
         disabled={disabled}
       >
         {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-        <span className="c-button__text">{label}</span>
+        <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
+          {label}
+        </span>
         {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
       </button>
     );
