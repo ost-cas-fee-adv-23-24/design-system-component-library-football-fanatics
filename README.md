@@ -2,33 +2,44 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# clean install npm packages
+npm ci
+
+# build repo
+npm run build
+
+# start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Storybook
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+# start storybook
+npm run start
 
-## Learn More
+# build storybook
+npm run build-storybook
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Linting
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# run prettier check
+npm run format:check
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# run prettier fix
+npm run format:fix
 
-## Deploy on Vercel
+# run type check
+npm run type:check
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# run linter
+npm run lint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# run all the commands above
+npm run code:fix
+```
