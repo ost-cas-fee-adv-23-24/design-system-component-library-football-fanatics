@@ -20,7 +20,7 @@
 
   /* see how to apply margin left to nth-child(2) only */
   .c-button .c-button__text {
-    @apply mr-4 ml-4;
+    @apply mr-4 ml-4 font-poppins;
   }
 
   .c-button--sm {
