@@ -3,6 +3,12 @@
 @layer components {
   .c-icon {
     display: inline-flex;
+
+    pointer-events: none;
+    line-height: 0;
+  }
+
+  .c-icon svg {
     fill: currentColor;
     pointer-events: none;
     line-height: 0;
