@@ -1,3 +1,21 @@
+const statesHover = [
+  'hover:outline-[3px]',
+  'hover:outline',
+  'hover:outline-slate-100',
+];
+
+const stateActive = [
+  'active:outline-[4px]',
+  'active:outline',
+  'active:outline-slate-200',
+];
+
+const stateDisabled = [
+  'disabled:bg-gray-200',
+  'disabled:cursor-not-allowed',
+  'disabled:text-gray-300',
+];
+
 const btnBase = {
   topContainer: [
     'rounded px-8',
@@ -8,14 +26,31 @@ const btnBase = {
     'justify-center',
     'text-white',
     'font-poppins',
+    ...statesHover,
+    ...stateActive,
   ],
-  iconContainer: ['h-5', 'w-5'],
+  iconContainer: ['h-5', 'w-5 leading-none'],
   textContainer: ['mr-4', 'ml-4'],
-  disabledState: [
-    'disabled:bg-gray-200',
-    'disabled:cursor-not-allowed',
-    'disabled:text-gray-300',
+  disabledState: stateDisabled,
+};
+
+export const onlyIconCss = {
+  topContainer: [
+    'text-white',
+    'px-4',
+    'py-4',
+    'rounded-full',
+    'bg-slate-600',
+    'flex',
+    'items-center',
+    'justify-center',
+    'transition-all',
+    'ease-in',
+    'delay-50',
+    ...statesHover,
+    ...stateActive,
   ],
+  disabledState: [...stateDisabled, 'bg-none'],
 };
 
 export default btnBase;
@@ -34,12 +69,12 @@ export const md = {
 
 export const lg = {
   topContainer: ['px-8', 'py-6', 'text-base'],
-  iconContainer: ['h-6', ' w-6'],
+  iconContainer: ['h-6', ' w-6', 'leading-none'],
   textContainer: [],
 };
 
 export const colors = {
-  primary: ['bg-red-200'],
-  secondary: ['bg-red-500'],
-  tertiary: ['bg-red-600'],
+  primary: ['bg-slate-600'],
+  secondary: ['bg-violet-600'],
+  tertiary: ['bg-gradient-pink-violet-5050'],
 };

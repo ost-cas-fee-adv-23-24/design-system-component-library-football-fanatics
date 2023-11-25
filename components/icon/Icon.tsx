@@ -14,6 +14,7 @@ import {
   ArrowRightIcon,
   ArrowDownIcon,
   ArrowUpIcon,
+  BeakerIcon,
 } from '@heroicons/react/24/solid';
 import { IIconProps } from './icon.interface';
 
@@ -46,6 +47,8 @@ const Icon = ({ type, size, color }: IIconProps) => {
         return <ArrowDownIcon />;
       case EIConTypes.ARROW_UP:
         return <ArrowUpIcon />;
+      case EIConTypes.BEAKER:
+        return <BeakerIcon />;
     }
   }, [type]);
 

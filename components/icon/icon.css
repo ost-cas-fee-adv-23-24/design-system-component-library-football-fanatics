@@ -2,10 +2,13 @@
 
 @layer components {
   .c-icon {
-    display: inline-flex;
-    fill: currentColor;
+    display: inline-block;
     pointer-events: none;
     line-height: 0;
+  }
+
+  .c-icon svg {
+    fill: currentColor;
   }
 
   .c-icon--fit-parent {

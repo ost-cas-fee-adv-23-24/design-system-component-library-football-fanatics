@@ -7,7 +7,7 @@ import {
 } from './button.enum';
 import { useMemo } from 'react';
 import Icon from '../icon/Icon';
-import btnBase, { colors, lg, md, sm } from './css';
+import btnBase, { colors, lg, md, onlyIconCss, sm } from './css';
 
 /**
  * Primary UI component for user interaction
@@ -21,10 +21,34 @@ const Button = ({
   onClickEvent,
   href,
   disabled = false,
+  onlyIcon = false,
   kind = EButtonKinds.BUTTON,
 }: IButtonProps) => {
   const componentName = 'c-button';
   const cssClasses = useMemo(() => {
+    if (onlyIcon) {
+      let iconClasses = [componentName, ...onlyIconCss.topContainer];
+      switch (type) {
+        case EButtonTypes.TERTIARY:
+          iconClasses = [
+            ...iconClasses,
+            ...colors.tertiary,
+            'hover:bg-gradient-pink-violet-3070',
+            'active:bg-gradient-pink-violet-2080',
+          ];
+          break;
+        case EButtonTypes.PRIMARY:
+          iconClasses = [...iconClasses, ...colors.primary];
+          break;
+        case EButtonTypes.SECONDARY:
+          iconClasses = [...iconClasses, ...colors.secondary];
+          break;
+        default:
+          iconClasses = [...colors.primary];
+      }
+      return `${iconClasses.join(' ')}`;
+    }
+
     let modifier = [...btnBase.topContainer];
     switch (size) {
       case EButtonSizes.LARGE:
@@ -42,7 +66,12 @@ const Button = ({
 
     switch (type) {
       case EButtonTypes.TERTIARY:
-        modifier = [...modifier, ...colors.tertiary];
+        modifier = [
+          ...modifier,
+          ...colors.tertiary,
+          'hover:bg-gradient-pink-violet-3070',
+          'active:bg-gradient-pink-violet-2080',
+        ];
         break;
       case EButtonTypes.PRIMARY:
         modifier = [...modifier, ...colors.primary];
@@ -54,7 +83,7 @@ const Button = ({
         modifier = [...modifier, ...colors.primary];
     }
     return `${componentName} ${modifier.join(' ')}`;
-  }, [type, size, disabled]);
+  }, [type, size, disabled, onlyIcon]);
 
   const iconClasses = useMemo(() => {
     let classes: Array<string> = [];
@@ -83,36 +112,68 @@ const Button = ({
     ) : null;
   }, [icon, iconClasses]);
 
-  if (kind === EButtonKinds.LINK) {
-    return (
-      <a className={cssClasses} href={href} target="_blank">
-        {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-        <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
-          {label}
-        </span>
-        {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
-      </a>
-    );
-  } else if (kind === EButtonKinds.BUTTON) {
-    return (
-      <button
-        className={`${cssClasses} ${
-          disabled ? btnBase.disabledState.join(' ') : ''
-        }`}
-        onClick={onClickEvent}
-        type="button"
-        disabled={disabled}
-      >
-        {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-        <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
-          {label}
-        </span>
-        {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
-      </button>
-    );
+  if (onlyIcon) {
+    if (kind === EButtonKinds.LINK) {
+      return (
+        <a
+          className={cssClasses}
+          href={href}
+          target="_blank"
+          title={label}
+          aria-label={label}
+        >
+          {iconMarkup}
+        </a>
+      );
+    } else if (kind === EButtonKinds.BUTTON) {
+      return (
+        <button
+          className={`${cssClasses} ${
+            disabled ? onlyIconCss.disabledState.join(' ') : ''
+          }`}
+          onClick={onClickEvent}
+          type="button"
+          disabled={disabled}
+        >
+          {iconMarkup}
+        </button>
+      );
+    } else {
+      console.log(`button kind ${kind} is not supported`);
+      return null;
+    }
   } else {
-    console.log(`button kind ${kind} is not supported`);
-    return null;
+    if (kind === EButtonKinds.LINK) {
+      return (
+        <a className={cssClasses} href={href} target="_blank">
+          {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
+          <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
+            {label}
+          </span>
+          {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
+        </a>
+      );
+    } else if (kind === EButtonKinds.BUTTON) {
+      return (
+        <button
+          className={`${cssClasses} ${
+            disabled ? btnBase.disabledState.join(' ') : ''
+          }`}
+          onClick={onClickEvent}
+          type="button"
+          disabled={disabled}
+        >
+          {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
+          <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
+            {label}
+          </span>
+          {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
+        </button>
+      );
+    } else {
+      console.log(`button kind ${kind} is not supported`);
+      return null;
+    }
   }
 };
 

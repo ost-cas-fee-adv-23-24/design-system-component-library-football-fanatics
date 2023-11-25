@@ -3,6 +3,7 @@ export enum EIConTypes {
   ARROW_DOWN = 'arrowDown',
   ARROW_LEFT = 'arrowLeft',
   ARROW_RIGHT = 'arrowRight',
+  BEAKER = 'beaker',
 }
 
 export enum EIconSizes {

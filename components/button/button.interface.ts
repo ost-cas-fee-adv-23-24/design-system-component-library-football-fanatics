@@ -16,4 +16,5 @@ export interface IButtonProps {
   href?: string;
   disabled?: boolean;
   kind?: EButtonKinds;
+  onlyIcon?: boolean;
 }

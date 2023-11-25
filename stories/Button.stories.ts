@@ -40,6 +40,7 @@ const meta: Meta<typeof Button> = {
         EIConTypes.ARROW_LEFT,
         EIConTypes.ARROW_RIGHT,
         EIConTypes.ARROW_UP,
+        EIConTypes.BEAKER,
       ],
     },
     iconPosition: {
@@ -58,6 +59,11 @@ export const Primary: Story = {
     label: 'Button Primary',
     kind: EButtonKinds.LINK,
     href: '/text',
+    onlyIcon: true,
+    icon: EIConTypes.BEAKER,
+    onClickEvent: () => {
+      console.log('onClickEvent');
+    },
   },
 };
 
