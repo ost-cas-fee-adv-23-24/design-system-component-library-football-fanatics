@@ -56,10 +56,11 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
+    size: EButtonSizes.SMALL,
     label: 'Button Primary',
     kind: EButtonKinds.LINK,
     href: '/text',
-    onlyIcon: true,
+    onlyIcon: false,
     icon: EIConTypes.BEAKER,
     onClickEvent: () => {
       console.log('onClickEvent');

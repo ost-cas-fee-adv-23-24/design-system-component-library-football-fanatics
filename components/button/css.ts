@@ -37,8 +37,6 @@ const btnBase = {
 export const onlyIconCss = {
   topContainer: [
     'text-white',
-    'px-4',
-    'py-4',
     'rounded-full',
     'bg-slate-600',
     'flex',
@@ -56,19 +54,19 @@ export const onlyIconCss = {
 export default btnBase;
 
 export const sm = {
-  topContainer: ['px-4', 'py-2', 'text-xs'],
+  topContainer: ['px-2', 'py-2', 'text-xs'],
   iconContainer: ['h-4', ' w-4'],
   textContainer: [],
 };
 
 export const md = {
-  topContainer: ['px-8', 'py-4', 'text-sm'],
+  topContainer: ['px-3', 'py-3', 'text-sm'],
   iconContainer: ['h-4', ' w-4'],
   textContainer: [],
 };
 
 export const lg = {
-  topContainer: ['px-8', 'py-6', 'text-base'],
+  topContainer: ['px-6', 'py-4', 'text-base'],
   iconContainer: ['h-6', ' w-6', 'leading-none'],
   textContainer: [],
 };
