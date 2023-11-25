@@ -15,8 +15,7 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
 } from '@heroicons/react/24/solid';
-import {IIconProps} from "./icon.interface";
-
+import { IIconProps } from './icon.interface';
 
 const Icon = ({ type, size, color }: IIconProps) => {
   const componentName = 'c-icon';
