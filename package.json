@@ -2,7 +2,15 @@
   "name": "@ost-cas-fee-adv-23-24/elbmum-design",
   "version": "0.1.0",
   "description": "Design System Component Library",
-  "keywords": ["tailwindcss", "storybook", "typescript", "design system", "component library", "react", "nextjs"],
+  "keywords": [
+    "tailwindcss",
+    "storybook",
+    "typescript",
+    "design system",
+    "component library",
+    "react",
+    "nextjs"
+  ],
   "contributors": [
     {
       "name": "Patrick Lehmann",
@@ -35,7 +43,6 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.18",
     "@storybook/addon-styling": "^1.3.7",
     "@types/node": "20.6.2",
     "@types/react": "18.2.22",
