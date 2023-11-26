@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Paragraph } from '../components/typography/Paragraph';
-
+import { Paragraph } from '../components';
 
 const meta: Meta<typeof Paragraph> = {
   title: 'Components/Typography/Paragraph',
@@ -10,30 +9,26 @@ const meta: Meta<typeof Paragraph> = {
   argTypes: {
     size: {
       options: ['L', 'M'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
-    children: {
-      controls: { type: 'text' }
-    }
-  }
+    text: {
+      controls: { type: 'text' },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
 export const ParagraphLarge: Story = {
   args: {
     size: 'L',
-    children: 'Paragraph Large',
+    text: 'Paragraph Large',
   },
 };
 export const ParagraphMedium: Story = {
   args: {
     size: 'M',
-    children: 'Paragraph Medium',
+    text: 'Paragraph Medium',
   },
 };
-
-
-

@@ -1,9 +1,8 @@
 import clsx from 'clsx';
-import { ReactElement } from 'react';
 
 export interface IParagraphProps {
   size: 'L' | 'M';
-  children: ReactElement;
+  text: string;
   as?: 'p' | 'span';
 }
 
@@ -12,11 +11,16 @@ const mapDesign = {
   M: 'text-lg not-italic font-bold leading-[1.40]',
 };
 
-export const Paragraph = ({ children, size, as: ParagraphComponent = 'p' }: IParagraphProps) => {
-
+export const Paragraph = ({
+  text,
+  size,
+  as: ParagraphComponent = 'p',
+}: IParagraphProps) => {
   return (
-    <ParagraphComponent className={clsx('text-slate-600 font-poppins', mapDesign[size])}>
-      {children}
+    <ParagraphComponent
+      className={clsx('text-slate-600 font-poppins', mapDesign[size])}
+    >
+      {text}
     </ParagraphComponent>
-  )
+  );
 };
