@@ -36,6 +36,7 @@ const config: StorybookConfig = {
             loader: '@svgr/webpack',
             options: {
               typescript: true,
+              icon: true,
             },
           },
         ],

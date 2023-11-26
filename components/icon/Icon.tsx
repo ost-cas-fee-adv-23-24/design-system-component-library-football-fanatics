@@ -10,40 +10,41 @@ import React, { useMemo } from 'react';
 import './icon.css';
 import { EIConTypes } from './icon.enum';
 import { IIconProps } from './icon.interface';
-import MumbleIcon from './svg/mumble.svg';
-import ArrowLeftIcon from './svg/arrow-left.svg';
-import ArrowRightIcon from './svg/arrow-right.svg';
-import ArrowUpIcon from './svg/arrow-up.svg';
-import ArrowDownIcon from './svg/arrow-down.svg';
-import CalendarIcon from './svg/calendar.svg';
-import CancelIcon from './svg/cancel.svg';
-import CheckmarkIcon from './svg/checkmark.svg';
-import CommentBorderedIcon from './svg/comment-bordered.svg';
-import CommentFilledIcon from './svg/comment-filled.svg';
-import EditIcon from './svg/edit.svg';
-import EyeIcon from './svg/eye.svg';
-import FullScreenIcon from './svg/full-screen.svg';
-import HeardBorderedIcon from './svg/heart-bordered.svg';
-import HeartFilledIcon from './svg/heart-filled.svg';
-import LocationIcon from './svg/location.svg';
-import LogoutIcon from './svg/logout.svg';
-import ProfileIcon from './svg/profile.svg';
-import RepostIcon from './svg/repost.svg';
-import SendIcon from './svg/send.svg';
-import SettingsIcon from './svg/settings.svg';
-import ShareIcon from './svg/share.svg';
-import TimeIcon from './svg/time.svg';
-import UploadIcon from './svg/upload.svg';
+import mumbleIcon from './svg/mumble';
+import arrowLeftIcon from './svg/arrow-left';
+import arrowRightIcon from './svg/arrow-right';
+import arrowUpIcon from './svg/arrow-up';
+import arrowDownIcon from './svg/arrow-down';
+import calendarIcon from './svg/calendar';
+import cancelIcon from './svg/cancel';
+import checkmarkIcon from './svg/checkmark';
+import commentBorderedIcon from './svg/comment-bordered';
+import commentFilledIcon from './svg/comment-filled';
+import editIcon from './svg/edit';
+import eyeIcon from './svg/eye';
+import fullScreenIcon from './svg/full-screen';
+import heardBorderedIcon from './svg/heart-bordered';
+import heartFilledIcon from './svg/heart-filled';
+import locationIcon from './svg/location';
+import logoutIcon from './svg/logout';
+import profileIcon from './svg/profile';
+import repostIcon from './svg/repost';
+import sendIcon from './svg/send';
+import settingsIcon from './svg/settings';
+import shareIcon from './svg/share';
+import timeIcon from './svg/time';
+import uploadIcon from './svg/upload';
+import { fitParent, topContainer } from './css';
 
 const Icon = ({ type, size, color }: IIconProps) => {
   const componentName = 'c-icon';
   const cssClasses = useMemo(() => {
-    const decorations = [];
+    const decorations = [...topContainer];
     if (size) {
       decorations.push(`h-${size}`);
       decorations.push(`w-${size}`);
     } else {
-      decorations.push(`c-icon--fit-parent`);
+      decorations.push(...fitParent);
     }
 
     if (color) {
@@ -57,57 +58,62 @@ const Icon = ({ type, size, color }: IIconProps) => {
   const iconMarkup = useMemo(() => {
     switch (type) {
       case EIConTypes.MUMBLE:
-        return <MumbleIcon />;
+        return mumbleIcon;
       case EIConTypes.ARROW_LEFT:
-        return <ArrowLeftIcon />;
+        return arrowLeftIcon;
       case EIConTypes.ARROW_RIGHT:
-        return <ArrowRightIcon />;
+        return arrowRightIcon;
       case EIConTypes.ARROW_DOWN:
-        return <ArrowDownIcon />;
+        return arrowDownIcon;
       case EIConTypes.ARROW_UP:
-        return <ArrowUpIcon />;
+        return arrowUpIcon;
       case EIConTypes.CALENDAR:
-        return <CalendarIcon />;
+        return calendarIcon;
       case EIConTypes.CANCEL:
-        return <CancelIcon />;
+        return cancelIcon;
       case EIConTypes.CHECKMARK:
-        return <CheckmarkIcon />;
+        return checkmarkIcon;
       case EIConTypes.COMMENT_BORDERED:
-        return <CommentBorderedIcon />;
+        return commentBorderedIcon;
       case EIConTypes.COMMENT_FILLED:
-        return <CommentFilledIcon />;
+        return commentFilledIcon;
       case EIConTypes.EDIT:
-        return <EditIcon />;
+        return editIcon;
       case EIConTypes.EYE:
-        return <EyeIcon />;
+        return eyeIcon;
       case EIConTypes.FULL_SCREEN:
-        return <FullScreenIcon />;
+        return fullScreenIcon;
       case EIConTypes.HEART_BORDERED:
-        return <HeardBorderedIcon />;
+        return heardBorderedIcon;
       case EIConTypes.HEART_FILLED:
-        return <HeartFilledIcon />;
+        return heartFilledIcon;
       case EIConTypes.LOCATION:
-        return <LocationIcon />;
+        return locationIcon;
       case EIConTypes.LOGOUT:
-        return <LogoutIcon />;
+        return logoutIcon;
       case EIConTypes.PROFILE:
-        return <ProfileIcon />;
+        return profileIcon;
       case EIConTypes.REPOST:
-        return <RepostIcon />;
+        return repostIcon;
       case EIConTypes.SEND:
-        return <SendIcon />;
+        return sendIcon;
       case EIConTypes.SETTINGS:
-        return <SettingsIcon />;
+        return settingsIcon;
       case EIConTypes.SHARE:
-        return <ShareIcon />;
+        return shareIcon;
       case EIConTypes.TIME:
-        return <TimeIcon />;
+        return timeIcon;
       case EIConTypes.UPLOAD:
-        return <UploadIcon />;
+        return uploadIcon;
     }
-  }, [type]);
+  }, [type, color]);
 
-  return <div className={cssClasses}>{iconMarkup}</div>;
+  return (
+    <div
+      className={cssClasses}
+      dangerouslySetInnerHTML={{ __html: iconMarkup }}
+    ></div>
+  );
 };
 
 export default Icon;

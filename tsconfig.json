@@ -25,12 +25,14 @@
   },
   "include": [
     "components/**/*.ts",
-    ".next/types/**/*.ts",
-    "globals.d.ts"
+    ".next/types/**/*.ts"
+  ],
+  "files": [
+    "custom.d.ts"
   ],
   "exclude": [
     "node_modules",
     "app",
     "public"
-  ],
+  ]
 }
