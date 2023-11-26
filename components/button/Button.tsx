@@ -3,7 +3,6 @@ import { IButtonProps } from './button.interface';
 import { EButtonIconPosition, EButtonSizes, EButtonTypes } from './button.enum';
 import { useMemo } from 'react';
 import Icon from '../icon/Icon';
-import { EIconSizes } from '../icon/icon.enum';
 
 /**
  * Primary UI component for user interaction

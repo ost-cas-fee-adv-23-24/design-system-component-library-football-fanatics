@@ -8,7 +8,7 @@
 
 import React, { useMemo } from 'react';
 import './icon.css';
-import { EIConTypes } from './icon.enum';
+import { EIconSizes, EIConTypes } from './icon.enum';
 import { IIconProps } from './icon.interface';
 import mumbleIcon from './svg/mumble';
 import arrowLeftIcon from './svg/arrow-left';
@@ -34,17 +34,25 @@ import settingsIcon from './svg/settings';
 import shareIcon from './svg/share';
 import timeIcon from './svg/time';
 import uploadIcon from './svg/upload';
-import { fitParent, topContainer } from './css';
+import { fitParent, iconSizes, topContainer } from './css';
 
 const Icon = ({ type, size, color }: IIconProps) => {
   const componentName = 'c-icon';
   const cssClasses = useMemo(() => {
     const decorations = [...topContainer];
-    if (size) {
-      decorations.push(`h-${size}`);
-      decorations.push(`w-${size}`);
-    } else {
-      decorations.push(...fitParent);
+
+    switch (size) {
+      case EIconSizes.SM:
+        decorations.push(iconSizes.SM);
+        break;
+      case EIconSizes.MD:
+        decorations.push(iconSizes.MD);
+        break;
+      case EIconSizes.LG:
+        decorations.push(iconSizes.LG);
+        break;
+      default:
+        decorations.push(...fitParent);
     }
 
     if (color) {
