@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Label } from '../components/typography/Label';
-
+import { Label } from '../components';
 
 const meta: Meta<typeof Label> = {
   title: 'Components/Typography/Label',
@@ -10,12 +9,12 @@ const meta: Meta<typeof Label> = {
   argTypes: {
     size: {
       options: ['XL', 'L', 'M', 'S'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
-    children: {
-      controls: { type: 'text' }
-    }
-  }
+    text: {
+      controls: { type: 'text' },
+    },
+  },
 };
 
 export default meta;
@@ -24,29 +23,25 @@ type Story = StoryObj<typeof meta>;
 export const LabelExtraLarge: Story = {
   args: {
     size: 'XL',
-    children: 'Label Extra Large',
+    text: 'Label Extra Large',
   },
 };
 
 export const LabelLarge: Story = {
   args: {
     size: 'L',
-    children: 'Label Large',
+    text: 'Label Large',
   },
 };
 export const LabelMedium: Story = {
   args: {
     size: 'M',
-    children: 'Label Medium',
+    text: 'Label Medium',
   },
 };
 export const LabelSmall: Story = {
   args: {
     size: 'S',
-    children: 'Label Small',
+    text: 'Label Small',
   },
 };
-
-
-
-
