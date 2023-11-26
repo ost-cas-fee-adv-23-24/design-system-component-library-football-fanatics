@@ -100,7 +100,7 @@ const Icon = ({ type, color }: IIconProps) => {
       case EIConTypes.UPLOAD:
         return uploadIcon;
     }
-  }, [type, color]);
+  }, [type]);
 
   return (
     <div

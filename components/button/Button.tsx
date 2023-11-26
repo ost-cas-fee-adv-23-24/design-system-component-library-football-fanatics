@@ -104,7 +104,7 @@ const Button = ({
         modifier = [...modifier, ...colors.primary];
     }
     return `${componentName} ${modifier.join(' ')}`;
-  }, [type, size, disabled, onlyIcon]);
+  }, [type, size]);
 
   const iconContainerClasses = useMemo(() => {
     let classes: Array<string> = [];

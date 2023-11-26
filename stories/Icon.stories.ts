@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Icon from '../components/icon/Icon';
 import { EIConTypes } from '../components/icon/icon.enum';
 
-export const iconOptions = [
+export const IconOptions = [
   EIConTypes.ARROW_DOWN,
   EIConTypes.ARROW_LEFT,
   EIConTypes.ARROW_RIGHT,
@@ -37,7 +37,7 @@ const meta: Meta<typeof Icon> = {
   argTypes: {
     type: {
       control: { type: 'select' },
-      options: iconOptions,
+      options: IconOptions,
     },
   },
 };
