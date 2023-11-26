@@ -1,4 +1,4 @@
-import { EIconColors, EIconSizes, EIConTypes } from './icon.enum';
+import { EIconColors, EIConTypes } from './icon.enum';
 
 export type TIconType =
   | EIConTypes.ARROW_DOWN
