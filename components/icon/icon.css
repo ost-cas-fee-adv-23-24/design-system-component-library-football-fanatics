@@ -1,17 +1,10 @@
 @tailwind components;
 
 @layer components {
-  .c-icon {
-    display: inline-block;
-    pointer-events: none;
-    line-height: 0;
-  }
-
   .c-icon svg {
     fill: currentColor;
-  }
-
-  .c-icon--fit-parent {
+    pointer-events: none;
+    line-height: 0;
     width: inherit;
     height: inherit;
     font-size: inherit;
