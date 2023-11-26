@@ -15,6 +15,5 @@
     "plugins": []
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "app", "public", "stories"],
-  "files": ["globals.d.ts"]
+  "exclude": ["node_modules", "app", "public", "stories"]
 }
