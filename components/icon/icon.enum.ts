@@ -25,12 +25,6 @@ export enum EIConTypes {
   UPLOAD = 'upload',
 }
 
-export enum EIconSizes {
-  LG = 'large',
-  MD = 'medium',
-  SM = 'small',
-}
-
 export enum EIconColors {
   PRIMARY = 'red',
   SECONDARY = 'blue',

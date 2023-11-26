@@ -1,12 +1,18 @@
 @tailwind components;
 
 @layer components {
+  .c-icon {
+    line-height: 0;
+    width: inherit;
+    height: inherit;
+  }
+
+
   .c-icon svg {
     fill: currentColor;
     pointer-events: none;
     line-height: 0;
     width: inherit;
     height: inherit;
-    font-size: inherit;
   }
 }
