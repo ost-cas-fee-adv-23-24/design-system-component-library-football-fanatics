@@ -18,7 +18,8 @@ const stateDisabled = [
 
 const btnBase = {
   topContainer: [
-    'rounded px-8',
+    'rounded',
+    'px-8',
     'min-w-[250px]',
     'bg-gray-100',
     'flex',
@@ -36,6 +37,8 @@ const btnBase = {
 
 export const onlyIconCss = {
   topContainer: [
+    'py-8',
+    'px-8',
     'text-white',
     'rounded-full',
     'bg-slate-600',
@@ -55,19 +58,19 @@ export default btnBase;
 
 export const sm = {
   topContainer: ['px-2', 'py-2', 'text-xs'],
-  iconContainer: ['h-4', ' w-4'],
+  iconContainer: ['h-4', ' w-4', 'leading-none'],
   textContainer: [],
 };
 
 export const md = {
   topContainer: ['px-3', 'py-3', 'text-sm'],
-  iconContainer: ['h-4', ' w-4'],
+  iconContainer: ['h-4', ' w-4', 'leading-none'],
   textContainer: [],
 };
 
 export const lg = {
   topContainer: ['px-6', 'py-4', 'text-base'],
-  iconContainer: ['h-6', ' w-6', 'leading-none'],
+  iconContainer: ['h-4', ' w-4', 'leading-none'],
   textContainer: [],
 };
 

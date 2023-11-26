@@ -48,6 +48,8 @@ export const Primary: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
     label: 'Button Primary',
+    onlyIcon: false,
+    icon: EIConTypes.ARROW_UP,
   },
 };
 

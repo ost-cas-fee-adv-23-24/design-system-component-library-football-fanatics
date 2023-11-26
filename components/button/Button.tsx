@@ -25,30 +25,51 @@ const Button = ({
   kind = EButtonKinds.BUTTON,
 }: IButtonProps) => {
   const componentName = 'c-button';
-  const cssClasses = useMemo(() => {
-    if (onlyIcon) {
-      let iconClasses = [componentName, ...onlyIconCss.topContainer];
-      switch (type) {
-        case EButtonTypes.TERTIARY:
-          iconClasses = [
-            ...iconClasses,
-            ...colors.tertiary,
-            'hover:bg-gradient-pink-violet-3070',
-            'active:bg-gradient-pink-violet-2080',
-          ];
-          break;
-        case EButtonTypes.PRIMARY:
-          iconClasses = [...iconClasses, ...colors.primary];
-          break;
-        case EButtonTypes.SECONDARY:
-          iconClasses = [...iconClasses, ...colors.secondary];
-          break;
-        default:
-          iconClasses = [...colors.primary];
-      }
-      return `${iconClasses.join(' ')}`;
+
+  const topContainerOnlyIcon = useMemo(() => {
+    if (!onlyIcon) return '';
+
+    let modifierIconClasses = [componentName, ...onlyIconCss.topContainer];
+    switch (type) {
+      case EButtonTypes.TERTIARY:
+        modifierIconClasses = [
+          ...modifierIconClasses,
+          ...colors.tertiary,
+          'hover:bg-gradient-pink-violet-3070',
+          'active:bg-gradient-pink-violet-2080',
+        ];
+        break;
+      case EButtonTypes.PRIMARY:
+        modifierIconClasses = [...modifierIconClasses, ...colors.primary];
+        break;
+      case EButtonTypes.SECONDARY:
+        modifierIconClasses = [...modifierIconClasses, ...colors.secondary];
+        break;
+      default:
+        modifierIconClasses = [...modifierIconClasses, ...colors.primary];
     }
 
+    // size is not expected to be changed. Only MD to be used as default
+    // if this changes, then we would need to set a separate onlyIcons.iconContainer.[size] with
+    // the needed values
+    switch (size) {
+      case EButtonSizes.LARGE:
+        modifierIconClasses = [...modifierIconClasses, ...lg.iconContainer];
+        break;
+      case EButtonSizes.MEDIUM:
+        modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
+        break;
+      case EButtonSizes.SMALL:
+        modifierIconClasses = [...modifierIconClasses, ...sm.iconContainer];
+        break;
+      default:
+        modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
+    }
+
+    return `${modifierIconClasses.join(' ')}`;
+  }, [onlyIcon, size, type]);
+
+  const topContainerClasses = useMemo(() => {
     let modifier = [...btnBase.topContainer];
     switch (size) {
       case EButtonSizes.LARGE:
@@ -85,7 +106,7 @@ const Button = ({
     return `${componentName} ${modifier.join(' ')}`;
   }, [type, size, disabled, onlyIcon]);
 
-  const iconClasses = useMemo(() => {
+  const iconContainerClasses = useMemo(() => {
     let classes: Array<string> = [];
     switch (size) {
       case EButtonSizes.LARGE:
@@ -101,22 +122,22 @@ const Button = ({
         classes = [...classes, ...md.iconContainer];
     }
 
-    return classes;
+    return classes.join(' ');
   }, [size]);
 
   const iconMarkup = useMemo(() => {
     return icon ? (
-      <span className={`c-button__icon  ${iconClasses.join(' ')}`}>
+      <span className={`c-button__icon inline-block ${iconContainerClasses}`}>
         <Icon type={icon} />
       </span>
     ) : null;
-  }, [icon, iconClasses]);
+  }, [icon, iconContainerClasses]);
 
   if (onlyIcon) {
     if (kind === EButtonKinds.LINK) {
       return (
         <a
-          className={cssClasses}
+          className={`${topContainerOnlyIcon}`}
           href={href}
           target="_blank"
           title={label}
@@ -126,11 +147,13 @@ const Button = ({
         </a>
       );
     } else if (kind === EButtonKinds.BUTTON) {
+      const disabledClasses = disabled
+        ? onlyIconCss.disabledState.join(' ')
+        : '';
       return (
         <button
-          className={`${cssClasses} ${
-            disabled ? onlyIconCss.disabledState.join(' ') : ''
-          }`}
+          aria-label={label}
+          className={`${topContainerOnlyIcon} ${disabledClasses}`}
           onClick={onClickEvent}
           type="button"
           disabled={disabled}
@@ -145,7 +168,12 @@ const Button = ({
   } else {
     if (kind === EButtonKinds.LINK) {
       return (
-        <a className={cssClasses} href={href} target="_blank">
+        <a
+          className={topContainerClasses}
+          href={href}
+          target="_blank"
+          aria-label={label}
+        >
           {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
           <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
             {label}
@@ -156,7 +184,8 @@ const Button = ({
     } else if (kind === EButtonKinds.BUTTON) {
       return (
         <button
-          className={`${cssClasses} ${
+          aria-label={label}
+          className={`${topContainerClasses} ${
             disabled ? btnBase.disabledState.join(' ') : ''
           }`}
           onClick={onClickEvent}
