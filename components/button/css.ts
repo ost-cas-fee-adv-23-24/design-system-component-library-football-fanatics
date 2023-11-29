@@ -16,6 +16,8 @@ const stateDisabled = [
   'disabled:text-gray-300',
 ];
 
+const commonTransitions = ['transition-all', 'ease-in', 'delay-50'];
+
 const btnBase = {
   topContainer: [
     'rounded',
@@ -45,9 +47,7 @@ export const onlyIconCss = {
     'flex',
     'items-center',
     'justify-center',
-    'transition-all',
-    'ease-in',
-    'delay-50',
+    ...commonTransitions,
     ...statesHover,
     ...stateActive,
   ],
@@ -78,4 +78,19 @@ export const colors = {
   primary: ['bg-slate-600'],
   secondary: ['bg-violet-600'],
   tertiary: ['bg-gradient-pink-violet-5050'],
+};
+
+export const simpleLinkClasses = {
+  topContainer: [
+    'text-violet-600',
+    'flex',
+    'items-center',
+    'hover:border-violet-200',
+    'border-b-[1px]',
+    'py-0.5',
+    'border-solid',
+    'border-violet-600',
+    ...commonTransitions,
+  ],
+  textContainer: ['p-0'],
 };

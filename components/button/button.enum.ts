@@ -18,4 +18,5 @@ export enum EButtonIconPosition {
 export enum EButtonKinds {
   BUTTON = 'button',
   LINK = 'link',
+  BUTTON_AS_LINK = 'buttonAsLink',
 }

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Button from '../components/button/Button';
 import {
   EButtonIconPosition,
+  EButtonKinds,
   EButtonSizes,
   EButtonTypes,
 } from '../components/button/button.enum';
@@ -50,6 +51,37 @@ export const OnlyIcon: Story = {
     label: 'Button Primary',
     onlyIcon: true,
     icon: EIConTypes.MUMBLE,
+  },
+};
+
+export const Link: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.LINK,
+    href: 'https://www.google.com',
+  },
+};
+
+export const LinkWithIconRight: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.LINK,
+    icon: EIConTypes.ARROW_RIGHT,
+    iconPosition: EButtonIconPosition.RIGHT,
+    href: 'https://www.google.com',
+  },
+};
+
+export const LinkWithIconLeft: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.LINK,
+    icon: EIConTypes.ARROW_LEFT,
+    iconPosition: EButtonIconPosition.LEFT,
+    href: 'https://www.google.com',
   },
 };
 
@@ -137,5 +169,7 @@ export const TertiaryLg: Story = {
     label: 'Button tertiary',
     icon: EIConTypes.COMMENT_FILLED,
     iconPosition: EButtonIconPosition.LEFT,
+    kind: EButtonKinds.BUTTON_AS_LINK,
+    href: 'https://www.google.com',
   },
 };
