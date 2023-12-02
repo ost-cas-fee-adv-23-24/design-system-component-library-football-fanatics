@@ -4,7 +4,7 @@ import { LabelHTMLAttributes } from 'react';
 export type ILabelProps = {
   size: 'XL' | 'L' | 'M' | 'S';
   text: string;
-} & LabelHTMLAttributes<HTMLLabelElement>
+} & LabelHTMLAttributes<HTMLLabelElement>;
 
 const mapDesign = {
   XL: 'text-2xl not-italic font-semibold leading-none',

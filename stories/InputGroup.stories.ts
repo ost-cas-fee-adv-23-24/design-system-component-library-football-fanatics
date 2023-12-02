@@ -3,14 +3,23 @@ import { EIConTypes } from '../components/icon/icon.enum';
 import { InputFieldGroup } from '../components/input-group/InputFieldGroup';
 import { IconOptions } from './Icon.stories';
 
-
 const meta: Meta<typeof InputFieldGroup> = {
   title: 'Components/InputFieldGroup',
   component: InputFieldGroup,
   tags: ['autodocs'],
   argTypes: {
     as: {
-      options: ['text', 'password', 'email', 'number', 'tel', 'url', 'search', 'file', 'hidden'],
+      options: [
+        'text',
+        'password',
+        'email',
+        'number',
+        'tel',
+        'url',
+        'search',
+        'file',
+        'hidden',
+      ],
       control: { type: 'select' },
     },
     labelText: {
@@ -69,8 +78,3 @@ export const InputError: Story = {
     icon: EIConTypes.MUMBLE,
   },
 };
-
-
-
-
-

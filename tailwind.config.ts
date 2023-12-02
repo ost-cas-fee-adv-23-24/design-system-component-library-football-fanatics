@@ -1,4 +1,3 @@
-
 import type { Config } from 'tailwindcss';
 
 export const colors = {
@@ -40,18 +39,18 @@ export const colors = {
   },
   red: {
     DEFAULT: '#F00',
-  }
-}
+  },
+};
 
 const spacing = {
-  'xxs': '4px',
-  'xs': '8px',
-  's': '16px',
-  'm': '24px',
-  'l': '32px',
-  'xl': '48px',
-  'xxl': '64px',
-}
+  xxs: '4px',
+  xs: '8px',
+  s: '16px',
+  m: '24px',
+  l: '32px',
+  xl: '48px',
+  xxl: '64px',
+};
 
 const config: Config = {
   content: [
@@ -74,7 +73,7 @@ const config: Config = {
         'gradient-pink-violet-5050': `linear-gradient(90deg, ${colors.pink[500]} 0%, ${colors.violet[600]} 100%)`,
       }),
       fontFamily: {
-        'poppins': ['Poppins', 'sans-serif']
+        poppins: ['Poppins', 'sans-serif'],
       },
       colors: colors,
       spacing: spacing,
