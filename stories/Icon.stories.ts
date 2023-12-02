@@ -3,33 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Icon from '../components/icon/Icon';
 import { EIConTypes } from '../components/icon/icon.enum';
 
-export const IconOptions = [
-  EIConTypes.ARROW_DOWN,
-  EIConTypes.ARROW_LEFT,
-  EIConTypes.ARROW_RIGHT,
-  EIConTypes.ARROW_UP,
-  EIConTypes.MUMBLE,
-  EIConTypes.CALENDAR,
-  EIConTypes.CANCEL,
-  EIConTypes.CHECKMARK,
-  EIConTypes.COMMENT_BORDERED,
-  EIConTypes.COMMENT_FILLED,
-  EIConTypes.EDIT,
-  EIConTypes.EYE,
-  EIConTypes.FULL_SCREEN,
-  EIConTypes.HEART_BORDERED,
-  EIConTypes.HEART_FILLED,
-  EIConTypes.LOCATION,
-  EIConTypes.LOGOUT,
-  EIConTypes.PROFILE,
-  EIConTypes.REPOST,
-  EIConTypes.SEND,
-  EIConTypes.SETTINGS,
-  EIConTypes.SHARE,
-  EIConTypes.TIME,
-  EIConTypes.UPLOAD,
-];
-
 const meta: Meta<typeof Icon> = {
   title: 'Components/Icons',
   component: Icon,
@@ -37,7 +10,7 @@ const meta: Meta<typeof Icon> = {
   argTypes: {
     type: {
       control: { type: 'select' },
-      options: IconOptions,
+      options: EIConTypes,
     },
   },
 };
