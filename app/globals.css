@@ -6,10 +6,6 @@
 
 @layer utilities {
   .placeholder {
-    @apply text-slate-300;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 100%;
+    @apply placeholder:text-slate-300 placeholder:text-base placeholder:not-italic placeholder:font-medium placeholder:leading-none;
   }
 }
