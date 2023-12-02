@@ -31,7 +31,7 @@ export const IconOptions = [
 ];
 
 const meta: Meta<typeof Icon> = {
-  title: 'Components/icon',
+  title: 'Components/Icons',
   component: Icon,
   tags: ['autodocs'],
   argTypes: {
