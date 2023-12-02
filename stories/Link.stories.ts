@@ -4,7 +4,6 @@ import Button from '../components/button/Button';
 import {
   EButtonIconPosition,
   EButtonKinds,
-  EButtonSizes,
   EButtonTypes,
 } from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
