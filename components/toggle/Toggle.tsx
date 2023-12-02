@@ -22,14 +22,18 @@ import Icon from '../icon/Icon';
 import { IToggleComponentProps } from './toggle.interfaces';
 
 const Toggle = ({
-  label,
+  labelSingular,
+  labelPlural,
   amount,
   kind = EToggleKinds.LIKE,
+  labelLiked,
 }: IToggleComponentProps) => {
   // amount States only for the presentation. this should be a dumb component
   // story book does not re-render in case of change of state of the component ¯\_(ツ)_/¯
   const [amountState, setAmountState] = useState(amount);
-  const [labelState, setLabelState] = useState(label);
+  const [labelState, setLabelState] = useState(
+    amount && amount === 1 ? labelSingular : labelPlural,
+  );
   const [hover, setHover] = useState(false);
   const [clicked, setClicked] = useState(false);
 
@@ -64,7 +68,7 @@ const Toggle = ({
   const iconMarkup = useCallback(
     (hover: boolean) => {
       let iconType = EIConTypes.HEART_BORDERED;
-      let iconModifiers = ['c-toggle__icon', ...toggleBase.iconContainer];
+      let iconModifiers = toggleBase.iconContainer;
 
       if (kind === EToggleKinds.LIKE) {
         if (clicked) {
@@ -103,7 +107,7 @@ const Toggle = ({
       }
 
       return (
-        <span className={iconModifiers.join(' ')}>
+        <span className={`c-toggle__icon ${iconModifiers.join(' ')}`}>
           <Icon type={iconType} />
         </span>
       );
@@ -123,13 +127,15 @@ const Toggle = ({
       onMouseDown={() => {
         setClicked(true);
         if (kind === EToggleKinds.LIKE) {
-          setLabelState('Liked');
+          setLabelState(labelLiked);
         }
       }}
       onMouseUp={() => {
         setClicked(false);
         if (kind === EToggleKinds.LIKE) {
-          setLabelState(amountState && amountState + 1 > 1 ? 'Likes' : 'Like');
+          setLabelState(
+            amountState && amountState + 1 > 1 ? labelPlural : labelSingular,
+          );
         }
       }}
       onClick={() => {

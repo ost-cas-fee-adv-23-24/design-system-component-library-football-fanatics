@@ -18,7 +18,17 @@ const meta: Meta<typeof Toggle> = {
     kind: {
       options: EToggleKinds,
     },
-    label: {
+    labelPlural: {
+      table: {
+        disable: true,
+      },
+    },
+    labelSingular: {
+      table: {
+        disable: true,
+      },
+    },
+    labelLiked: {
       table: {
         disable: true,
       },
@@ -33,29 +43,34 @@ type Story = StoryObj<typeof meta>;
 export const ToggleLike: Story = {
   args: {
     kind: EToggleKinds.LIKE,
-    label: 'Likes',
-    amount: 12,
+    labelPlural: 'Likes',
+    labelSingular: 'Like',
+    labelLiked: 'Liked',
   },
 };
 
 export const ToggleLikeZero: Story = {
   args: {
     kind: EToggleKinds.LIKE,
-    label: 'Like',
+    labelPlural: 'Me gusta',
+    labelSingular: 'Me gusta',
+    labelLiked: 'Gustado',
   },
 };
 
 export const ToggleComment: Story = {
   args: {
     kind: EToggleKinds.COMMENT,
-    label: 'Comments',
-    amount: 12,
+    labelPlural: 'Commentarios',
+    labelSingular: 'Commentario',
+    amount: 23,
   },
 };
 
 export const ToggleCommentZero: Story = {
   args: {
     kind: EToggleKinds.COMMENT,
-    label: 'Comment',
+    labelPlural: 'Kommentare',
+    labelSingular: 'Kommentar',
   },
 };
