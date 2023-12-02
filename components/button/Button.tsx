@@ -79,7 +79,9 @@ const Button = ({
 
   const topContainerClasses = useMemo(() => {
     if (kind === EButtonKinds.LINK) {
-      return `${componentName} ${simpleLinkClasses.topContainer.join(' ')}`;
+      return `${componentName} ${simpleLinkClasses.topContainer.join(' ')} ${
+        disabled ? ' pointer-events-none' : ''
+      }`;
     }
 
     let modifier = [...btnBase.topContainer];
@@ -116,7 +118,7 @@ const Button = ({
         modifier = [...modifier, ...colors.primary];
     }
     return `${componentName} ${modifier.join(' ')}`;
-  }, [type, size]);
+  }, [type, size, disabled]);
 
   const iconContainerClasses = useMemo(() => {
     let classes: Array<string> = [];
