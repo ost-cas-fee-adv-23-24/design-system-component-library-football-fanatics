@@ -8,6 +8,9 @@ const typography = [
 
 const commonTransitions = ['transition-all', 'ease-in', 'delay-50'];
 
+export const baseTextColor = 'text-slate-600';
+export const bgHoverColorLikes = 'hover:bg-pink-50';
+
 export const toggleBase = {
   topContainer: [
     'px-6',
@@ -15,8 +18,8 @@ export const toggleBase = {
     'flex',
     'items-center',
     'justify-center',
-    'text-slate-600',
     'rounded-2xl',
+    baseTextColor,
     ...typography,
     ...commonTransitions,
   ],
@@ -25,7 +28,7 @@ export const toggleBase = {
 
 export const likeStates = {
   hover: {
-    topContainer: ['hover:bg-pink-50', 'hover:text-pink-600'],
+    topContainer: [bgHoverColorLikes, 'hover:text-pink-600'],
     iconContainer: ['text-pink-500'],
   },
   active: {
@@ -51,7 +54,7 @@ export const commentStates = {
   active: {
     topContainer: [],
     textContainer: [],
-    iconContainer: [],
+    iconContainer: ['text-violet-600'],
   },
 };
 export const commentModifiers = {

@@ -9,6 +9,8 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { EToggleKinds } from './toggle.enums';
 import {
+  baseTextColor,
+  bgHoverColorLikes,
   commentModifiers,
   commentStates,
   likeModifiers,
@@ -38,7 +40,9 @@ const Toggle = ({
       case EToggleKinds.LIKE:
         modifiers = [...modifiers, ...likeModifiers.topContainer];
         if (amountState && amountState > 0) {
-          modifiers = [...modifiers, ...likeStates.active.topContainer];
+          modifiers = [...modifiers, ...likeStates.active.topContainer].filter(
+            (item) => item !== baseTextColor,
+          );
         }
         break;
       case EToggleKinds.COMMENT:
@@ -50,9 +54,12 @@ const Toggle = ({
       default:
         modifiers = [...modifiers];
     }
+    if (clicked) {
+      modifiers = modifiers.filter((item) => item !== bgHoverColorLikes);
+    }
 
     return modifiers.join(' ');
-  }, [kind, amountState]);
+  }, [kind, amountState, clicked]);
 
   const iconMarkup = useCallback(
     (hover: boolean) => {
