@@ -37,6 +37,9 @@ export const colors = {
     700: '#334155',
     800: '#1E293B',
     900: '#0F172A',
+  },
+  red: {
+    DEFAULT: '#F00',
   }
 }
 
