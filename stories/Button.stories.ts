@@ -8,7 +8,6 @@ import {
   EButtonTypes,
 } from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
-import { IconOptions } from './Icon.stories';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
@@ -33,7 +32,7 @@ const meta: Meta<typeof Button> = {
       options: [EButtonSizes.SMALL, EButtonSizes.MEDIUM, EButtonSizes.LARGE],
     },
     icon: {
-      options: IconOptions,
+      options: EIConTypes,
     },
     iconPosition: {
       options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
