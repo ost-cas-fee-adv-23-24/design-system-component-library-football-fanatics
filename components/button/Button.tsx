@@ -5,16 +5,20 @@ import {
   EButtonSizes,
   EButtonTypes,
 } from './button.enum';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import Icon from '../icon/Icon';
 import btnBase, {
   colors,
+  copyToClipboardClasses,
   lg,
   md,
   onlyIconCss,
   simpleLinkClasses,
   sm,
+  stateActive,
+  statesHover,
 } from './css';
+import _ from 'lodash';
 
 /**
  * Primary UI component for user interaction
@@ -31,8 +35,14 @@ const Button = ({
   onlyIcon = false,
   openInNewTab = false,
   kind = EButtonKinds.BUTTON,
+  clipboardData,
+  clipboardHighlightDelay = 1500,
+  clipboardCopySuccessLabel = 'Link copied',
+  clipboardCopyErrorLabel = 'Link not copied',
 }: IButtonProps) => {
   const componentName = 'c-button';
+  const [highlighted, setHighlighted] = useState(false);
+  const [labelText, setLabelText] = useState(label);
 
   const topContainerOnlyIcon = useMemo(() => {
     if (!onlyIcon) return '';
@@ -99,6 +109,28 @@ const Button = ({
         modifier = [...modifier, ...md.topContainer];
     }
 
+    if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
+      modifier = [
+        ..._.difference(modifier, [
+          'bg-gray-100',
+          'text-white',
+          'rounded',
+          ...stateActive,
+          ...statesHover,
+        ]),
+        ...copyToClipboardClasses.topContainer,
+      ];
+
+      if (highlighted) {
+        modifier = [
+          'bg-gray-200',
+          ..._.difference(modifier, ['hover:bg-slate-100']),
+        ];
+      }
+
+      return `${componentName} ${modifier.join(' ')}`;
+    }
+
     switch (type) {
       case EButtonTypes.TERTIARY:
         modifier = [
@@ -118,7 +150,7 @@ const Button = ({
         modifier = [...modifier, ...colors.primary];
     }
     return `${componentName} ${modifier.join(' ')}`;
-  }, [type, size, disabled, kind]);
+  }, [type, size, disabled, kind, highlighted]);
 
   const iconContainerClasses = useMemo(() => {
     let classes: Array<string> = [];
@@ -146,6 +178,19 @@ const Button = ({
       </span>
     ) : null;
   }, [icon, iconContainerClasses]);
+
+  const iconMargins = useMemo(() => {
+    if (icon) {
+      if (iconPosition === EButtonIconPosition.RIGHT) {
+        return 'mr-2';
+      } else if (iconPosition === EButtonIconPosition.LEFT) {
+        return 'ml-2';
+      } else {
+        return '';
+      }
+    }
+    return '';
+  }, [iconPosition, icon]);
 
   if (onlyIcon) {
     if (kind === EButtonKinds.LINK) {
@@ -192,27 +237,68 @@ const Button = ({
           <span
             className={`c-button__text ${simpleLinkClasses.textContainer.join(
               ' ',
-            )}`}
+            )} ${iconMargins}`}
           >
             {label}
           </span>
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </a>
       );
-    } else if (kind === EButtonKinds.BUTTON) {
+    } else if (
+      kind === EButtonKinds.BUTTON ||
+      kind === EButtonKinds.COPY_TO_CLIPBOARD
+    ) {
       return (
         <button
           aria-label={label}
           className={`${topContainerClasses} ${
             disabled ? btnBase.disabledState.join(' ') : ''
           }`}
-          onClick={onClickEvent}
+          onClick={(evt) => {
+            if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
+              if (clipboardData) {
+                console.log('copying data');
+                navigator.clipboard
+                  .writeText(clipboardData)
+                  .then(() => {
+                    setHighlighted(true);
+                    setLabelText(clipboardCopySuccessLabel);
+                    setTimeout(() => {
+                      setLabelText(label);
+                      setHighlighted(false);
+                    }, clipboardHighlightDelay);
+                    // trigger global notification or alert()
+                    //console.log('copy action was successful');
+                  })
+                  .catch(() => {
+                    setLabelText(clipboardCopyErrorLabel);
+                    setTimeout(() => {
+                      setLabelText(label);
+                    }, clipboardHighlightDelay);
+                  });
+              } else {
+                setLabelText('No data to copy');
+                setTimeout(() => {
+                  setLabelText(label);
+                }, clipboardHighlightDelay);
+              }
+            } else {
+              if (onClickEvent && typeof onClickEvent === 'function') {
+                evt.preventDefault();
+                onClickEvent();
+              }
+            }
+          }}
           type="button"
           disabled={disabled}
         >
           {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
-            {label}
+          <span
+            className={`c-button__text ${btnBase.textContainer.join(
+              ' ',
+            )} ${iconMargins}`}
+          >
+            {labelText}
           </span>
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </button>
@@ -229,11 +315,7 @@ const Button = ({
           <span
             className={`c-button__text ${simpleLinkClasses.textContainer.join(
               ' ',
-            )} ${
-              icon && iconPosition === EButtonIconPosition.RIGHT ? 'mr-2' : ''
-            } ${
-              icon && iconPosition === EButtonIconPosition.LEFT ? 'ml-2' : ''
-            }`}
+            )} ${iconMargins}`}
           >
             {label}
           </span>

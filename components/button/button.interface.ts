@@ -15,7 +15,15 @@ export interface IButtonProps {
   iconPosition?: EButtonIconPosition.LEFT | EButtonIconPosition.RIGHT;
   href?: string;
   disabled?: boolean;
-  kind?: EButtonKinds.BUTTON | EButtonKinds.LINK | EButtonKinds.BUTTON_AS_LINK;
+  kind?:
+    | EButtonKinds.BUTTON
+    | EButtonKinds.LINK
+    | EButtonKinds.BUTTON_AS_LINK
+    | EButtonKinds.COPY_TO_CLIPBOARD;
   onlyIcon?: boolean;
   openInNewTab?: boolean;
+  clipboardData?: string;
+  clipboardHighlightDelay?: number;
+  clipboardCopySuccessLabel?: string;
+  clipboardCopyErrorLabel?: string;
 }
