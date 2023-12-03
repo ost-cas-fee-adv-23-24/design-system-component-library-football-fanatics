@@ -6,7 +6,7 @@ import {
 } from './button.enum';
 import { TIconType } from '../icon/icon.interface';
 
-export interface IButtonProps {
+export interface IButtonComponentProps {
   type?: EButtonTypes.PRIMARY | EButtonTypes.SECONDARY | EButtonTypes.TERTIARY;
   size?: EButtonSizes.MEDIUM | EButtonSizes.SMALL | EButtonSizes.LARGE;
   label: string;
@@ -19,7 +19,8 @@ export interface IButtonProps {
     | EButtonKinds.BUTTON
     | EButtonKinds.LINK
     | EButtonKinds.BUTTON_AS_LINK
-    | EButtonKinds.COPY_TO_CLIPBOARD;
+    | EButtonKinds.COPY_TO_CLIPBOARD
+    | EButtonKinds.BUTTON_ICON;
   onlyIcon?: boolean;
   openInNewTab?: boolean;
   clipboardData?: string;

@@ -1,4 +1,4 @@
-import { IButtonProps } from './button.interface';
+import { IButtonComponentProps } from './button.interface';
 import {
   EButtonIconPosition,
   EButtonKinds,
@@ -16,9 +16,14 @@ import btnBase, {
   simpleLinkClasses,
   sm,
   stateActive,
+  stateDisabled,
   statesHover,
-} from './css';
-import _ from 'lodash';
+} from './button-css';
+import { difference as _difference } from 'lodash';
+import {
+  iconButtonGeneralGray,
+  iconButtonGeneralViolet,
+} from './icon-button.css';
 
 /**
  * Primary UI component for user interaction
@@ -39,7 +44,7 @@ const Button = ({
   clipboardHighlightDelay = 1500,
   clipboardCopySuccessLabel = 'Link copied',
   clipboardCopyErrorLabel = 'Link not copied',
-}: IButtonProps) => {
+}: IButtonComponentProps) => {
   const componentName = 'c-button';
   const [highlighted, setHighlighted] = useState(false);
   const [labelText, setLabelText] = useState(label);
@@ -84,14 +89,34 @@ const Button = ({
         modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
     }
 
+    if (disabled) {
+      modifierIconClasses = [
+        ...modifierIconClasses,
+        ...onlyIconCss.disabledState,
+      ];
+    }
+
     return `${modifierIconClasses.join(' ')}`;
-  }, [onlyIcon, size, type]);
+  }, [onlyIcon, size, type, disabled]);
 
   const topContainerClasses = useMemo(() => {
     if (kind === EButtonKinds.LINK) {
       return `${componentName} ${simpleLinkClasses.topContainer.join(' ')} ${
         disabled ? ' pointer-events-none' : ''
       }`;
+    }
+
+    if (kind === EButtonKinds.BUTTON_ICON) {
+      if (type === EButtonTypes.PRIMARY) {
+        return `${componentName} ${iconButtonGeneralViolet.topContainer.join(
+          ' ',
+        )} ${disabled ? ' pointer-events-none' : ''}`;
+      }
+      if (type === EButtonTypes.SECONDARY) {
+        return `${componentName} ${iconButtonGeneralGray.topContainer.join(
+          ' ',
+        )} ${disabled ? ' pointer-events-none' : ''}`;
+      }
     }
 
     let modifier = [...btnBase.topContainer];
@@ -111,7 +136,7 @@ const Button = ({
 
     if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
       modifier = [
-        ..._.difference(modifier, [
+        ..._difference(modifier, [
           'bg-gray-100',
           'text-white',
           'rounded',
@@ -124,7 +149,7 @@ const Button = ({
       if (highlighted) {
         modifier = [
           'bg-gray-200',
-          ..._.difference(modifier, ['hover:bg-slate-100']),
+          ..._difference(modifier, ['hover:bg-slate-100']),
         ];
       }
 
@@ -149,6 +174,20 @@ const Button = ({
       default:
         modifier = [...modifier, ...colors.primary];
     }
+
+    if (disabled) {
+      modifier = [...modifier, ...stateDisabled];
+      if (type === EButtonTypes.TERTIARY) {
+        modifier = [
+          ..._difference(modifier, [
+            'hover:bg-gradient-pink-violet-3070',
+            'active:bg-gradient-pink-violet-2080',
+            'bg-gradient-pink-violet-5050',
+          ]),
+        ];
+      }
+    }
+
     return `${componentName} ${modifier.join(' ')}`;
   }, [type, size, disabled, kind, highlighted]);
 
@@ -206,13 +245,10 @@ const Button = ({
         </a>
       );
     } else if (kind === EButtonKinds.BUTTON) {
-      const disabledClasses = disabled
-        ? onlyIconCss.disabledState.join(' ')
-        : '';
       return (
         <button
           aria-label={label}
-          className={`${topContainerOnlyIcon} ${disabledClasses}`}
+          className={topContainerOnlyIcon}
           onClick={onClickEvent}
           type="button"
           disabled={disabled}
@@ -245,15 +281,14 @@ const Button = ({
         </a>
       );
     } else if (
+      kind === EButtonKinds.BUTTON_ICON ||
       kind === EButtonKinds.BUTTON ||
       kind === EButtonKinds.COPY_TO_CLIPBOARD
     ) {
       return (
         <button
           aria-label={label}
-          className={`${topContainerClasses} ${
-            disabled ? btnBase.disabledState.join(' ') : ''
-          }`}
+          className={topContainerClasses}
           onClick={(evt) => {
             if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
               if (clipboardData) {

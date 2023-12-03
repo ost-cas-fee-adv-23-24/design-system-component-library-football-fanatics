@@ -53,37 +53,6 @@ export const OnlyIcon: Story = {
   },
 };
 
-export const Link: Story = {
-  args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    href: 'https://www.google.com',
-  },
-};
-
-export const LinkWithIconRight: Story = {
-  args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    icon: EIConTypes.ARROW_RIGHT,
-    iconPosition: EButtonIconPosition.RIGHT,
-    href: 'https://www.google.com',
-  },
-};
-
-export const LinkWithIconLeft: Story = {
-  args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    icon: EIConTypes.ARROW_LEFT,
-    iconPosition: EButtonIconPosition.LEFT,
-    href: 'https://www.google.com',
-  },
-};
-
 export const PrimarySm: Story = {
   args: {
     type: EButtonTypes.PRIMARY,

@@ -10,30 +10,32 @@ export const stateActive = [
   'active:outline-slate-200',
 ];
 
-const stateDisabled = [
+export const stateDisabled = [
   'disabled:bg-gray-200',
   'disabled:cursor-not-allowed',
   'disabled:text-gray-300',
 ];
 
-const commonTransitions = ['transition-all', 'ease-in', 'delay-50'];
-const typography = ['font-poppins'];
+export const commonTransitions = ['transition-all', 'ease-in', 'delay-50'];
+export const typography = ['font-poppins'];
+export const btnBaseGeneral = [
+  'rounded',
+  'px-8',
+  'flex',
+  'items-center',
+  'justify-center',
+];
 
-const btnBase = {
+export const btnBase = {
   topContainer: [
-    'rounded',
-    'px-8',
-    'flex',
-    'items-center',
-    'justify-center',
+    ...btnBaseGeneral,
     ...typography,
     ...statesHover,
     ...stateActive,
     ...commonTransitions,
   ],
   iconContainer: ['h-5', 'w-5 leading-none'],
-  textContainer: ['mr-4', 'ml-4'],
-  disabledState: stateDisabled,
+  textContainer: [],
 };
 
 export const onlyIconCss = {
