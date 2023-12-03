@@ -8,4 +8,3 @@ export { InputFieldGroup } from './input-group/InputFieldGroup';
 export { Label } from './label/Label';
 export { Heading } from './typography/Heading';
 export { Paragraph } from './typography/Paragraph';
-

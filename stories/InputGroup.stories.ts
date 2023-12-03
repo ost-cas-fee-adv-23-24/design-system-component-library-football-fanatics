@@ -47,6 +47,17 @@ const meta: Meta<typeof InputFieldGroup> = {
     icon: {
       options: IconOptions,
     },
+    autoCorrect: {
+      options: ['on', 'off'],
+      control: { type: 'select' },
+    },
+    autoCapitalize: {
+      options: ['sentences', 'on', 'words', 'characters', 'off', 'none'],
+    },
+    spellCheck: {
+      options: [true, false],
+      control: { type: 'select' },
+    },
   },
 };
 
