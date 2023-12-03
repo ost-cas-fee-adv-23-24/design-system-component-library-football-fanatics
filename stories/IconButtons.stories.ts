@@ -9,7 +9,7 @@ import {
 import { EIConTypes } from '../components/icon/icon.enum';
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Components/IconButtons',
+  title: 'Components/IconButtons',
   component: Button,
   parameters: {
     layout: 'centered',
