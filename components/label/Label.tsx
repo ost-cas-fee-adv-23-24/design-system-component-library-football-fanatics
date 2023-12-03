@@ -16,7 +16,7 @@ const mapDesign = {
 export const Label = ({ text, size, ...labelProps }: ILabelProps) => {
   return (
     <label
-      className={clsx('text-slate-600 font-poppins', mapDesign[size])}
+      className={clsx('text-slate-600 font-poppins d', mapDesign[size])}
       aria-hidden="true"
       {...labelProps}
     >
