@@ -7,7 +7,14 @@ import {
 } from './button.enum';
 import { useMemo } from 'react';
 import Icon from '../icon/Icon';
-import btnBase, { colors, lg, md, onlyIconCss, sm } from './css';
+import btnBase, {
+  colors,
+  lg,
+  md,
+  onlyIconCss,
+  simpleLinkClasses,
+  sm,
+} from './css';
 
 /**
  * Primary UI component for user interaction
@@ -22,6 +29,7 @@ const Button = ({
   href,
   disabled = false,
   onlyIcon = false,
+  openInNewTab = false,
   kind = EButtonKinds.BUTTON,
 }: IButtonProps) => {
   const componentName = 'c-button';
@@ -70,6 +78,12 @@ const Button = ({
   }, [onlyIcon, size, type]);
 
   const topContainerClasses = useMemo(() => {
+    if (kind === EButtonKinds.LINK) {
+      return `${componentName} ${simpleLinkClasses.topContainer.join(' ')} ${
+        disabled ? ' pointer-events-none' : ''
+      }`;
+    }
+
     let modifier = [...btnBase.topContainer];
     switch (size) {
       case EButtonSizes.LARGE:
@@ -104,7 +118,7 @@ const Button = ({
         modifier = [...modifier, ...colors.primary];
     }
     return `${componentName} ${modifier.join(' ')}`;
-  }, [type, size]);
+  }, [type, size, disabled, kind]);
 
   const iconContainerClasses = useMemo(() => {
     let classes: Array<string> = [];
@@ -139,7 +153,7 @@ const Button = ({
         <a
           className={`${topContainerOnlyIcon}`}
           href={href}
-          target="_blank"
+          target={openInNewTab ? '_blank' : '_self'}
           title={label}
           aria-label={label}
         >
@@ -166,16 +180,20 @@ const Button = ({
       return null;
     }
   } else {
-    if (kind === EButtonKinds.LINK) {
+    if (kind === EButtonKinds.BUTTON_AS_LINK) {
       return (
         <a
           className={topContainerClasses}
           href={href}
-          target="_blank"
+          target={openInNewTab ? '_blank' : '_self'}
           aria-label={label}
         >
           {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
+          <span
+            className={`c-button__text ${simpleLinkClasses.textContainer.join(
+              ' ',
+            )}`}
+          >
             {label}
           </span>
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
@@ -198,6 +216,29 @@ const Button = ({
           </span>
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </button>
+      );
+    } else if (kind === EButtonKinds.LINK) {
+      return (
+        <a
+          className={topContainerClasses}
+          href={href}
+          target={openInNewTab ? '_blank' : '_self'}
+          aria-label={label}
+        >
+          {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
+          <span
+            className={`c-button__text ${simpleLinkClasses.textContainer.join(
+              ' ',
+            )} ${
+              icon && iconPosition === EButtonIconPosition.RIGHT ? 'mr-2' : ''
+            } ${
+              icon && iconPosition === EButtonIconPosition.LEFT ? 'ml-2' : ''
+            }`}
+          >
+            {label}
+          </span>
+          {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
+        </a>
       );
     } else {
       console.log(`button kind ${kind} is not supported`);

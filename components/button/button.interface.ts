@@ -15,6 +15,7 @@ export interface IButtonProps {
   iconPosition?: EButtonIconPosition.LEFT | EButtonIconPosition.RIGHT;
   href?: string;
   disabled?: boolean;
-  kind?: EButtonKinds.BUTTON | EButtonKinds.LINK;
+  kind?: EButtonKinds.BUTTON | EButtonKinds.LINK | EButtonKinds.BUTTON_AS_LINK;
   onlyIcon?: boolean;
+  openInNewTab?: boolean;
 }

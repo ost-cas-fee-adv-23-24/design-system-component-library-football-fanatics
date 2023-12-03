@@ -3,15 +3,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Button from '../components/button/Button';
 import {
   EButtonIconPosition,
+  EButtonKinds,
   EButtonSizes,
   EButtonTypes,
 } from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
-import { IconOptions } from './Icon.stories';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Components/Components/Button',
   component: Button,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
@@ -32,7 +32,7 @@ const meta: Meta<typeof Button> = {
       options: [EButtonSizes.SMALL, EButtonSizes.MEDIUM, EButtonSizes.LARGE],
     },
     icon: {
-      options: IconOptions,
+      options: EIConTypes,
     },
     iconPosition: {
       options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
@@ -50,6 +50,37 @@ export const OnlyIcon: Story = {
     label: 'Button Primary',
     onlyIcon: true,
     icon: EIConTypes.MUMBLE,
+  },
+};
+
+export const Link: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.LINK,
+    href: 'https://www.google.com',
+  },
+};
+
+export const LinkWithIconRight: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.LINK,
+    icon: EIConTypes.ARROW_RIGHT,
+    iconPosition: EButtonIconPosition.RIGHT,
+    href: 'https://www.google.com',
+  },
+};
+
+export const LinkWithIconLeft: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.LINK,
+    icon: EIConTypes.ARROW_LEFT,
+    iconPosition: EButtonIconPosition.LEFT,
+    href: 'https://www.google.com',
   },
 };
 
@@ -137,5 +168,7 @@ export const TertiaryLg: Story = {
     label: 'Button tertiary',
     icon: EIConTypes.COMMENT_FILLED,
     iconPosition: EButtonIconPosition.LEFT,
+    kind: EButtonKinds.BUTTON_AS_LINK,
+    href: 'https://www.google.com',
   },
 };
