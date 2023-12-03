@@ -6,20 +6,18 @@ import { TIconType } from '../icon/icon.interface';
 import { Label } from '../label/Label';
 
 export interface IInputFieldGroupProps {
-  id: string;
   text?: string;
   placeholder: string;
   as:
-    | 'text'
-    | 'password'
-    | 'email'
-    | 'number'
-    | 'tel'
-    | 'url'
-    | 'search'
-    | 'file'
-    | 'hidden';
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  | 'text'
+  | 'password'
+  | 'email'
+  | 'number'
+  | 'tel'
+  | 'url'
+  | 'search'
+  | 'file'
+  | 'hidden';
   state: 'default' | 'error' | 'success';
   required?: boolean;
   icon?: TIconType;
@@ -69,7 +67,7 @@ export const InputFieldGroup = ({
             'focus:outline focus:outline-2',
             state === 'default' && 'focus:border-none focus:outline-violet-600',
             state === 'error' &&
-              'outline outline-2 outline-red hover:border-red',
+            'outline outline-2 outline-red hover:border-red',
             state == 'success' && '',
           )}
         />
