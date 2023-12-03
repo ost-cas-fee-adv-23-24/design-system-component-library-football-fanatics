@@ -9,17 +9,15 @@ import {
 } from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
   title: 'Components/Components/Button',
   component: Button,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
+
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+
   argTypes: {
     type: {
       options: [
@@ -29,7 +27,7 @@ const meta: Meta<typeof Button> = {
       ],
     },
     size: {
-      options: [EButtonSizes.SMALL, EButtonSizes.MEDIUM, EButtonSizes.LARGE],
+      options: [EButtonSizes.MEDIUM, EButtonSizes.LARGE],
     },
     icon: {
       options: EIConTypes,
@@ -37,38 +35,49 @@ const meta: Meta<typeof Button> = {
     iconPosition: {
       options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
     },
+    clipboardData: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardHighlightDelay: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardCopySuccessLabel: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardCopyErrorLabel: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const OnlyIcon: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
     label: 'Button Primary',
     onlyIcon: true,
     icon: EIConTypes.MUMBLE,
-  },
-};
-
-export const PrimarySm: Story = {
-  args: {
-    type: EButtonTypes.PRIMARY,
-    size: EButtonSizes.SMALL,
-    label: 'Button Primary',
-    onlyIcon: false,
-    icon: EIConTypes.ARROW_UP,
+    onClickEvent: () => {},
   },
 };
 
 export const PrimaryMd: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
-    label: 'Button Primary',
+    label: 'Button Primary md',
     onlyIcon: false,
     icon: EIConTypes.CHECKMARK,
+    onClickEvent: () => {},
   },
 };
 
@@ -76,29 +85,21 @@ export const PrimaryLg: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
     size: EButtonSizes.LARGE,
-    label: 'Button Primary',
+    label: 'Button Primary lg',
     onlyIcon: false,
     icon: EIConTypes.SEND,
-  },
-};
-
-export const SecondarySm: Story = {
-  args: {
-    size: EButtonSizes.MEDIUM,
-    type: EButtonTypes.SECONDARY,
-    label: 'Button secondary',
-    icon: EIConTypes.SETTINGS,
-    iconPosition: EButtonIconPosition.RIGHT,
+    onClickEvent: () => {},
   },
 };
 
 export const SecondaryMd: Story = {
   args: {
-    size: EButtonSizes.LARGE,
+    size: EButtonSizes.MEDIUM,
     type: EButtonTypes.SECONDARY,
-    label: 'Button secondary',
+    label: 'Button secondary md',
     icon: EIConTypes.TIME,
     iconPosition: EButtonIconPosition.RIGHT,
+    onClickEvent: () => {},
   },
 };
 
@@ -106,35 +107,28 @@ export const SecondaryLg: Story = {
   args: {
     size: EButtonSizes.LARGE,
     type: EButtonTypes.SECONDARY,
-    label: 'Button secondary',
+    label: 'Button secondary lg',
     icon: EIConTypes.LOGOUT,
     iconPosition: EButtonIconPosition.RIGHT,
+    onClickEvent: () => {},
   },
 };
 
-export const TertiarySm: Story = {
-  args: {
-    size: EButtonSizes.SMALL,
-    type: EButtonTypes.TERTIARY,
-    label: 'Button tertiary',
-    icon: EIConTypes.LOCATION,
-    iconPosition: EButtonIconPosition.LEFT,
-  },
-};
 export const TertiaryMd: Story = {
   args: {
     size: EButtonSizes.MEDIUM,
     type: EButtonTypes.TERTIARY,
-    label: 'Button tertiary',
+    label: 'Button tertiary md',
     icon: EIConTypes.HEART_BORDERED,
     iconPosition: EButtonIconPosition.LEFT,
+    onClickEvent: () => {},
   },
 };
 export const TertiaryLg: Story = {
   args: {
     size: EButtonSizes.LARGE,
     type: EButtonTypes.TERTIARY,
-    label: 'Button tertiary',
+    label: 'Button tertiary lg',
     icon: EIConTypes.COMMENT_FILLED,
     iconPosition: EButtonIconPosition.LEFT,
     kind: EButtonKinds.BUTTON_AS_LINK,

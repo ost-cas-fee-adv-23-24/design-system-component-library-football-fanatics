@@ -29,6 +29,11 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    href: {
+      table: {
+        disable: true,
+      },
+    },
     icon: {
       options: EIConTypes,
     },

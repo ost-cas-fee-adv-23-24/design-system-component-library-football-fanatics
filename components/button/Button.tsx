@@ -20,10 +20,7 @@ import btnBase, {
   statesHover,
 } from './button-css';
 import { difference as _difference } from 'lodash';
-import {
-  iconButtonGeneralGray,
-  iconButtonGeneralViolet,
-} from './icon-button.css';
+import { iconButtonGray, iconButtonViolet } from './icon-button.css';
 
 /**
  * Primary UI component for user interaction
@@ -108,14 +105,14 @@ const Button = ({
 
     if (kind === EButtonKinds.BUTTON_ICON) {
       if (type === EButtonTypes.PRIMARY) {
-        return `${componentName} ${iconButtonGeneralViolet.topContainer.join(
-          ' ',
-        )} ${disabled ? ' pointer-events-none' : ''}`;
+        return `${componentName} ${iconButtonViolet.topContainer.join(' ')} ${
+          disabled ? ' pointer-events-none' : ''
+        }`;
       }
       if (type === EButtonTypes.SECONDARY) {
-        return `${componentName} ${iconButtonGeneralGray.topContainer.join(
-          ' ',
-        )} ${disabled ? ' pointer-events-none' : ''}`;
+        return `${componentName} ${iconButtonGray.topContainer.join(' ')} ${
+          disabled ? ' pointer-events-none' : ''
+        }`;
       }
     }
 
@@ -158,18 +155,25 @@ const Button = ({
 
     switch (type) {
       case EButtonTypes.TERTIARY:
-        modifier = [
-          ...modifier,
-          ...colors.tertiary,
-          'hover:bg-gradient-pink-violet-3070',
-          'active:bg-gradient-pink-violet-2080',
-        ];
+        modifier = _difference(
+          [
+            ...modifier,
+            ...colors.tertiary,
+            'hover:bg-gradient-pink-violet-3070',
+            'active:bg-gradient-pink-violet-2080',
+          ],
+          ['hover:outline-slate-100', 'active:outline-slate-200'],
+        );
+
         break;
       case EButtonTypes.PRIMARY:
         modifier = [...modifier, ...colors.primary];
         break;
       case EButtonTypes.SECONDARY:
-        modifier = [...modifier, ...colors.secondary];
+        modifier = _difference(
+          [...modifier, ...colors.secondary],
+          ['hover:outline-slate-100', 'active:outline-slate-200'],
+        );
         break;
       default:
         modifier = [...modifier, ...colors.primary];
@@ -292,7 +296,6 @@ const Button = ({
           onClick={(evt) => {
             if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
               if (clipboardData) {
-                console.log('copying data');
                 navigator.clipboard
                   .writeText(clipboardData)
                   .then(() => {
@@ -302,8 +305,6 @@ const Button = ({
                       setLabelText(label);
                       setHighlighted(false);
                     }, clipboardHighlightDelay);
-                    // trigger global notification or alert()
-                    //console.log('copy action was successful');
                   })
                   .catch(() => {
                     setLabelText(clipboardCopyErrorLabel);

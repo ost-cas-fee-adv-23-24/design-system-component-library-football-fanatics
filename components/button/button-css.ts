@@ -17,7 +17,13 @@ export const stateDisabled = [
 ];
 
 export const commonTransitions = ['transition-all', 'ease-in', 'delay-50'];
-export const typography = ['font-poppins'];
+export const typography = [
+  'font-poppins',
+  'text-base',
+  'not-italic',
+  'font-semibold',
+  'leading-4',
+];
 export const btnBaseGeneral = [
   'rounded',
   'px-8',
@@ -76,8 +82,18 @@ export const lg = {
 
 export const colors = {
   primary: ['bg-slate-600', 'text-white'],
-  secondary: ['bg-violet-600', 'text-white'],
-  tertiary: ['bg-gradient-pink-violet-5050', 'text-white'],
+  secondary: [
+    'bg-violet-600',
+    'text-white',
+    'hover:outline-violet-100',
+    'hover:outline-violet-200',
+  ],
+  tertiary: [
+    'bg-gradient-pink-violet-5050',
+    'text-white',
+    'hover:outline-violet-100',
+    'active:outline-violet-200',
+  ],
 };
 
 export const simpleLinkClasses = {
