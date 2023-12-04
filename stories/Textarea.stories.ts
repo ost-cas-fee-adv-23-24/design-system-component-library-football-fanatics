@@ -64,5 +64,3 @@ export const InputDefault: Story = {
     name: 'name',
   },
 };
-
-

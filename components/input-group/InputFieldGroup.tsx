@@ -9,15 +9,15 @@ export interface IInputFieldGroupProps {
   text?: string;
   placeholder: string;
   as:
-  | 'text'
-  | 'password'
-  | 'email'
-  | 'number'
-  | 'tel'
-  | 'url'
-  | 'search'
-  | 'file'
-  | 'hidden';
+    | 'text'
+    | 'password'
+    | 'email'
+    | 'number'
+    | 'tel'
+    | 'url'
+    | 'search'
+    | 'file'
+    | 'hidden';
   state: 'default' | 'error' | 'success';
   required?: boolean;
   icon?: TIconType;
@@ -67,7 +67,7 @@ export const InputFieldGroup = ({
             'focus:outline focus:outline-2',
             state === 'default' && 'focus:border-none focus:outline-violet-600',
             state === 'error' &&
-            'outline outline-2 outline-red hover:border-red',
+              'outline outline-2 outline-red hover:border-red',
             state == 'success' && '',
           )}
         />
