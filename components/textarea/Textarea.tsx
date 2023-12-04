@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 export interface ITextareaProps {
   value?: string;
@@ -45,7 +45,7 @@ export const Textarea = ({
       name={name}
       readOnly={readOnly}
       className={clsx(
-        'w-full h-40 p-4',
+        'c-textarea w-full h-40 p-4',
         'text-xl not-italic font-medium leading-[1.35] font-poppins text-slate-900',
         'placeholder:text-slate-500',
         'rounded-lg outline-transparent border-solid border border-slate-200 bg-slate-100',
