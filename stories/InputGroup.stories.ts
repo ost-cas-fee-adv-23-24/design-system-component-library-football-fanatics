@@ -52,8 +52,7 @@ const meta: Meta<typeof InputFieldGroup> = {
       options: ['sentences', 'on', 'words', 'characters', 'off', 'none'],
     },
     spellCheck: {
-      options: [true, false],
-      control: { type: 'select' },
+      controls: { type: 'boolean' },
     },
   },
 };
