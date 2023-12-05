@@ -1,20 +1,26 @@
-import { IButtonProps } from './button.interface';
+import { IButtonComponentProps } from './button.interface';
 import {
   EButtonIconPosition,
   EButtonKinds,
   EButtonSizes,
   EButtonTypes,
 } from './button.enum';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import Icon from '../icon/Icon';
 import btnBase, {
   colors,
+  copyToClipboardClasses,
   lg,
   md,
   onlyIconCss,
   simpleLinkClasses,
   sm,
-} from './css';
+  stateActive,
+  stateDisabled,
+  statesHover,
+} from './button-css';
+import { difference as _difference } from 'lodash';
+import { iconButtonGray, iconButtonViolet } from './icon-button.css';
 
 /**
  * Primary UI component for user interaction
@@ -31,8 +37,14 @@ const Button = ({
   onlyIcon = false,
   openInNewTab = false,
   kind = EButtonKinds.BUTTON,
-}: IButtonProps) => {
+  clipboardData,
+  clipboardHighlightDelay = 1500,
+  clipboardCopySuccessLabel = 'Link copied',
+  clipboardCopyErrorLabel = 'Link not copied',
+}: IButtonComponentProps) => {
   const componentName = 'c-button';
+  const [highlighted, setHighlighted] = useState(false);
+  const [labelText, setLabelText] = useState(label);
 
   const topContainerOnlyIcon = useMemo(() => {
     if (!onlyIcon) return '';
@@ -74,14 +86,34 @@ const Button = ({
         modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
     }
 
+    if (disabled) {
+      modifierIconClasses = [
+        ...modifierIconClasses,
+        ...onlyIconCss.disabledState,
+      ];
+    }
+
     return `${modifierIconClasses.join(' ')}`;
-  }, [onlyIcon, size, type]);
+  }, [onlyIcon, size, type, disabled]);
 
   const topContainerClasses = useMemo(() => {
     if (kind === EButtonKinds.LINK) {
       return `${componentName} ${simpleLinkClasses.topContainer.join(' ')} ${
         disabled ? ' pointer-events-none' : ''
       }`;
+    }
+
+    if (kind === EButtonKinds.BUTTON_ICON) {
+      if (type === EButtonTypes.PRIMARY) {
+        return `${componentName} ${iconButtonViolet.topContainer.join(' ')} ${
+          disabled ? ' pointer-events-none' : ''
+        }`;
+      }
+      if (type === EButtonTypes.SECONDARY) {
+        return `${componentName} ${iconButtonGray.topContainer.join(' ')} ${
+          disabled ? ' pointer-events-none' : ''
+        }`;
+      }
     }
 
     let modifier = [...btnBase.topContainer];
@@ -99,26 +131,69 @@ const Button = ({
         modifier = [...modifier, ...md.topContainer];
     }
 
+    if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
+      modifier = [
+        ..._difference(modifier, [
+          'bg-gray-100',
+          'text-white',
+          'rounded',
+          ...stateActive,
+          ...statesHover,
+        ]),
+        ...copyToClipboardClasses.topContainer,
+      ];
+
+      if (highlighted) {
+        modifier = [
+          'bg-gray-200',
+          ..._difference(modifier, ['hover:bg-slate-100']),
+        ];
+      }
+
+      return `${componentName} ${modifier.join(' ')}`;
+    }
+
     switch (type) {
       case EButtonTypes.TERTIARY:
-        modifier = [
-          ...modifier,
-          ...colors.tertiary,
-          'hover:bg-gradient-pink-violet-3070',
-          'active:bg-gradient-pink-violet-2080',
-        ];
+        modifier = _difference(
+          [
+            ...modifier,
+            ...colors.tertiary,
+            'hover:bg-gradient-pink-violet-3070',
+            'active:bg-gradient-pink-violet-2080',
+          ],
+          ['hover:outline-slate-100', 'active:outline-slate-200'],
+        );
+
         break;
       case EButtonTypes.PRIMARY:
         modifier = [...modifier, ...colors.primary];
         break;
       case EButtonTypes.SECONDARY:
-        modifier = [...modifier, ...colors.secondary];
+        modifier = _difference(
+          [...modifier, ...colors.secondary],
+          ['hover:outline-slate-100', 'active:outline-slate-200'],
+        );
         break;
       default:
         modifier = [...modifier, ...colors.primary];
     }
+
+    if (disabled) {
+      modifier = [...modifier, ...stateDisabled];
+      if (type === EButtonTypes.TERTIARY) {
+        modifier = [
+          ..._difference(modifier, [
+            'hover:bg-gradient-pink-violet-3070',
+            'active:bg-gradient-pink-violet-2080',
+            'bg-gradient-pink-violet-5050',
+          ]),
+        ];
+      }
+    }
+
     return `${componentName} ${modifier.join(' ')}`;
-  }, [type, size, disabled, kind]);
+  }, [type, size, disabled, kind, highlighted]);
 
   const iconContainerClasses = useMemo(() => {
     let classes: Array<string> = [];
@@ -147,6 +222,19 @@ const Button = ({
     ) : null;
   }, [icon, iconContainerClasses]);
 
+  const iconMargins = useMemo(() => {
+    if (icon) {
+      if (iconPosition === EButtonIconPosition.RIGHT) {
+        return 'mr-2';
+      } else if (iconPosition === EButtonIconPosition.LEFT) {
+        return 'ml-2';
+      } else {
+        return '';
+      }
+    }
+    return '';
+  }, [iconPosition, icon]);
+
   if (onlyIcon) {
     if (kind === EButtonKinds.LINK) {
       return (
@@ -161,13 +249,10 @@ const Button = ({
         </a>
       );
     } else if (kind === EButtonKinds.BUTTON) {
-      const disabledClasses = disabled
-        ? onlyIconCss.disabledState.join(' ')
-        : '';
       return (
         <button
           aria-label={label}
-          className={`${topContainerOnlyIcon} ${disabledClasses}`}
+          className={topContainerOnlyIcon}
           onClick={onClickEvent}
           type="button"
           disabled={disabled}
@@ -192,27 +277,64 @@ const Button = ({
           <span
             className={`c-button__text ${simpleLinkClasses.textContainer.join(
               ' ',
-            )}`}
+            )} ${iconMargins}`}
           >
             {label}
           </span>
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </a>
       );
-    } else if (kind === EButtonKinds.BUTTON) {
+    } else if (
+      kind === EButtonKinds.BUTTON_ICON ||
+      kind === EButtonKinds.BUTTON ||
+      kind === EButtonKinds.COPY_TO_CLIPBOARD
+    ) {
       return (
         <button
           aria-label={label}
-          className={`${topContainerClasses} ${
-            disabled ? btnBase.disabledState.join(' ') : ''
-          }`}
-          onClick={onClickEvent}
+          className={topContainerClasses}
+          onClick={(evt) => {
+            if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
+              if (clipboardData) {
+                navigator.clipboard
+                  .writeText(clipboardData)
+                  .then(() => {
+                    setHighlighted(true);
+                    setLabelText(clipboardCopySuccessLabel);
+                    setTimeout(() => {
+                      setLabelText(label);
+                      setHighlighted(false);
+                    }, clipboardHighlightDelay);
+                  })
+                  .catch(() => {
+                    setLabelText(clipboardCopyErrorLabel);
+                    setTimeout(() => {
+                      setLabelText(label);
+                    }, clipboardHighlightDelay);
+                  });
+              } else {
+                setLabelText('No data to copy');
+                setTimeout(() => {
+                  setLabelText(label);
+                }, clipboardHighlightDelay);
+              }
+            } else {
+              if (onClickEvent && typeof onClickEvent === 'function') {
+                evt.preventDefault();
+                onClickEvent();
+              }
+            }
+          }}
           type="button"
           disabled={disabled}
         >
           {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span className={`c-button__text ${btnBase.textContainer.join(' ')}`}>
-            {label}
+          <span
+            className={`c-button__text ${btnBase.textContainer.join(
+              ' ',
+            )} ${iconMargins}`}
+          >
+            {labelText}
           </span>
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </button>
@@ -229,11 +351,7 @@ const Button = ({
           <span
             className={`c-button__text ${simpleLinkClasses.textContainer.join(
               ' ',
-            )} ${
-              icon && iconPosition === EButtonIconPosition.RIGHT ? 'mr-2' : ''
-            } ${
-              icon && iconPosition === EButtonIconPosition.LEFT ? 'ml-2' : ''
-            }`}
+            )} ${iconMargins}`}
           >
             {label}
           </span>

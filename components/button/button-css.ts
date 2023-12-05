@@ -1,40 +1,47 @@
-const statesHover = [
+export const statesHover = [
   'hover:outline-[3px]',
   'hover:outline',
   'hover:outline-slate-100',
 ];
 
-const stateActive = [
+export const stateActive = [
   'active:outline-[4px]',
   'active:outline',
   'active:outline-slate-200',
 ];
 
-const stateDisabled = [
+export const stateDisabled = [
   'disabled:bg-gray-200',
   'disabled:cursor-not-allowed',
   'disabled:text-gray-300',
 ];
 
-const commonTransitions = ['transition-all', 'ease-in', 'delay-50'];
+export const commonTransitions = ['transition-all', 'ease-in', 'delay-50'];
+export const typography = [
+  'font-poppins',
+  'text-base',
+  'not-italic',
+  'font-semibold',
+  'leading-4',
+];
+export const btnBaseGeneral = [
+  'rounded',
+  'px-8',
+  'flex',
+  'items-center',
+  'justify-center',
+];
 
-const btnBase = {
+export const btnBase = {
   topContainer: [
-    'rounded',
-    'px-8',
-    'min-w-[250px]',
-    'bg-gray-100',
-    'flex',
-    'items-center',
-    'justify-center',
-    'text-white',
-    'font-poppins',
+    ...btnBaseGeneral,
+    ...typography,
     ...statesHover,
     ...stateActive,
+    ...commonTransitions,
   ],
   iconContainer: ['h-5', 'w-5 leading-none'],
-  textContainer: ['mr-4', 'ml-4'],
-  disabledState: stateDisabled,
+  textContainer: [],
 };
 
 export const onlyIconCss = {
@@ -47,7 +54,6 @@ export const onlyIconCss = {
     'flex',
     'items-center',
     'justify-center',
-    ...commonTransitions,
     ...statesHover,
     ...stateActive,
   ],
@@ -75,9 +81,19 @@ export const lg = {
 };
 
 export const colors = {
-  primary: ['bg-slate-600'],
-  secondary: ['bg-violet-600'],
-  tertiary: ['bg-gradient-pink-violet-5050'],
+  primary: ['bg-slate-600', 'text-white'],
+  secondary: [
+    'bg-violet-600',
+    'text-white',
+    'hover:outline-violet-100',
+    'hover:outline-violet-200',
+  ],
+  tertiary: [
+    'bg-gradient-pink-violet-5050',
+    'text-white',
+    'hover:outline-violet-100',
+    'active:outline-violet-200',
+  ],
 };
 
 export const simpleLinkClasses = {
@@ -93,4 +109,15 @@ export const simpleLinkClasses = {
     ...commonTransitions,
   ],
   textContainer: ['p-0'],
+};
+
+export const copyToClipboardClasses = {
+  topContainer: [
+    'text-slate-600',
+    'rounded-2xl',
+    'hover:bg-slate-100',
+    'active:bg-slate-100',
+    ...commonTransitions,
+  ],
+  iconContainer: [],
 };

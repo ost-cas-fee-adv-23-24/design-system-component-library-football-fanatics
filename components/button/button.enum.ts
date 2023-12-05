@@ -19,4 +19,6 @@ export enum EButtonKinds {
   BUTTON = 'button',
   LINK = 'link',
   BUTTON_AS_LINK = 'buttonAsLink',
+  COPY_TO_CLIPBOARD = 'copyToClipboard',
+  BUTTON_ICON = 'buttonIcon',
 }

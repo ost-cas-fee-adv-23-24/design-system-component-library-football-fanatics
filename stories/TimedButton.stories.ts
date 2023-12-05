@@ -10,7 +10,7 @@ import { EIConTypes } from '../components/icon/icon.enum';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
-  title: 'Components/Link',
+  title: 'Components/TimedButton',
   component: Button,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
@@ -46,39 +46,34 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    href: {
+      table: {
+        disable: true,
+      },
+    },
+    onClickEvent: {
+      table: {
+        disable: true,
+      },
+    },
+    openInNewTab: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Link: Story = {
+export const TimedButton: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
     label: 'Link',
-    kind: EButtonKinds.LINK,
-    href: 'https://www.google.com',
-  },
-};
-
-export const LinkWithIconRight: Story = {
-  args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    icon: EIConTypes.ARROW_RIGHT,
-    iconPosition: EButtonIconPosition.RIGHT,
-    href: 'https://www.google.com',
-  },
-};
-
-export const LinkWithIconLeft: Story = {
-  args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    icon: EIConTypes.ARROW_LEFT,
-    iconPosition: EButtonIconPosition.LEFT,
-    href: 'https://www.google.com',
+    kind: EButtonKinds.COPY_TO_CLIPBOARD,
+    icon: EIConTypes.SHARE,
+    clipboardData: 'https://www.google.com',
+    clipboardHighlightDelay: 3000,
   },
 };
