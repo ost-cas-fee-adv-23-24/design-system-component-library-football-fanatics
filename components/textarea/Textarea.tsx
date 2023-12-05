@@ -7,7 +7,9 @@ export interface ITextareaProps {
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   required?: boolean;
   spellCheck?: boolean;
+  autoComplete?: 'on' | 'off';
   autoCorrect?: 'on' | 'off';
+  autoCapitalize?: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
   minLength?: number;
   maxLength?: number;
   disabled?: boolean;
@@ -20,8 +22,8 @@ export const Textarea = ({
   value,
   placeholder,
   required,
-  spellCheck,
-  autoCorrect,
+  spellCheck = false,
+  autoCorrect = 'off',
   onChange,
   minLength,
   maxLength,
@@ -29,6 +31,8 @@ export const Textarea = ({
   rows,
   name,
   readOnly,
+  autoComplete = 'off',
+  autoCapitalize = 'off',
 }: ITextareaProps) => {
   return (
     <textarea
@@ -37,6 +41,8 @@ export const Textarea = ({
       onChange={onChange}
       required={required}
       autoCorrect={autoCorrect}
+      autoComplete={autoComplete}
+      autoCapitalize={autoCapitalize}
       spellCheck={spellCheck}
       maxLength={maxLength}
       minLength={minLength}
