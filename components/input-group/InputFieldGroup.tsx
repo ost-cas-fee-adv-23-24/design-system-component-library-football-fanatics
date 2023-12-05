@@ -6,7 +6,6 @@ import { TIconType } from '../icon/icon.interface';
 import { Label } from '../label/Label';
 
 export interface IInputFieldGroupProps {
-  id: string;
   text?: string;
   placeholder: string;
   as:
@@ -19,7 +18,6 @@ export interface IInputFieldGroupProps {
     | 'search'
     | 'file'
     | 'hidden';
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   state: 'default' | 'error' | 'success';
   required?: boolean;
   icon?: TIconType;
