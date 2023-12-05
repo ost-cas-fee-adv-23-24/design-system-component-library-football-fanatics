@@ -49,7 +49,7 @@ const meta: Meta<typeof Textarea> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const InputDefault: Story = {
+export const FilledTextarea: Story = {
   args: {
     value: 'This is a textarea',
     placeholder: 'Placeholder',
@@ -62,5 +62,17 @@ export const InputDefault: Story = {
     readOnly: false,
     rows: 3,
     name: 'name',
+  },
+};
+
+export const EmptyTextarea: Story = {
+  args: {
+    value: '',
+    placeholder: 'This is the Placeholder',
+    required: true,
+    autoCorrect: 'off',
+    spellCheck: false,
+    disabled: false,
+    readOnly: false,
   },
 };
