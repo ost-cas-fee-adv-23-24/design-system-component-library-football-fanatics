@@ -16,7 +16,7 @@ import {
   likeModifiers,
   likeStates,
   toggleBase,
-} from './css';
+} from './toggle-css';
 import { EIConTypes } from '../icon/icon.enum';
 import Icon from '../icon/Icon';
 import { IToggleComponentProps } from './toggle.interfaces';

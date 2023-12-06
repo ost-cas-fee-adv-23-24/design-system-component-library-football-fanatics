@@ -8,17 +8,13 @@ import {
 } from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
-  title: 'Components/TimedButton',
+  title: 'Components/IconMenuButtons',
   component: Button,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     type: {
       table: {
@@ -35,28 +31,45 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    href: {
+      table: {
+        disable: true,
+      },
+    },
     icon: {
       options: EIConTypes,
     },
     iconPosition: {
-      options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
+      table: {
+        disable: true,
+      },
     },
     onlyIcon: {
       table: {
         disable: true,
       },
     },
-    href: {
-      table: {
-        disable: true,
-      },
-    },
-    onClickEvent: {
-      table: {
-        disable: true,
-      },
-    },
     openInNewTab: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardData: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardHighlightDelay: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardCopySuccessLabel: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardCopyErrorLabel: {
       table: {
         disable: true,
       },
@@ -67,15 +80,13 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const TimedButton: Story = {
+export const IconButtonUserBlue: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.COPY_TO_CLIPBOARD,
-    icon: EIConTypes.SHARE,
-    clipboardData: 'https://www.google.com',
-    clipboardHighlightDelay: 3000,
-    clipboardCopySuccessLabel: 'Copied!',
-    clipboardCopyErrorLabel: 'Error!',
+    label: 'Label',
+    kind: EButtonKinds.BUTTON_ICON_MENU,
+    icon: EIConTypes.PROFILE,
+    iconPosition: EButtonIconPosition.TOP,
+    onClickEvent: () => {},
   },
 };

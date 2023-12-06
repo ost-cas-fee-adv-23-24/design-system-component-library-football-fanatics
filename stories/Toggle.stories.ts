@@ -46,6 +46,7 @@ export const ToggleLike: Story = {
     labelPlural: 'Likes',
     labelSingular: 'Like',
     labelLiked: 'Liked',
+    amount: 23,
   },
 };
 

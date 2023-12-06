@@ -46,6 +46,26 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    clipboardData: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardCopyErrorLabel: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardCopySuccessLabel: {
+      table: {
+        disable: true,
+      },
+    },
+    clipboardHighlightDelay: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 

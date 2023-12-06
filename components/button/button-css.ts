@@ -62,12 +62,6 @@ export const onlyIconCss = {
 
 export default btnBase;
 
-export const sm = {
-  topContainer: ['px-2', 'py-2', 'text-xs'],
-  iconContainer: ['h-4', ' w-4', 'leading-none'],
-  textContainer: [],
-};
-
 export const md = {
   topContainer: ['px-3', 'py-3', 'text-sm'],
   iconContainer: ['h-4', ' w-4', 'leading-none'],

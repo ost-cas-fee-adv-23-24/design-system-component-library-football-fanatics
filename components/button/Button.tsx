@@ -14,13 +14,13 @@ import btnBase, {
   md,
   onlyIconCss,
   simpleLinkClasses,
-  sm,
   stateActive,
   stateDisabled,
   statesHover,
 } from './button-css';
 import { difference as _difference } from 'lodash';
 import { iconButtonGray, iconButtonViolet } from './icon-button.css';
+import { iconButtonMenu } from './buttonicon-menu';
 
 /**
  * Primary UI component for user interaction
@@ -79,9 +79,6 @@ const Button = ({
       case EButtonSizes.MEDIUM:
         modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
         break;
-      case EButtonSizes.SMALL:
-        modifierIconClasses = [...modifierIconClasses, ...sm.iconContainer];
-        break;
       default:
         modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
     }
@@ -116,6 +113,12 @@ const Button = ({
       }
     }
 
+    if (kind === EButtonKinds.BUTTON_ICON_MENU) {
+      return `${componentName} ${iconButtonMenu.topContainer.join(' ')} ${
+        disabled ? ' pointer-events-none' : ''
+      }`;
+    }
+
     let modifier = [...btnBase.topContainer];
     switch (size) {
       case EButtonSizes.LARGE:
@@ -123,9 +126,6 @@ const Button = ({
         break;
       case EButtonSizes.MEDIUM:
         modifier = [...modifier, ...md.topContainer];
-        break;
-      case EButtonSizes.SMALL:
-        modifier = [...modifier, ...sm.topContainer];
         break;
       default:
         modifier = [...modifier, ...md.topContainer];
@@ -204,9 +204,6 @@ const Button = ({
       case EButtonSizes.MEDIUM:
         classes = [...classes, ...md.iconContainer];
         break;
-      case EButtonSizes.SMALL:
-        classes = [...classes, ...sm.iconContainer];
-        break;
       default:
         classes = [...classes, ...md.iconContainer];
     }
@@ -228,6 +225,8 @@ const Button = ({
         return 'mr-2';
       } else if (iconPosition === EButtonIconPosition.LEFT) {
         return 'ml-2';
+      } else if (iconPosition === EButtonIconPosition.TOP) {
+        return '';
       } else {
         return '';
       }
@@ -287,7 +286,8 @@ const Button = ({
     } else if (
       kind === EButtonKinds.BUTTON_ICON ||
       kind === EButtonKinds.BUTTON ||
-      kind === EButtonKinds.COPY_TO_CLIPBOARD
+      kind === EButtonKinds.COPY_TO_CLIPBOARD ||
+      kind === EButtonKinds.BUTTON_ICON_MENU
     ) {
       return (
         <button
@@ -328,14 +328,30 @@ const Button = ({
           type="button"
           disabled={disabled}
         >
-          {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span
-            className={`c-button__text ${btnBase.textContainer.join(
-              ' ',
-            )} ${iconMargins}`}
-          >
-            {labelText}
-          </span>
+          {icon &&
+            (iconPosition === EButtonIconPosition.LEFT ||
+              iconPosition === EButtonIconPosition.TOP) &&
+            iconMarkup}
+
+          {(() => {
+            let cssClassesText = ['c-button__text'];
+            if (kind === EButtonKinds.BUTTON_ICON_MENU) {
+              cssClassesText = [
+                ...cssClassesText,
+                ...iconButtonMenu.textContainer,
+              ];
+            } else {
+              cssClassesText = [
+                ...cssClassesText,
+                ...btnBase.textContainer,
+                iconMargins,
+              ];
+            }
+            return (
+              <span className={`${cssClassesText.join(' ')}`}>{labelText}</span>
+            );
+          })()}
+
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </button>
       );
