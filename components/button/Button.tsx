@@ -113,7 +113,10 @@ const Button = ({
       }
     }
 
-    if (kind === EButtonKinds.BUTTON_ICON_MENU) {
+    if (
+      kind === EButtonKinds.BUTTON_ICON_MENU ||
+      kind === EButtonKinds.BUTTON_ICON_MENU_AS_LINK
+    ) {
       return `${componentName} ${iconButtonMenu.topContainer.join(' ')} ${
         disabled ? ' pointer-events-none' : ''
       }`;
@@ -212,27 +215,54 @@ const Button = ({
   }, [size]);
 
   const iconMarkup = useMemo(() => {
+    const classesIcon: Array<string> = ['c-button__icon', 'inline-block'];
+    switch (size) {
+      case EButtonSizes.LARGE:
+        classesIcon.push(...lg.iconContainer);
+        break;
+      case EButtonSizes.MEDIUM:
+        classesIcon.push(...md.iconContainer);
+        break;
+      default:
+        classesIcon.push(...md.iconContainer);
+    }
+
     return icon ? (
-      <span className={`c-button__icon inline-block ${iconContainerClasses}`}>
+      <span className={`${classesIcon.join(' ')}`}>
         <Icon type={icon} />
       </span>
     ) : null;
-  }, [icon, iconContainerClasses]);
+  }, [icon, iconContainerClasses, size]);
 
-  const iconMargins = useMemo(() => {
+  const textContainerMarkup = useMemo(() => {
+    const baseClasses = ['c-button__text'];
     if (icon) {
       if (iconPosition === EButtonIconPosition.RIGHT) {
-        return 'mr-2';
+        baseClasses.push('mr-2');
       } else if (iconPosition === EButtonIconPosition.LEFT) {
-        return 'ml-2';
+        baseClasses.push('ml-2');
       } else if (iconPosition === EButtonIconPosition.TOP) {
-        return '';
-      } else {
-        return '';
+        baseClasses.push('mt-2');
       }
     }
-    return '';
-  }, [iconPosition, icon]);
+
+    switch (kind) {
+      case EButtonKinds.LINK:
+      case EButtonKinds.BUTTON_AS_LINK:
+        baseClasses.push(...simpleLinkClasses.textContainer);
+        break;
+      case EButtonKinds.BUTTON_ICON_MENU:
+        baseClasses.push(...iconButtonMenu.textContainer);
+        break;
+      case EButtonKinds.BUTTON_ICON:
+      case EButtonKinds.BUTTON:
+      case EButtonKinds.COPY_TO_CLIPBOARD:
+        baseClasses.push(...btnBase.textContainer);
+        break;
+    }
+
+    return <span className={`${baseClasses.join(' ')}`}>{labelText}</span>;
+  }, [label, labelText, iconPosition, icon]);
 
   if (onlyIcon) {
     if (kind === EButtonKinds.LINK) {
@@ -264,7 +294,10 @@ const Button = ({
       return null;
     }
   } else {
-    if (kind === EButtonKinds.BUTTON_AS_LINK) {
+    if (
+      kind === EButtonKinds.BUTTON_AS_LINK ||
+      kind === EButtonKinds.BUTTON_ICON_MENU_AS_LINK
+    ) {
       return (
         <a
           className={topContainerClasses}
@@ -272,14 +305,11 @@ const Button = ({
           target={openInNewTab ? '_blank' : '_self'}
           aria-label={label}
         >
-          {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span
-            className={`c-button__text ${simpleLinkClasses.textContainer.join(
-              ' ',
-            )} ${iconMargins}`}
-          >
-            {label}
-          </span>
+          {icon &&
+            (iconPosition === EButtonIconPosition.LEFT ||
+              iconPosition === EButtonIconPosition.TOP) &&
+            iconMarkup}
+          {textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </a>
       );
@@ -332,26 +362,7 @@ const Button = ({
             (iconPosition === EButtonIconPosition.LEFT ||
               iconPosition === EButtonIconPosition.TOP) &&
             iconMarkup}
-
-          {(() => {
-            let cssClassesText = ['c-button__text'];
-            if (kind === EButtonKinds.BUTTON_ICON_MENU) {
-              cssClassesText = [
-                ...cssClassesText,
-                ...iconButtonMenu.textContainer,
-              ];
-            } else {
-              cssClassesText = [
-                ...cssClassesText,
-                ...btnBase.textContainer,
-                iconMargins,
-              ];
-            }
-            return (
-              <span className={`${cssClassesText.join(' ')}`}>{labelText}</span>
-            );
-          })()}
-
+          {textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </button>
       );
@@ -364,13 +375,7 @@ const Button = ({
           aria-label={label}
         >
           {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span
-            className={`c-button__text ${simpleLinkClasses.textContainer.join(
-              ' ',
-            )} ${iconMargins}`}
-          >
-            {label}
-          </span>
+          {textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </a>
       );

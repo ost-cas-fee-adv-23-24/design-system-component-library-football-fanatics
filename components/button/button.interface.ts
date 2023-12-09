@@ -24,7 +24,8 @@ export interface IButtonComponentProps {
     | EButtonKinds.BUTTON_AS_LINK
     | EButtonKinds.COPY_TO_CLIPBOARD
     | EButtonKinds.BUTTON_ICON
-    | EButtonKinds.BUTTON_ICON_MENU;
+    | EButtonKinds.BUTTON_ICON_MENU
+    | EButtonKinds.BUTTON_ICON_MENU_AS_LINK;
   onlyIcon?: boolean;
   openInNewTab?: boolean;
   clipboardData?: string;

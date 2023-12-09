@@ -83,10 +83,32 @@ type Story = StoryObj<typeof meta>;
 export const IconButtonUserBlue: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
-    label: 'Label',
+    label: 'User',
     kind: EButtonKinds.BUTTON_ICON_MENU,
     icon: EIConTypes.PROFILE,
     iconPosition: EButtonIconPosition.TOP,
     onClickEvent: () => {},
+  },
+};
+
+export const IconButtonSettingsBlue: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Btn',
+    kind: EButtonKinds.BUTTON_ICON_MENU,
+    icon: EIConTypes.SETTINGS,
+    iconPosition: EButtonIconPosition.TOP,
+    onClickEvent: () => {},
+  },
+};
+
+export const IconButtonLogoutLinkBlue: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.BUTTON_ICON_MENU_AS_LINK,
+    icon: EIConTypes.LOGOUT,
+    iconPosition: EButtonIconPosition.TOP,
+    href: 'https://www.google.com',
   },
 };

@@ -5,6 +5,7 @@ const layout = [
   'inline-flex',
   'h-14',
   'p-2',
+  'w-[54px]',
   'flex-col',
   'justify-center',
   'items-center',
