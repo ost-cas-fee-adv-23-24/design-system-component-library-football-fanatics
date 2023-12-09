@@ -73,7 +73,7 @@ const Avatar = ({
                 );
                 if (imageFile) {
                   imageFile = imageFile as File;
-                  // @ts-ignore
+                  // @ts-expect-error
                   const reader = new FileReader();
                   reader.onload = () => {
                     if (imageFile) {
