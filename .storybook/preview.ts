@@ -16,7 +16,7 @@ const preview: Preview = {
       values: [
         {
           name: 'white',
-          value: 'rgb(245, 245, 245)',
+          value: 'rgba(245,245,245,0.3)',
         },
       ],
     },
