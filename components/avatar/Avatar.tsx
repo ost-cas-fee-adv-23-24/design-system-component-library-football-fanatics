@@ -51,7 +51,7 @@ const Avatar = ({
           <Image
             src={imgSrc}
             alt={name ? name : ''}
-            lazy={EImageLoadingType.EAGER}
+            loadingType={EImageLoadingType.EAGER}
           />
         )}
       </div>
