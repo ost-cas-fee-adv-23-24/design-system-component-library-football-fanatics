@@ -8,17 +8,13 @@ import {
 } from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
-  title: 'Components/Link',
+  title: 'Components/IconMenuButtons',
   component: Button,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     type: {
       table: {
@@ -35,13 +31,25 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    href: {
+      table: {
+        disable: true,
+      },
+    },
     icon: {
       options: EIConTypes,
     },
     iconPosition: {
-      options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
+      table: {
+        disable: true,
+      },
     },
     onlyIcon: {
+      table: {
+        disable: true,
+      },
+    },
+    openInNewTab: {
       table: {
         disable: true,
       },
@@ -51,7 +59,7 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
-    clipboardCopyErrorLabel: {
+    clipboardHighlightDelay: {
       table: {
         disable: true,
       },
@@ -61,7 +69,7 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
-    clipboardHighlightDelay: {
+    clipboardCopyErrorLabel: {
       table: {
         disable: true,
       },
@@ -72,33 +80,35 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Link: Story = {
+export const IconButtonUserBlue: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    href: 'https://www.google.com',
+    label: 'User',
+    kind: EButtonKinds.BUTTON_ICON_MENU,
+    icon: EIConTypes.PROFILE,
+    iconPosition: EButtonIconPosition.TOP,
+    onClickEvent: () => {},
   },
 };
 
-export const LinkWithIconRight: Story = {
+export const IconButtonSettingsBlue: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    icon: EIConTypes.ARROW_RIGHT,
-    iconPosition: EButtonIconPosition.RIGHT,
-    href: 'https://www.google.com',
+    label: 'Btn',
+    kind: EButtonKinds.BUTTON_ICON_MENU,
+    icon: EIConTypes.SETTINGS,
+    iconPosition: EButtonIconPosition.TOP,
+    onClickEvent: () => {},
   },
 };
 
-export const LinkWithIconLeft: Story = {
+export const IconButtonLogoutLinkBlue: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
     label: 'Link',
-    kind: EButtonKinds.LINK,
-    icon: EIConTypes.ARROW_LEFT,
-    iconPosition: EButtonIconPosition.LEFT,
+    kind: EButtonKinds.BUTTON_ICON_MENU_AS_LINK,
+    icon: EIConTypes.LOGOUT,
+    iconPosition: EButtonIconPosition.TOP,
     href: 'https://www.google.com',
   },
 };

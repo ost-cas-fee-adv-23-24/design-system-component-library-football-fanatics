@@ -26,6 +26,9 @@ const meta: Meta<typeof Button> = {
         EButtonTypes.TERTIARY,
       ],
     },
+    kind: {
+      options: [EButtonKinds.BUTTON, EButtonKinds.BUTTON_AS_LINK],
+    },
     size: {
       options: [EButtonSizes.MEDIUM, EButtonSizes.LARGE],
     },
@@ -64,7 +67,7 @@ type Story = StoryObj<typeof meta>;
 export const OnlyIcon: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
-    label: 'Button Primary',
+    label: 'Btn',
     onlyIcon: true,
     icon: EIConTypes.MUMBLE,
     onClickEvent: () => {},
