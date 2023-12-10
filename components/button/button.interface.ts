@@ -10,7 +10,7 @@ export interface IButtonComponentProps {
   type?: EButtonTypes.PRIMARY | EButtonTypes.SECONDARY | EButtonTypes.TERTIARY;
   size?: EButtonSizes.MEDIUM | EButtonSizes.SMALL | EButtonSizes.LARGE;
   label: string;
-  onClickEvent: () => void;
+  onClickEvent?: () => void;
   icon?: TIconType;
   iconPosition?: EButtonIconPosition.LEFT | EButtonIconPosition.RIGHT;
   href?: string;
@@ -27,4 +27,5 @@ export interface IButtonComponentProps {
   clipboardHighlightDelay?: number;
   clipboardCopySuccessLabel?: string;
   clipboardCopyErrorLabel?: string;
+  fitParent?: boolean;
 }
