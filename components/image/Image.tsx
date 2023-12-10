@@ -12,7 +12,7 @@ import { baseImageGeneral } from './image-css';
 
 const Image = ({
   src,
-  lazy = EImageLoadingType.EAGER,
+  loadingType = EImageLoadingType.EAGER,
   alt,
 }: IImageComponentProps) => {
   const componentName = 'c-image';
@@ -25,7 +25,7 @@ const Image = ({
         className={`${baseImageGeneral.imageContainer.join(' ')}`}
         src={src}
         alt={alt}
-        loading={lazy}
+        loading={loadingType}
       />
     </div>
   );

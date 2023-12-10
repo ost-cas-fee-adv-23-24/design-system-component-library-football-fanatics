@@ -31,8 +31,6 @@ const Avatar = ({
   editable,
   size = EAvatarSizes.SM,
 }: IAvatarComponentProps) => {
-  // const cssClasses = modifierState(componentName, [], []);
-
   const topContainerClasses = useMemo(() => {
     if (size === EAvatarSizes.XL || editable) {
       return topContainerXl.join(' ');
@@ -60,10 +58,9 @@ const Avatar = ({
       {editable && (
         <div className="absolute bottom-0 right-0">
           <input
-            style={{ display: 'none' }}
             id={identifier}
             accept="image/*"
-            className=""
+            className="hidden"
             onChange={(evt) => {
               try {
                 let imageFile: File | null = _get(
