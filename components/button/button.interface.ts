@@ -33,4 +33,5 @@ export interface IButtonComponentProps {
   clipboardCopySuccessLabel?: string;
   clipboardCopyErrorLabel?: string;
   fitParent?: boolean;
+  imageSrc?: string;
 }

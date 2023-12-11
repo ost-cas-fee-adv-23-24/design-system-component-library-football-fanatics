@@ -10,6 +10,7 @@ import Icon from '../icon/Icon';
 import btnBase, {
   colors,
   copyToClipboardClasses,
+  imageContainerClasses,
   lg,
   md,
   onlyIconCss,
@@ -21,6 +22,8 @@ import btnBase, {
 import { difference as _difference } from 'lodash';
 import { iconButtonGray, iconButtonViolet } from './icon-button.css';
 import { iconButtonMenu } from './buttonicon-menu';
+import Image from '../image/Image';
+import { EImageLoadingType } from '../image/image.enum';
 
 /**
  * Primary UI component for user interaction
@@ -42,6 +45,7 @@ const Button = ({
   clipboardCopySuccessLabel = 'Link copied',
   clipboardCopyErrorLabel = 'Link not copied',
   fitParent = false,
+  imageSrc,
 }: IButtonComponentProps) => {
   const componentName = 'c-button';
   const [highlighted, setHighlighted] = useState(false);
@@ -269,6 +273,22 @@ const Button = ({
     return <span className={`${baseClasses.join(' ')}`}>{labelText}</span>;
   }, [label, labelText, iconPosition, icon]);
 
+  const imageMarkup = useMemo(() => {
+    if (imageSrc) {
+      return (
+        <div className={imageContainerClasses.join(' ')}>
+          <Image
+            alt={label}
+            src={imageSrc}
+            loadingType={EImageLoadingType.EAGER}
+          />
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }, [imageSrc, label]);
+
   if (onlyIcon) {
     if (kind === EButtonKinds.LINK) {
       return (
@@ -314,7 +334,8 @@ const Button = ({
             (iconPosition === EButtonIconPosition.LEFT ||
               iconPosition === EButtonIconPosition.TOP) &&
             iconMarkup}
-          {textContainerMarkup}
+          {!icon && imageSrc && imageMarkup}
+          {!imageSrc && textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </a>
       );
@@ -367,7 +388,8 @@ const Button = ({
             (iconPosition === EButtonIconPosition.LEFT ||
               iconPosition === EButtonIconPosition.TOP) &&
             iconMarkup}
-          {textContainerMarkup}
+          {!icon && imageSrc && imageMarkup}
+          {!imageSrc && textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </button>
       );

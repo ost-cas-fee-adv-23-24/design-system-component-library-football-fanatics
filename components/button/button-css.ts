@@ -115,3 +115,11 @@ export const copyToClipboardClasses = {
   ],
   iconContainer: [],
 };
+
+export const imageContainerClasses = [
+  'w-[40px]',
+  'h-[40px]',
+  'rounded-full',
+  'overflow-hidden',
+  'bg-violet-200',
+];
