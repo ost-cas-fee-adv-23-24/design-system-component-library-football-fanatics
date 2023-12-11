@@ -21,6 +21,7 @@ export const LabelExtraLarge: Story = {
   args: {
     size: 'XL',
     text: 'Label Extra Large',
+    htmlFor: '1',
   },
 };
 
@@ -28,17 +29,20 @@ export const LabelLarge: Story = {
   args: {
     size: 'L',
     text: 'Label Large',
+    htmlFor: '2',
   },
 };
 export const LabelMedium: Story = {
   args: {
     size: 'M',
     text: 'Label Medium',
+    htmlFor: '3',
   },
 };
 export const LabelSmall: Story = {
   args: {
     size: 'S',
     text: 'Label Small',
+    htmlFor: '4',
   },
 };

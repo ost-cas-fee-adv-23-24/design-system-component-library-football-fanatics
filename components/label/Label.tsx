@@ -3,6 +3,7 @@ import clsx from 'clsx';
 export type ILabelProps = {
   size: 'XL' | 'L' | 'M' | 'S';
   text: string;
+  htmlFor: string;
 };
 
 const mapDesign = {
@@ -12,9 +13,10 @@ const mapDesign = {
   S: 'text-sm not-italic font-semibold leading-none',
 };
 
-export const Label = ({ text, size }: ILabelProps) => {
+export const Label = ({ text, size, htmlFor }: ILabelProps) => {
   return (
     <label
+      htmlFor={htmlFor}
       className={clsx('text-current font-poppins', mapDesign[size])}
       aria-hidden="true"
       style={{ cursor: 'inherit' }} // needed to do inline style because tailwindcss doesn't have a cursor-inherit class
