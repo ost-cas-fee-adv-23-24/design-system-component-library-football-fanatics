@@ -31,7 +31,6 @@ export const Tabs: Story = {
         text: 'Tab 2',
         isActive: false,
       },
-    ]
-  }
+    ],
+  },
 };
-
