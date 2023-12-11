@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Design System Component Library: Football Fanatics
+
+![npm](https://img.shields.io/npm/v/%40ost-cas-fee-adv-23-24%2Felbmum-design)
+![](https://img.shields.io/github/issues-pr/ost-cas-fee-adv-23-24/design-system-component-library-football-fanatics)
+![](https://img.shields.io/github/issues/ost-cas-fee-adv-23-24/design-system-component-library-football-fanatics)
+![](https://img.shields.io/github/contributors/ost-cas-fee-adv-23-24/design-system-component-library-football-fanatics)
+
+This repository is part of the CAS Frontend Engineering Advanced eduction to build a Design System Component Library.
+
+The project uses Storybook, a tool for developing UI components in isolation. You can view the Storybook page for this project here: [Storybook Page](https://ost-cas-fee-adv-23-24.github.io/design-system-component-library-football-fanatics/)
+
+[NPM Package](https://www.npmjs.com/package/@ost-cas-fee-adv-23-24/elbmum-design)
 
 ## Getting Started
 
@@ -9,11 +20,12 @@ npm ci
 # build repo
 npm run build
 
-# start development server
-npm run dev
+# start storybook
+npm run start
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
+`npm run start` automatically opens [http://localhost:6006](http://localhost:6006) in your browser where you can check the storybook components
 
 ## Storybook
 
