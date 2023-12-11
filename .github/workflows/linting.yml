@@ -1,4 +1,4 @@
-name: Lint
+name: Lint & Build
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   run-linters:
-    name: Run linters
+    name: Run linters and build project
     runs-on: ubuntu-latest
 
     steps:
@@ -26,3 +26,6 @@ jobs:
 
       - name: Run eslint, prettier, type check
         run: npm run code:fix
+
+      - name: Build project
+        run: npm run build
