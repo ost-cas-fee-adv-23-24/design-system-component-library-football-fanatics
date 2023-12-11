@@ -22,9 +22,10 @@ const meta: Meta<typeof Button> = {
       },
     },
     kind: {
-      table: {
-        disable: true,
-      },
+      options: [
+        EButtonKinds.BUTTON_ICON_MENU_AS_LINK,
+        EButtonKinds.BUTTON_ICON_MENU,
+      ],
     },
     size: {
       table: {
@@ -37,7 +38,7 @@ const meta: Meta<typeof Button> = {
       },
     },
     icon: {
-      options: EIConTypes,
+      options: ['', ...Object.values(EIConTypes)],
     },
     iconPosition: {
       table: {
@@ -74,11 +75,40 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    fitParent: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+export const IconButtonImage: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.BUTTON_ICON_MENU_AS_LINK,
+    iconPosition: EButtonIconPosition.TOP,
+    href: 'https://www.google.com',
+    imageSrc:
+      'https://i.pinimg.com/originals/52/b3/3b/52b33b1a9834e893a56f743e8e81d5b1.png',
+  },
+};
+
+export const IconLinkImage: Story = {
+  args: {
+    type: EButtonTypes.PRIMARY,
+    label: 'Link',
+    kind: EButtonKinds.BUTTON_ICON_MENU,
+    iconPosition: EButtonIconPosition.TOP,
+    imageSrc:
+      'https://i.pinimg.com/originals/52/b3/3b/52b33b1a9834e893a56f743e8e81d5b1.png',
+    onClickEvent: () => {},
+  },
+};
 
 export const IconButtonUserBlue: Story = {
   args: {
