@@ -16,9 +16,10 @@ const mapDesign = {
 export const Label = ({ text, size, ...labelProps }: ILabelProps) => {
   return (
     <label
-      className={clsx('text-slate-600 font-poppins d', mapDesign[size])}
+      className={clsx('text-current font-poppins', mapDesign[size])}
       aria-hidden="true"
       {...labelProps}
+      style={{ cursor: 'inherit' }} // needed to do inline style because tailwindcss doesn't have a cursor-inherit class
     >
       {text}
     </label>

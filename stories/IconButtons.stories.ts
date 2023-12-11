@@ -45,6 +45,11 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    openInNewTab: {
+      table: {
+        disable: true,
+      },
+    },
     clipboardData: {
       table: {
         disable: true,

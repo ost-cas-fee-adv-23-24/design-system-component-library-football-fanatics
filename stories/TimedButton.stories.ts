@@ -75,5 +75,7 @@ export const TimedButton: Story = {
     icon: EIConTypes.SHARE,
     clipboardData: 'https://www.google.com',
     clipboardHighlightDelay: 3000,
+    clipboardCopySuccessLabel: 'Copied!',
+    clipboardCopyErrorLabel: 'Error!',
   },
 };

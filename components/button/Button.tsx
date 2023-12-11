@@ -14,13 +14,13 @@ import btnBase, {
   md,
   onlyIconCss,
   simpleLinkClasses,
-  sm,
   stateActive,
   stateDisabled,
   statesHover,
 } from './button-css';
 import { difference as _difference } from 'lodash';
 import { iconButtonGray, iconButtonViolet } from './icon-button.css';
+import { iconButtonMenu } from './buttonicon-menu';
 
 /**
  * Primary UI component for user interaction
@@ -79,9 +79,6 @@ const Button = ({
       case EButtonSizes.MEDIUM:
         modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
         break;
-      case EButtonSizes.SMALL:
-        modifierIconClasses = [...modifierIconClasses, ...sm.iconContainer];
-        break;
       default:
         modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
     }
@@ -116,6 +113,15 @@ const Button = ({
       }
     }
 
+    if (
+      kind === EButtonKinds.BUTTON_ICON_MENU ||
+      kind === EButtonKinds.BUTTON_ICON_MENU_AS_LINK
+    ) {
+      return `${componentName} ${iconButtonMenu.topContainer.join(' ')} ${
+        disabled ? ' pointer-events-none' : ''
+      }`;
+    }
+
     let modifier = [...btnBase.topContainer];
     switch (size) {
       case EButtonSizes.LARGE:
@@ -123,9 +129,6 @@ const Button = ({
         break;
       case EButtonSizes.MEDIUM:
         modifier = [...modifier, ...md.topContainer];
-        break;
-      case EButtonSizes.SMALL:
-        modifier = [...modifier, ...sm.topContainer];
         break;
       default:
         modifier = [...modifier, ...md.topContainer];
@@ -204,9 +207,6 @@ const Button = ({
       case EButtonSizes.MEDIUM:
         classes = [...classes, ...md.iconContainer];
         break;
-      case EButtonSizes.SMALL:
-        classes = [...classes, ...sm.iconContainer];
-        break;
       default:
         classes = [...classes, ...md.iconContainer];
     }
@@ -215,25 +215,54 @@ const Button = ({
   }, [size]);
 
   const iconMarkup = useMemo(() => {
+    const classesIcon: Array<string> = ['c-button__icon', 'inline-block'];
+    switch (size) {
+      case EButtonSizes.LARGE:
+        classesIcon.push(...lg.iconContainer);
+        break;
+      case EButtonSizes.MEDIUM:
+        classesIcon.push(...md.iconContainer);
+        break;
+      default:
+        classesIcon.push(...md.iconContainer);
+    }
+
     return icon ? (
-      <span className={`c-button__icon inline-block ${iconContainerClasses}`}>
+      <span className={`${classesIcon.join(' ')}`}>
         <Icon type={icon} />
       </span>
     ) : null;
-  }, [icon, iconContainerClasses]);
+  }, [icon, iconContainerClasses, size]);
 
-  const iconMargins = useMemo(() => {
+  const textContainerMarkup = useMemo(() => {
+    const baseClasses = ['c-button__text'];
     if (icon) {
       if (iconPosition === EButtonIconPosition.RIGHT) {
-        return 'mr-2';
+        baseClasses.push('mr-2');
       } else if (iconPosition === EButtonIconPosition.LEFT) {
-        return 'ml-2';
-      } else {
-        return '';
+        baseClasses.push('ml-2');
+      } else if (iconPosition === EButtonIconPosition.TOP) {
+        baseClasses.push('mt-2');
       }
     }
-    return '';
-  }, [iconPosition, icon]);
+
+    switch (kind) {
+      case EButtonKinds.LINK:
+      case EButtonKinds.BUTTON_AS_LINK:
+        baseClasses.push(...simpleLinkClasses.textContainer);
+        break;
+      case EButtonKinds.BUTTON_ICON_MENU:
+        baseClasses.push(...iconButtonMenu.textContainer);
+        break;
+      case EButtonKinds.BUTTON_ICON:
+      case EButtonKinds.BUTTON:
+      case EButtonKinds.COPY_TO_CLIPBOARD:
+        baseClasses.push(...btnBase.textContainer);
+        break;
+    }
+
+    return <span className={`${baseClasses.join(' ')}`}>{labelText}</span>;
+  }, [label, labelText, iconPosition, icon]);
 
   if (onlyIcon) {
     if (kind === EButtonKinds.LINK) {
@@ -265,7 +294,10 @@ const Button = ({
       return null;
     }
   } else {
-    if (kind === EButtonKinds.BUTTON_AS_LINK) {
+    if (
+      kind === EButtonKinds.BUTTON_AS_LINK ||
+      kind === EButtonKinds.BUTTON_ICON_MENU_AS_LINK
+    ) {
       return (
         <a
           className={topContainerClasses}
@@ -273,21 +305,19 @@ const Button = ({
           target={openInNewTab ? '_blank' : '_self'}
           aria-label={label}
         >
-          {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span
-            className={`c-button__text ${simpleLinkClasses.textContainer.join(
-              ' ',
-            )} ${iconMargins}`}
-          >
-            {label}
-          </span>
+          {icon &&
+            (iconPosition === EButtonIconPosition.LEFT ||
+              iconPosition === EButtonIconPosition.TOP) &&
+            iconMarkup}
+          {textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </a>
       );
     } else if (
       kind === EButtonKinds.BUTTON_ICON ||
       kind === EButtonKinds.BUTTON ||
-      kind === EButtonKinds.COPY_TO_CLIPBOARD
+      kind === EButtonKinds.COPY_TO_CLIPBOARD ||
+      kind === EButtonKinds.BUTTON_ICON_MENU
     ) {
       return (
         <button
@@ -328,14 +358,11 @@ const Button = ({
           type="button"
           disabled={disabled}
         >
-          {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span
-            className={`c-button__text ${btnBase.textContainer.join(
-              ' ',
-            )} ${iconMargins}`}
-          >
-            {labelText}
-          </span>
+          {icon &&
+            (iconPosition === EButtonIconPosition.LEFT ||
+              iconPosition === EButtonIconPosition.TOP) &&
+            iconMarkup}
+          {textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </button>
       );
@@ -348,13 +375,7 @@ const Button = ({
           aria-label={label}
         >
           {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          <span
-            className={`c-button__text ${simpleLinkClasses.textContainer.join(
-              ' ',
-            )} ${iconMargins}`}
-          >
-            {label}
-          </span>
+          {textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </a>
       );

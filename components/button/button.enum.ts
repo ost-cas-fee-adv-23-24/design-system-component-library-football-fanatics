@@ -13,6 +13,7 @@ export enum EButtonSizes {
 export enum EButtonIconPosition {
   LEFT = 'left',
   RIGHT = 'right',
+  TOP = 'top',
 }
 
 export enum EButtonKinds {
@@ -21,4 +22,6 @@ export enum EButtonKinds {
   BUTTON_AS_LINK = 'buttonAsLink',
   COPY_TO_CLIPBOARD = 'copyToClipboard',
   BUTTON_ICON = 'buttonIcon',
+  BUTTON_ICON_MENU = 'buttonIconMenu',
+  BUTTON_ICON_MENU_AS_LINK = 'buttonIconMenuAsLink',
 }
