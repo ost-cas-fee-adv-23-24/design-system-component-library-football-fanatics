@@ -41,6 +41,7 @@ const Button = ({
   clipboardHighlightDelay = 1500,
   clipboardCopySuccessLabel = 'Link copied',
   clipboardCopyErrorLabel = 'Link not copied',
+  fitParent = false,
 }: IButtonComponentProps) => {
   const componentName = 'c-button';
   const [highlighted, setHighlighted] = useState(false);
@@ -193,6 +194,10 @@ const Button = ({
           ]),
         ];
       }
+    }
+
+    if (fitParent) {
+      modifier.push('w-full');
     }
 
     return `${componentName} ${modifier.join(' ')}`;
