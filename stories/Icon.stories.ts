@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Icon from '../components/icon/Icon';
-import { EIConTypes } from '../components/icon/icon.enum';
+import { EIconColors, EIConTypes } from '../components/icon/icon.enum';
 
 const meta: Meta<typeof Icon> = {
   title: 'Components/Icons',
@@ -11,6 +11,10 @@ const meta: Meta<typeof Icon> = {
     type: {
       control: { type: 'select' },
       options: EIConTypes,
+    },
+    color: {
+      control: { type: 'select' },
+      options: EIconColors,
     },
   },
 };

@@ -28,5 +28,5 @@ export type TIconType =
 
 export interface IIconProps {
   type: TIconType;
-  color?: EIconColors.PRIMARY | EIconColors.SECONDARY;
+  color?: EIconColors.PINK | EIconColors.VIOLET | EIconColors.SLATE;
 }
