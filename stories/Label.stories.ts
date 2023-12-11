@@ -11,9 +11,6 @@ const meta: Meta<typeof Label> = {
       options: ['XL', 'L', 'M', 'S'],
       control: { type: 'select' },
     },
-    text: {
-      controls: { type: 'text' },
-    },
   },
 };
 

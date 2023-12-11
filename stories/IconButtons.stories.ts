@@ -70,6 +70,16 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    fitParent: {
+      table: {
+        disable: true,
+      },
+    },
+    imageSrc: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 
