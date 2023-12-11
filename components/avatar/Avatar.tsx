@@ -69,7 +69,7 @@ const Avatar = ({
                   null,
                 );
                 if (imageFile) {
-                  return imageFile as File;
+                  onSuccess(imageFile as File);
                 } else {
                   throw new Error('No image selected/found');
                 }
