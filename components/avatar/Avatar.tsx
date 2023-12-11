@@ -63,29 +63,15 @@ const Avatar = ({
             className="hidden"
             onChange={(evt) => {
               try {
-                let imageFile: File | null = _get(
+                const imageFile: File | null = _get(
                   evt,
                   'currentTarget.files[0]',
                   null,
                 );
                 if (imageFile) {
-                  imageFile = imageFile as File;
-                  // @ts-expect-error filereader is not recognized ¯\_(ツ)_/¯
-                  const reader = new FileReader();
-                  reader.onload = () => {
-                    if (imageFile) {
-                      const fileData = {
-                        name: imageFile.name,
-                        type: imageFile.type,
-                        size: imageFile.size,
-                      };
-                      onSuccess({
-                        file: imageFile,
-                        fileData,
-                      });
-                    }
-                  };
-                  reader.readAsDataURL(imageFile);
+                  onSuccess(imageFile as File);
+                } else {
+                  throw new Error('No image selected/found');
                 }
               } catch (error) {
                 onError(error as Error);
