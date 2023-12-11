@@ -5,4 +5,5 @@ export interface IModalComponentProps {
   onCancel: () => void;
   children: ReactNode;
   active: boolean;
+  title: string;
 }

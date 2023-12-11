@@ -27,6 +27,7 @@ type Story = StoryObj<typeof meta>;
 
 export const ModalOpen: Story = {
   args: {
+    title: 'Modal Title',
     children: (
       <div>
         <div style={{ marginBottom: 20 }}>

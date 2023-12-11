@@ -20,21 +20,24 @@ import {
   content,
   header,
   overlay,
-  title,
+  title as titleClasses,
   topContainer,
-} from './modeal-css';
+} from './modal-css';
 
 const Modal = ({
   children,
   onSave,
   onCancel,
   active,
+  title,
 }: IModalComponentProps) => {
   return (
     <div className={`c-modal ${active ? overlay.join(' ') : 'hidden'}`}>
       <div className={`c-modal__wrapper ${topContainer.join(' ')}`}>
         <div className={`c-modal__header ${header.join(' ')}`}>
-          <h5 className={`c-modal__title ${title.join(' ')}`}>Settings</h5>
+          <h5 className={`c-modal__title ${titleClasses.join(' ')}`}>
+            {title}
+          </h5>
           {/*we can change the button for a div with a single icon with attached events. */}
           {/*Or update the button to not show hover/pressed states*/}
           <Button
