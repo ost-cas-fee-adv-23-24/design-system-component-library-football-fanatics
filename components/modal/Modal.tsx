@@ -32,7 +32,14 @@ const Modal = ({
   title,
 }: IModalComponentProps) => {
   return (
-    <div className={`c-modal ${active ? overlay.join(' ') : 'hidden'}`}>
+    <div
+      className={`c-modal ${active ? overlay.join(' ') : 'hidden'}`}
+      onKeyDown={(evt) => {
+        if (evt.key === 'Escape') {
+          onCancel(); // set active to false in parent
+        }
+      }}
+    >
       <div className={`c-modal__wrapper ${topContainer.join(' ')}`}>
         <div className={`c-modal__header ${header.join(' ')}`}>
           <h5 className={`c-modal__title ${titleClasses.join(' ')}`}>
