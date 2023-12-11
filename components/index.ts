@@ -1,13 +1,22 @@
 'use client';
 
+export * from './avatar/Avatar';
+export { default as Avatar } from './avatar/Avatar';
 export * from './button/Button';
 export { default as Button } from './button/Button';
+export { Heading } from './typography/Heading';
 export * from './icon/Icon';
 export { default as Icon } from './icon/Icon';
 export { InputFieldGroup } from './input-group/InputFieldGroup';
+export * from './image/Image';
+export { default as Image } from './image/Image';
 export { Label } from './label/Label';
+export * from './logo/Logo';
+export { default as Logo } from './logo/Logo';
+export * from './modal/Modal';
+export { default as Modal } from './modal/Modal';
+export { Paragraph } from './typography/Paragraph';
+export { Tabs } from './tabs/Tabs';
 export { Textarea } from './textarea/Textarea';
 export * from './toggle/Toggle';
 export { default as Toggle } from './toggle/Toggle';
-export { Heading } from './typography/Heading';
-export { Paragraph } from './typography/Paragraph';
