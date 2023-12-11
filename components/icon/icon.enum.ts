@@ -26,6 +26,7 @@ export enum EIConTypes {
 }
 
 export enum EIconColors {
-  PRIMARY = 'red',
-  SECONDARY = 'blue',
+  PINK = 'pink',
+  VIOLET = 'violet',
+  SLATE = 'slate',
 }
