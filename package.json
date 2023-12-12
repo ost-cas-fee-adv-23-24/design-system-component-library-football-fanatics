@@ -81,7 +81,8 @@
     "branches": "main"
   },
   "files": [
-    "dist/**/*"
+    "./dist/**/*",
+    "!**/*.stories.js"
   ],
   "publishConfig": {
     "access": "public"
