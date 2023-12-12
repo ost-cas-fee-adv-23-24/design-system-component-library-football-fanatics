@@ -80,9 +80,23 @@
   "release": {
     "branches": "main"
   },
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./lib/esm/index.js"
+      },
+      "require": {
+        "default": "./lib/cjs/index.cjs"
+      }
+    },
+    "./index.css": "./lib/globals.css",
+    "./tailwind.config.js": "./lib/tailwind.config.js"
+  },
+  "main": "./lib/esm/index.js",
+  "types": "./lib/esm/types/index.d.ts",
   "files": [
-    "./dist/**/*",
-    "!**/*.stories.js"
+    "./lib/*/",
+    "!*/.stories.js"
   ],
   "publishConfig": {
     "access": "public"
