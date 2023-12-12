@@ -352,7 +352,6 @@ export const Button = ({
           onClick={(evt) => {
             if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
               if (clipboardData) {
-                // @ts-ignore
                 navigator.clipboard
                   .writeText(clipboardData)
                   .then(() => {
