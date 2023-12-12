@@ -31,7 +31,7 @@
     "build": "npm-run-all build:**",
     "build:clean": "rm -rf ./lib",
     "build:esm": "tsc -p ./tsconfig.esm.json",
-    "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/cjs/components/index.js lib/cjs/components/index.cjs",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/cjs/index.js lib/cjs/index.cjs",
     "build:tailwind": "npx tailwindcss -i ./app/globals.css -o ./lib/globals.css --minify && cp ./tailwind.config.ts ./lib",
     "start": "storybook dev -p 6006",
     "lint": "next lint --fix --dir .",
@@ -83,12 +83,12 @@
   "exports": {
     ".": {
       "import": {
-        "default": "./lib/esm/components/index.js",
-        "types": "./lib/esm/types/components/index.d.ts"
+        "default": "./lib/esm/index.js",
+        "types": "./lib/esm/types/index.d.ts"
       },
       "require": {
-        "default": "./lib/cjs/components/index.cjs",
-        "types": "./lib/cjs/types/components/index.d.ts"
+        "default": "./lib/cjs/index.cjs",
+        "types": "./lib/cjs/types/index.d.ts"
       }
     },
     "./index.css": "./lib/globals.css",
