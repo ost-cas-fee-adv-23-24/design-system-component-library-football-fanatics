@@ -94,6 +94,7 @@
     "./index.css": "./lib/globals.css",
     "./tailwind.config.js": "./lib/tailwind.config.js"
   },
+  "type": "module",
   "main": "./lib/esm/index.js",
   "types": "./lib/esm/types/index.d.ts",
   "files": [
