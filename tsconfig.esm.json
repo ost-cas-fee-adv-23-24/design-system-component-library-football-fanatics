@@ -6,6 +6,6 @@
     "moduleResolution": "Bundler",
     "outDir": "./lib/esm",
     "declaration": true,
-    "declarationDir": "./lib/esm/types"
+    "declarationDir": "./lib/esm/components/types"
   }
 }
