@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Modal from '../components/modal/Modal';
-import { Label, Paragraph } from '../components';
-import Button from '../components/button/Button';
-import Logo from '../components/logo/Logo';
+import { Modal } from '../components/modal/Modal';
+import { Label } from '../components/label/Label';
+import { Paragraph } from '../components/typography/Paragraph';
+import { Button } from '../components/button/Button';
+import { Logo } from '../components/logo/Logo';
 import { ELogoColors, ELogoPositions } from '../components/logo/logo.enum';
 
 const meta: Meta<typeof Modal> = {
@@ -37,7 +38,7 @@ export const ModalOpen: Story = {
           />
         </div>
         <div style={{ marginBottom: 20 }}>
-          <Label size="L" text="19 dias y 500 noches" />
+          <Label size="L" text="19 dias y 500 noches" htmlFor="test" />
         </div>
         <div style={{ marginBottom: 20 }}>
           <Button label="dont click me" href="www.google.com" />

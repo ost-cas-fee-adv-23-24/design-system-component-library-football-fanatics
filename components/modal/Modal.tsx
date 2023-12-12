@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import Button from '../button/Button';
+import { Button } from '../button/Button';
 import { IModalComponentProps } from './modal.interface';
 import { EIConTypes } from '../icon/icon.enum';
 import {
@@ -24,7 +24,7 @@ import {
   topContainer,
 } from './modal-css';
 
-const Modal = ({
+export const Modal = ({
   children,
   onSave,
   onCancel,
@@ -88,5 +88,3 @@ const Modal = ({
     </div>
   );
 };
-
-export default Modal;

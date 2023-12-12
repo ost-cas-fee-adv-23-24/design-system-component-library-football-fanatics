@@ -8,9 +8,9 @@
 
 import React, { useId, useMemo } from 'react';
 import { IAvatarComponentProps } from './avatar.interface';
-import Button from '../button/Button';
+import { Button } from '../button/Button';
 import { EIConTypes } from '../icon/icon.enum';
-import Image from '../image/Image';
+import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
 import { get as _get } from 'lodash';
 import { File } from 'buffer';
@@ -23,7 +23,7 @@ import {
   topContainerXl,
 } from './avatar-css';
 
-const Avatar = ({
+export const Avatar = ({
   imgSrc,
   onError,
   onSuccess,
@@ -99,5 +99,3 @@ const Avatar = ({
     </div>
   );
 };
-
-export default Avatar;

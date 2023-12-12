@@ -10,7 +10,7 @@ import { IImageComponentProps } from './image.interface';
 import { EImageLoadingType } from './image.enum';
 import { baseImageGeneral } from './image-css';
 
-const Image = ({
+export const Image = ({
   src,
   loadingType = EImageLoadingType.EAGER,
   alt,
@@ -30,5 +30,3 @@ const Image = ({
     </div>
   );
 };
-
-export default Image;

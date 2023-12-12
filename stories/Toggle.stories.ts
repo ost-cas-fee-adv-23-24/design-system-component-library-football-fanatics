@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Toggle from '../components/toggle/Toggle';
+import { Toggle } from '../components/toggle/Toggle';
 import { EToggleKinds } from '../components/toggle/toggle.enums';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

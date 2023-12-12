@@ -6,7 +6,7 @@ import {
   EButtonTypes,
 } from './button.enum';
 import { useMemo, useState } from 'react';
-import Icon from '../icon/Icon';
+import { Icon } from '../icon/Icon';
 import btnBase, {
   colors,
   copyToClipboardClasses,
@@ -22,13 +22,13 @@ import btnBase, {
 import { difference as _difference } from 'lodash';
 import { iconButtonGray, iconButtonViolet } from './icon-button.css';
 import { iconButtonMenu } from './buttonicon-menu';
-import Image from '../image/Image';
+import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
 
 /**
  * Primary UI component for user interaction
  */
-const Button = ({
+export const Button = ({
   type = EButtonTypes.PRIMARY,
   size,
   iconPosition = EButtonIconPosition.LEFT,
@@ -352,6 +352,7 @@ const Button = ({
           onClick={(evt) => {
             if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
               if (clipboardData) {
+                // @ts-ignore
                 navigator.clipboard
                   .writeText(clipboardData)
                   .then(() => {
@@ -412,5 +413,3 @@ const Button = ({
     }
   }
 };
-
-export default Button;

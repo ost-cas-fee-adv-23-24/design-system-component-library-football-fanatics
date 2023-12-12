@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { useId } from 'react';
-import Icon from '../icon/Icon';
+import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 import { TIconType } from '../icon/icon.interface';
 import { Label } from '../label/Label';

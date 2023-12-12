@@ -7,7 +7,7 @@
  */
 
 import React, { useMemo } from 'react';
-import Icon from '../icon/Icon';
+import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 import MumbleGradient from './svg/mumble_gradient';
 import MumbleViolet from './svg/mumble_violet';
@@ -16,7 +16,7 @@ import { iconColors, logoLeft, logoTop } from './css';
 import { ILogoComponentProps } from './logo.interface';
 import { ELogoColors, ELogoPositions } from './logo.enum';
 
-const Logo = ({ color, logoPosition }: ILogoComponentProps) => {
+export const Logo = ({ color, logoPosition }: ILogoComponentProps) => {
   const componentName = 'c-logo';
   const positionDefinitions = useMemo(() => {
     let topContainer = [componentName];
@@ -73,5 +73,3 @@ const Logo = ({ color, logoPosition }: ILogoComponentProps) => {
     </div>
   );
 };
-
-export default Logo;

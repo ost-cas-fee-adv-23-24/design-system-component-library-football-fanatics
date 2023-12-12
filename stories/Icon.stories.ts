@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Icon from '../components/icon/Icon';
+import { Icon } from '../components/icon/Icon';
 import { EIconColors, EIConTypes } from '../components/icon/icon.enum';
 
 const meta: Meta<typeof Icon> = {

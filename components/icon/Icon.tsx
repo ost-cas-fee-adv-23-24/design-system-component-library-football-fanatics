@@ -36,7 +36,7 @@ import timeIcon from './svg/time';
 import uploadIcon from './svg/upload';
 import { fitParent, topContainer } from './css';
 
-const Icon = ({ type, color }: IIconProps) => {
+export const Icon = ({ type, color }: IIconProps) => {
   const componentName = 'c-icon';
   const cssClasses = useMemo(() => {
     const decorations = [...topContainer, ...fitParent];
@@ -109,5 +109,3 @@ const Icon = ({ type, color }: IIconProps) => {
     ></div>
   );
 };
-
-export default Icon;

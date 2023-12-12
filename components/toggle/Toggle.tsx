@@ -18,10 +18,10 @@ import {
   toggleBase,
 } from './toggle-css';
 import { EIConTypes } from '../icon/icon.enum';
-import Icon from '../icon/Icon';
+import { Icon } from '../icon/Icon';
 import { IToggleComponentProps } from './toggle.interfaces';
 
-const Toggle = ({
+export const Toggle = ({
   labelSingular,
   labelPlural,
   amount,
@@ -158,5 +158,3 @@ const Toggle = ({
     </button>
   );
 };
-
-export default Toggle;
