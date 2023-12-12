@@ -83,10 +83,12 @@
   "exports": {
     ".": {
       "import": {
-        "default": "./lib/esm/index.js"
+        "default": "./lib/esm/components/index.js",
+        "types": "./lib/esm/types/components/index.d.ts"
       },
       "require": {
-        "default": "./lib/cjs/index.cjs"
+        "default": "./lib/cjs/components/index.cjs",
+        "types": "./lib/cjs/types/components/index.d.ts"
       }
     },
     "./index.css": "./lib/globals.css",
