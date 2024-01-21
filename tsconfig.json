@@ -24,7 +24,7 @@
     ]
   },
   "include": [
-    "components/**/*.ts",
+    "src/components/**/*.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [
