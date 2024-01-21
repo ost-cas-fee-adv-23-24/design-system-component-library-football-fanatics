@@ -11,3 +11,6 @@ export * from './components/typography/Paragraph';
 export * from './components/tabs/Tabs';
 export * from './components/textarea/Textarea';
 export * from './components/toggle/Toggle';
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {};

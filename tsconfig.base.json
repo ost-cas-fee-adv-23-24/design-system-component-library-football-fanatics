@@ -7,9 +7,9 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "declaration": true,
-    "rootDir": "src",
-    "outDir": "dist/cjs",
-    "declarationDir": "dist/types"
+    "rootDir": "./",
+    "outDir": "lib/cjs",
+    "declarationDir": "lib/types"
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "app", "public", "stories"]
