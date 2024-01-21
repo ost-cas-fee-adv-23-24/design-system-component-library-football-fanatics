@@ -11,6 +11,6 @@
     "outDir": "lib/cjs",
     "declarationDir": "lib/types"
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "app", "public", "stories"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "app", "public", "src/stories"]
 }

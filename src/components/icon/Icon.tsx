@@ -7,7 +7,6 @@
  */
 
 import React, { useMemo } from 'react';
-import './icon.css';
 import { EIConTypes } from './icon.enum';
 import { IIconProps } from './icon.interface';
 import mumbleIcon from './svg/mumble';
@@ -40,6 +39,11 @@ export const Icon = ({ type, color }: IIconProps) => {
   const componentName = 'c-icon';
   const cssClasses = useMemo(() => {
     const decorations = [...topContainer, ...fitParent];
+    const svgChild = [
+      '[&>svg]:fill-current',
+      '[&>svg]:pointer-events-none',
+      '[&>svg]:leading-none',
+    ];
 
     if (color) {
       decorations.push(`text-${color}-500`);
@@ -47,7 +51,7 @@ export const Icon = ({ type, color }: IIconProps) => {
       decorations.push(`text-inherit`);
     }
 
-    return `${componentName} ${decorations.join(' ')} `;
+    return `${componentName} ${decorations.join(' ')} ${svgChild.join(' ')} `;
   }, [color]);
   const iconMarkup = useMemo(() => {
     switch (type) {
@@ -104,8 +108,9 @@ export const Icon = ({ type, color }: IIconProps) => {
 
   return (
     <div
+      style={{ lineHeight: 0, width: 'inherit', height: 'inherit' }}
       className={cssClasses}
       dangerouslySetInnerHTML={{ __html: iconMarkup }}
-    ></div>
+    />
   );
 };
