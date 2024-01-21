@@ -7,7 +7,7 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "declaration": true,
-    "rootDir": "./",
+    "rootDir": "./src",
     "outDir": "lib/cjs",
     "declarationDir": "lib/types"
   },
