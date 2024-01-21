@@ -80,26 +80,20 @@
   "release": {
     "branches": "main"
   },
-  "exports": {
-    ".": {
-      "import": {
-        "default": "./lib/esm/index.js",
-        "types": "./lib/esm/types/index.d.ts"
-      },
-      "require": {
-        "default": "./lib/cjs/index.cjs",
-        "types": "./lib/cjs/types/index.d.ts"
-      }
-    },
-    "./index.css": "./lib/globals.css",
-    "./tailwind.config.js": "./lib/tailwind.config.js"
-  },
-  "main": "./lib/esm/index.js",
-  "types": "./lib/esm/types/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "files": [
     "./lib/**/*",
     "!*/.stories.js"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./index.css": "./lib/globals.css",
+    "./tailwind.config.js": "./lib/tailwind.config.js"
+  },
   "publishConfig": {
     "access": "public"
   }

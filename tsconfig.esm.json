@@ -1,11 +1,10 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "outDir": "./lib/esm",
-    "declaration": true,
-    "declarationDir": "./lib/esm/types"
+    "moduleResolution": "node",
+    "outDir": "lib/esm"
   }
 }
