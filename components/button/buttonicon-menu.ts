@@ -1,5 +1,5 @@
 import { typography } from './button-css';
-import _ from 'lodash';
+import {difference as  _difference} from 'lodash';
 
 const layout = [
   'inline-flex',
@@ -19,7 +19,7 @@ const states = {
   hover: ['hover:bg-violet-700'],
 };
 
-const typo = _.difference(
+const typo = _difference(
   [...typography, 'text-[14px]', 'leading-[14px]'],
   ['text-base', 'leading-4'],
 );

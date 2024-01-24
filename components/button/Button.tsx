@@ -99,12 +99,6 @@ export const Button = ({
   }, [onlyIcon, size, type, disabled]);
 
   const topContainerClasses = useMemo(() => {
-    if (kind === EButtonKinds.LINK) {
-      return `${componentName} ${simpleLinkClasses.topContainer.join(' ')} ${
-        disabled ? ' pointer-events-none' : ''
-      }`;
-    }
-
     if (kind === EButtonKinds.BUTTON_ICON) {
       if (type === EButtonTypes.PRIMARY) {
         return `${componentName} ${iconButtonViolet.topContainer.join(' ')} ${
@@ -256,7 +250,6 @@ export const Button = ({
     }
 
     switch (kind) {
-      case EButtonKinds.LINK:
       case EButtonKinds.BUTTON_AS_LINK:
         baseClasses.push(...simpleLinkClasses.textContainer);
         break;
@@ -290,19 +283,7 @@ export const Button = ({
   }, [imageSrc, label]);
 
   if (onlyIcon) {
-    if (kind === EButtonKinds.LINK) {
-      return (
-        <a
-          className={`${topContainerOnlyIcon}`}
-          href={href}
-          target={openInNewTab ? '_blank' : '_self'}
-          title={label}
-          aria-label={label}
-        >
-          {iconMarkup}
-        </a>
-      );
-    } else if (kind === EButtonKinds.BUTTON) {
+    if (kind === EButtonKinds.BUTTON) {
       return (
         <button
           aria-label={label}
@@ -392,19 +373,6 @@ export const Button = ({
           {!imageSrc && textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </button>
-      );
-    } else if (kind === EButtonKinds.LINK) {
-      return (
-        <a
-          className={topContainerClasses}
-          href={href}
-          target={openInNewTab ? '_blank' : '_self'}
-          aria-label={label}
-        >
-          {icon && iconPosition === EButtonIconPosition.LEFT && iconMarkup}
-          {textContainerMarkup}
-          {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
-        </a>
       );
     } else {
       console.log(`button kind ${kind} is not supported`);

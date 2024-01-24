@@ -1,80 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '../components/button/Button';
-import {
-  EButtonIconPosition,
-  EButtonKinds,
-  EButtonTypes,
-} from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
+import { Link } from '../components/button/ButtonLink';
+import { EButtonIconPosition } from '../components/button/button.enum';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof Link> = {
   title: 'Components/Link',
-  component: Button,
+  component: Link,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
+
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+
   argTypes: {
-    type: {
-      table: {
-        disable: true,
-      },
-    },
-    kind: {
-      table: {
-        disable: true,
-      },
-    },
-    size: {
-      table: {
-        disable: true,
-      },
-    },
     icon: {
       options: EIConTypes,
     },
     iconPosition: {
       options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
-    },
-    onlyIcon: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardData: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardCopyErrorLabel: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardCopySuccessLabel: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardHighlightDelay: {
-      table: {
-        disable: true,
-      },
-    },
-    imageSrc: {
-      table: {
-        disable: true,
-      },
-    },
-    fitParent: {
-      table: {
-        disable: true,
-      },
     },
   },
 };
@@ -82,33 +26,26 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Link: Story = {
+export const LinkComponent: Story = {
   args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    href: 'https://www.google.com',
+    label: 'Link in mumble',
+    href: '#',
   },
 };
 
-export const LinkWithIconRight: Story = {
+export const LinkComponentWithIconLeft: Story = {
   args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    icon: EIConTypes.ARROW_RIGHT,
+    label: 'Link in mumble',
+    href: '#',
+    icon: EIConTypes.MUMBLE,
+  },
+};
+
+export const LinkComponentWithIconRight: Story = {
+  args: {
+    label: 'Link in mumble',
+    href: '#',
+    icon: EIConTypes.MUMBLE,
     iconPosition: EButtonIconPosition.RIGHT,
-    href: 'https://www.google.com',
-  },
-};
-
-export const LinkWithIconLeft: Story = {
-  args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Link',
-    kind: EButtonKinds.LINK,
-    icon: EIConTypes.ARROW_LEFT,
-    iconPosition: EButtonIconPosition.LEFT,
-    href: 'https://www.google.com',
   },
 };
