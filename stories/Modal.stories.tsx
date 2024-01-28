@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Modal } from '../components/modal/Modal';
-import { Label } from '../components/label/Label';
+import { Label } from '../components/label';
 import { Paragraph } from '../components/typography/Paragraph';
 import { Button } from '../components/button/Button';
 import { Logo } from '../components/logo/Logo';

@@ -10,4 +10,4 @@ export * from './components/modal/Modal';
 export * from './components/typography/Paragraph';
 export * from './components/tabs/Tabs';
 export * from './components/textarea/Textarea';
-export * from './components/toggle/Toggle';
+export * from './components/toggle/ToggleLike';
