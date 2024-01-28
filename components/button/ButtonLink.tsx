@@ -19,12 +19,12 @@ export const Link = ({
   iconPosition = EButtonIconPosition.LEFT,
 }: IProps) => {
   const iconMarkup = icon ? (
-    <span className="c-button__icon inline-block">
+    <span className="inline-block">
       <Icon type={icon} />
     </span>
   ) : null;
 
-  const textClasses = ['c-button__text', 'p-0'];
+  const textClasses = ['p-0'];
 
   if (icon) {
     if (iconPosition === 'right') {
