@@ -9,15 +9,12 @@ import { useMemo, useState } from 'react';
 import { Icon } from '../icon/Icon';
 import btnBase, {
   colors,
-  copyToClipboardClasses,
   imageContainerClasses,
   lg,
   md,
   onlyIconCss,
   simpleLinkClasses,
-  stateActive,
   stateDisabled,
-  statesHover,
 } from './button-css';
 import { difference as _difference } from 'lodash';
 import { iconButtonGray, iconButtonViolet } from './icon-button.css';
@@ -40,10 +37,6 @@ export const Button = ({
   onlyIcon = false,
   openInNewTab = false,
   kind = EButtonKinds.BUTTON,
-  clipboardData,
-  clipboardHighlightDelay = 1500,
-  clipboardCopySuccessLabel = 'Link copied',
-  clipboardCopyErrorLabel = 'Link not copied',
   fitParent = false,
   imageSrc,
 }: IButtonComponentProps) => {
@@ -131,28 +124,6 @@ export const Button = ({
         break;
       default:
         modifier = [...modifier, ...md.topContainer];
-    }
-
-    if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
-      modifier = [
-        ..._difference(modifier, [
-          'bg-gray-100',
-          'text-white',
-          'rounded',
-          ...stateActive,
-          ...statesHover,
-        ]),
-        ...copyToClipboardClasses.topContainer,
-      ];
-
-      if (highlighted) {
-        modifier = [
-          'bg-gray-200',
-          ..._difference(modifier, ['hover:bg-slate-100']),
-        ];
-      }
-
-      return `${componentName} ${modifier.join(' ')}`;
     }
 
     switch (type) {
@@ -258,7 +229,6 @@ export const Button = ({
         break;
       case EButtonKinds.BUTTON_ICON:
       case EButtonKinds.BUTTON:
-      case EButtonKinds.COPY_TO_CLIPBOARD:
         baseClasses.push(...btnBase.textContainer);
         break;
     }
@@ -323,7 +293,6 @@ export const Button = ({
     } else if (
       kind === EButtonKinds.BUTTON_ICON ||
       kind === EButtonKinds.BUTTON ||
-      kind === EButtonKinds.COPY_TO_CLIPBOARD ||
       kind === EButtonKinds.BUTTON_ICON_MENU
     ) {
       return (
@@ -331,35 +300,9 @@ export const Button = ({
           aria-label={label}
           className={topContainerClasses}
           onClick={(evt) => {
-            if (kind === EButtonKinds.COPY_TO_CLIPBOARD) {
-              if (clipboardData) {
-                navigator.clipboard
-                  .writeText(clipboardData)
-                  .then(() => {
-                    setHighlighted(true);
-                    setLabelText(clipboardCopySuccessLabel);
-                    setTimeout(() => {
-                      setLabelText(label);
-                      setHighlighted(false);
-                    }, clipboardHighlightDelay);
-                  })
-                  .catch(() => {
-                    setLabelText(clipboardCopyErrorLabel);
-                    setTimeout(() => {
-                      setLabelText(label);
-                    }, clipboardHighlightDelay);
-                  });
-              } else {
-                setLabelText('No data to copy');
-                setTimeout(() => {
-                  setLabelText(label);
-                }, clipboardHighlightDelay);
-              }
-            } else {
-              if (onClickEvent && typeof onClickEvent === 'function') {
-                evt.preventDefault();
-                onClickEvent();
-              }
+            if (onClickEvent && typeof onClickEvent === 'function') {
+              evt.preventDefault();
+              onClickEvent();
             }
           }}
           type="button"

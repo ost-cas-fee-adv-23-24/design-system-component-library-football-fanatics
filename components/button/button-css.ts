@@ -105,17 +105,6 @@ export const simpleLinkClasses = {
   textContainer: ['p-0'],
 };
 
-export const copyToClipboardClasses = {
-  topContainer: [
-    'text-slate-600',
-    'rounded-2xl',
-    'hover:bg-slate-100',
-    'active:bg-slate-100',
-    ...commonTransitions,
-  ],
-  iconContainer: [],
-};
-
 export const imageContainerClasses = [
   'w-[40px]',
   'h-[40px]',
