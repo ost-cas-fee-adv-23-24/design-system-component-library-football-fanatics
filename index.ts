@@ -11,3 +11,4 @@ export * from './components/typography/Paragraph';
 export * from './components/tabs/Tabs';
 export * from './components/textarea/Textarea';
 export * from './components/toggle/ToggleLike';
+export * from './components/toggle/ToggleComment';
