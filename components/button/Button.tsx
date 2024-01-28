@@ -17,7 +17,6 @@ import btnBase, {
   stateDisabled,
 } from './button-css';
 import { difference as _difference } from 'lodash';
-import { iconButtonGray, iconButtonViolet } from './icon-button.css';
 import { iconButtonMenu } from './buttonicon-menu';
 import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
@@ -92,19 +91,6 @@ export const Button = ({
   }, [onlyIcon, size, type, disabled]);
 
   const topContainerClasses = useMemo(() => {
-    if (kind === EButtonKinds.BUTTON_ICON) {
-      if (type === EButtonTypes.PRIMARY) {
-        return `${componentName} ${iconButtonViolet.topContainer.join(' ')} ${
-          disabled ? ' pointer-events-none' : ''
-        }`;
-      }
-      if (type === EButtonTypes.SECONDARY) {
-        return `${componentName} ${iconButtonGray.topContainer.join(' ')} ${
-          disabled ? ' pointer-events-none' : ''
-        }`;
-      }
-    }
-
     if (
       kind === EButtonKinds.BUTTON_ICON_MENU ||
       kind === EButtonKinds.BUTTON_ICON_MENU_AS_LINK
@@ -227,7 +213,6 @@ export const Button = ({
       case EButtonKinds.BUTTON_ICON_MENU:
         baseClasses.push(...iconButtonMenu.textContainer);
         break;
-      case EButtonKinds.BUTTON_ICON:
       case EButtonKinds.BUTTON:
         baseClasses.push(...btnBase.textContainer);
         break;
@@ -291,7 +276,6 @@ export const Button = ({
         </a>
       );
     } else if (
-      kind === EButtonKinds.BUTTON_ICON ||
       kind === EButtonKinds.BUTTON ||
       kind === EButtonKinds.BUTTON_ICON_MENU
     ) {
