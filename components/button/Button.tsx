@@ -17,7 +17,6 @@ import btnBase, {
   stateDisabled,
 } from './button-css';
 import { difference as _difference } from 'lodash';
-import { iconButtonMenu } from './buttonicon-menu';
 import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
 
@@ -91,15 +90,6 @@ export const Button = ({
   }, [onlyIcon, size, type, disabled]);
 
   const topContainerClasses = useMemo(() => {
-    if (
-      kind === EButtonKinds.BUTTON_ICON_MENU ||
-      kind === EButtonKinds.BUTTON_ICON_MENU_AS_LINK
-    ) {
-      return `${componentName} ${iconButtonMenu.topContainer.join(' ')} ${
-        disabled ? ' pointer-events-none' : ''
-      }`;
-    }
-
     let modifier = [...btnBase.topContainer];
     switch (size) {
       case EButtonSizes.LARGE:
@@ -210,9 +200,6 @@ export const Button = ({
       case EButtonKinds.BUTTON_AS_LINK:
         baseClasses.push(...simpleLinkClasses.textContainer);
         break;
-      case EButtonKinds.BUTTON_ICON_MENU:
-        baseClasses.push(...iconButtonMenu.textContainer);
-        break;
       case EButtonKinds.BUTTON:
         baseClasses.push(...btnBase.textContainer);
         break;
@@ -255,10 +242,7 @@ export const Button = ({
       return null;
     }
   } else {
-    if (
-      kind === EButtonKinds.BUTTON_AS_LINK ||
-      kind === EButtonKinds.BUTTON_ICON_MENU_AS_LINK
-    ) {
+    if (kind === EButtonKinds.BUTTON_AS_LINK) {
       return (
         <a
           className={topContainerClasses}
@@ -270,15 +254,11 @@ export const Button = ({
             (iconPosition === EButtonIconPosition.LEFT ||
               iconPosition === EButtonIconPosition.TOP) &&
             iconMarkup}
-          {!icon && imageSrc && imageMarkup}
           {!imageSrc && textContainerMarkup}
           {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
         </a>
       );
-    } else if (
-      kind === EButtonKinds.BUTTON ||
-      kind === EButtonKinds.BUTTON_ICON_MENU
-    ) {
+    } else if (kind === EButtonKinds.BUTTON) {
       return (
         <button
           aria-label={label}
