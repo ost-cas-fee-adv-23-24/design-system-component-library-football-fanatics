@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { EIConTypes } from '../icon/icon.enum';
 import { Icon } from '../icon/Icon';
 import { IToggleLikeComponentProps } from './toggle.interfaces';
+import TextToggle from '../textToggle/TextToggle';
 
 export const ToggleLike = ({
   labelSingular,
@@ -43,22 +44,15 @@ export const ToggleLike = ({
             }
           />
         </span>
+
         <div className="flex relative h-4">
-          <div
-            className={`flex transition-opacity duration-300 ${
-              toggleEffectActive ? 'opacity-0' : 'opacity-100'
+          <TextToggle
+            isRunningToggle={toggleEffectActive}
+            mainText={`${amount > 0 ? amount : ''} ${
+              amount > 1 ? labelPlural : labelSingular
             }`}
-          >
-            {amount > 0 && <div className="mr-1">{amount}</div>}
-            <div className={''}>{amount > 1 ? labelPlural : labelSingular}</div>
-          </div>
-          <div
-            className={`absolute transition-opacity duration-300 ${
-              toggleEffectActive ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            {labelLiked}
-          </div>
+            secondaryText={labelLiked}
+          />
         </div>
       </div>
     </button>
