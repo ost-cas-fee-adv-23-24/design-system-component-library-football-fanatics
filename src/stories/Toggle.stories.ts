@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { ToggleLikeWrapper } from '../components/toggle/ToggleLikeWrapper';
 
 const meta: Meta<typeof ToggleLikeWrapper> = {

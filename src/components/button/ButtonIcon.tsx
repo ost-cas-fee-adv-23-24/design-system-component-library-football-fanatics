@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 
-interface IProps {
+interface IPropsButtonIcon {
   label: string;
   onClickEvent?: () => void;
   icon: string;
@@ -10,7 +11,13 @@ interface IProps {
   type: 'primary' | 'secondary';
 }
 
-const ButtonIcon = ({ label, icon, onClickEvent, disabled, type }: IProps) => {
+export const ButtonIcon = ({
+  label,
+  icon,
+  onClickEvent,
+  disabled,
+  type,
+}: IPropsButtonIcon) => {
   let cssClasses =
     'rounded px-8 flex items-center justify-center font-poppins  text-sm not-italic font-semibold leading-3 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-gray-300 transition-all ease-in delay-50 rounded disabled:bg-gray-200';
 
@@ -35,9 +42,8 @@ const ButtonIcon = ({ label, icon, onClickEvent, disabled, type }: IProps) => {
       <span className="h-4 w-4 leading-none mr-[4px]">
         <Icon type={icon as EIConTypes} />
       </span>
+
       <span className="">{label}</span>
     </button>
   );
 };
-
-export default ButtonIcon;

@@ -82,11 +82,10 @@ export const Avatar = ({
             spellCheck="false"
             type="file"
           />
+
           <div className="relative">
-            <label
-              className={editableLabel.join(' ')}
-              htmlFor={identifier}
-            ></label>
+            <label className={editableLabel.join(' ')} htmlFor={identifier} />
+
             <Button
               label="edit"
               onlyIcon={true}

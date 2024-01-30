@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { EIConTypes } from '../components/icon/icon.enum';
-import ButtonTimed from '../components/button/ButtonTimed';
+import { ButtonTimed } from '../components/button/ButtonTimed';
 
 const meta: Meta<typeof ButtonTimed> = {
   title: 'Components/TimedButton',

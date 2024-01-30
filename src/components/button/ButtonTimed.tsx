@@ -4,7 +4,7 @@ import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 import TextToggle from '../textToggle/TextToggle';
 
-interface IProps {
+interface IPropsButtonTimed {
   label: string;
   icon: string;
   clipboardData: string;
@@ -15,7 +15,7 @@ interface IProps {
   disabled: boolean;
 }
 
-const ButtonTimed = ({
+export const ButtonTimed = ({
   label,
   clipboardCopySuccessLabel,
   clipboardHighlightDelay,
@@ -23,7 +23,7 @@ const ButtonTimed = ({
   onCopyError,
   icon,
   disabled,
-}: IProps) => {
+}: IPropsButtonTimed) => {
   const [runningEffect, setRunningEffect] = React.useState(false);
 
   const cssBaseClasses =
@@ -64,5 +64,3 @@ const ButtonTimed = ({
     </button>
   );
 };
-
-export default ButtonTimed;

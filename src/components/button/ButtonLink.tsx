@@ -1,9 +1,10 @@
 import React from 'react';
-import { EButtonIconPosition } from './button.enum';
+
 import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
+import { EButtonIconPosition } from './button.enum';
 
-interface IProps {
+interface IPropsLinkComponent {
   href: string;
   openInNewTab?: boolean;
   label: string;
@@ -17,7 +18,7 @@ export const Link = ({
   label,
   icon,
   iconPosition = EButtonIconPosition.LEFT,
-}: IProps) => {
+}: IPropsLinkComponent) => {
   const iconMarkup = icon ? (
     <span className="inline-block">
       <Icon type={icon} />

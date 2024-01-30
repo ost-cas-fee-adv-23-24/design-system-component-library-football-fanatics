@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 
-interface IProps {
+interface IPropsButtonIconRounded {
   icon: EIConTypes;
   label: string;
   onClickEvent?: () => void;
@@ -12,14 +12,14 @@ interface IProps {
   openInNewTab?: boolean;
 }
 
-const ButtonIconRounded = ({
+export const ButtonIconRounded = ({
   icon,
   disabled,
   label,
   onClickEvent,
   href,
   openInNewTab = false,
-}: IProps) => {
+}: IPropsButtonIconRounded) => {
   let cssClasses =
     'py-8 px-8 text-white rounded-full bg-slate-600 flex items-center justify-center';
   cssClasses += ' hover:outline-[3px] hover:outline hover:outline-slate-100'; // hover states
@@ -58,5 +58,3 @@ const ButtonIconRounded = ({
     </button>
   );
 };
-
-export default ButtonIconRounded;
