@@ -32,7 +32,7 @@
     "build:clean": "rm -rf ./lib",
     "build:esm": "tsc -p ./tsconfig.esm.json",
     "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/cjs/index.js lib/cjs/index.cjs",
-    "build:tailwind": "npx tailwindcss -i ./app/globals.css -o ./lib/globals.css --minify && cp ./tailwind.config.ts ./lib",
+    "build:tailwind": "npx tailwindcss -i ./src/globals/globals.css -o ./lib/globals.css --minify && cp ./tailwind.config.ts ./lib",
     "start": "storybook dev -p 6006",
     "lint": "next lint --fix --dir .",
     "format:check": "prettier . --check",
@@ -43,34 +43,35 @@
     "export": "storybook build"
   },
   "dependencies": {
-    "@storybook/addon-styling": "^1.3.7",
-    "@types/node": "20.6.2",
-    "@types/react": "18.2.22",
-    "@types/react-dom": "18.2.7",
     "clsx": "^2.0.0",
-    "eslint-config-next": "13.4.19",
     "lodash": "^4.17.21",
-    "next": "13.4.19",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-router-dom": "^6.19.0",
     "tailwindcss": "3.3.3"
+  },
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.4.2",
     "@storybook/addon-interactions": "^7.4.2",
     "@storybook/addon-links": "^7.4.2",
+    "@storybook/addon-styling": "^1.3.7",
     "@storybook/blocks": "^7.4.2",
     "@storybook/nextjs": "^7.4.2",
     "@storybook/react": "^7.4.2",
     "@storybook/testing-library": "^0.2.1",
+    "@types/node": "20.6.2",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.50.0",
+    "eslint-config-next": "13.4.19",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.13",
+    "next": "13.4.19",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.30",
     "prettier": "3.0.3",
@@ -80,26 +81,19 @@
   "release": {
     "branches": "main"
   },
-  "exports": {
-    ".": {
-      "import": {
-        "default": "./lib/esm/index.js",
-        "types": "./lib/esm/types/index.d.ts"
-      },
-      "require": {
-        "default": "./lib/cjs/index.cjs",
-        "types": "./lib/cjs/types/index.d.ts"
-      }
-    },
-    "./index.css": "./lib/globals.css",
-    "./tailwind.config.js": "./lib/tailwind.config.js"
-  },
-  "main": "./lib/esm/index.js",
-  "types": "./lib/esm/types/index.d.ts",
   "files": [
     "./lib/**/*",
     "!*/.stories.js"
   ],
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    },
+    "./index.css": "./lib/globals.css",
+    "./tailwind.config.js": "./lib/tailwind.config.js"
+  },
   "publishConfig": {
     "access": "public"
   }
