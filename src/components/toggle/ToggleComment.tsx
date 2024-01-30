@@ -1,6 +1,7 @@
 import React from 'react';
-import { EIConTypes } from '../icon/icon.enum';
+
 import { Icon } from '../icon/Icon';
+import { EIConTypes } from '../icon/icon.enum';
 import { IToggleCommentsComponentProps } from './toggle.interfaces';
 
 export const ToggleComment = ({
@@ -29,9 +30,11 @@ export const ToggleComment = ({
         >
           <Icon type={iconType} />
         </span>
+
         <div className="flex">
           {amount > 0 && <div className="mr-1">{amount}</div>}
-          <div className={''}>{amount > 1 ? labelPlural : labelSingular}</div>
+
+          <div>{amount > 1 ? labelPlural : labelSingular}</div>
         </div>
       </div>
     </button>
