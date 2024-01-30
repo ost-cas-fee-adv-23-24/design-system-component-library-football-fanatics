@@ -1,24 +1,21 @@
-import { IButtonComponentProps } from './button.interface';
+import { difference as _difference } from 'lodash';
+import { useMemo } from 'react';
+
+import { Icon } from '../icon/Icon';
 import {
   EButtonIconPosition,
   EButtonKinds,
   EButtonSizes,
   EButtonTypes,
 } from './button.enum';
-import { useMemo, useState } from 'react';
-import { Icon } from '../icon/Icon';
+import { IButtonComponentProps } from './button.interface';
 import btnBase, {
   colors,
-  imageContainerClasses,
   lg,
   md,
-  onlyIconCss,
   simpleLinkClasses,
   stateDisabled,
 } from './button-css';
-import { difference as _difference } from 'lodash';
-import { Image } from '../image/Image';
-import { EImageLoadingType } from '../image/image.enum';
 
 /**
  * Primary UI component for user interaction
@@ -32,62 +29,12 @@ export const Button = ({
   onClickEvent,
   href,
   disabled = false,
-  onlyIcon = false,
   openInNewTab = false,
   kind = EButtonKinds.BUTTON,
   fitParent = false,
   imageSrc,
 }: IButtonComponentProps) => {
   const componentName = 'c-button';
-  const [highlighted, setHighlighted] = useState(false);
-  const [labelText, setLabelText] = useState(label);
-
-  const topContainerOnlyIcon = useMemo(() => {
-    if (!onlyIcon) return '';
-
-    let modifierIconClasses = [componentName, ...onlyIconCss.topContainer];
-    switch (type) {
-      case EButtonTypes.TERTIARY:
-        modifierIconClasses = [
-          ...modifierIconClasses,
-          ...colors.tertiary,
-          'hover:bg-gradient-pink-violet-3070',
-          'active:bg-gradient-pink-violet-2080',
-        ];
-        break;
-      case EButtonTypes.PRIMARY:
-        modifierIconClasses = [...modifierIconClasses, ...colors.primary];
-        break;
-      case EButtonTypes.SECONDARY:
-        modifierIconClasses = [...modifierIconClasses, ...colors.secondary];
-        break;
-      default:
-        modifierIconClasses = [...modifierIconClasses, ...colors.primary];
-    }
-
-    // size is not expected to be changed. Only MD to be used as default
-    // if this changes, then we would need to set a separate onlyIcons.iconContainer.[size] with
-    // the needed values
-    switch (size) {
-      case EButtonSizes.LARGE:
-        modifierIconClasses = [...modifierIconClasses, ...lg.iconContainer];
-        break;
-      case EButtonSizes.MEDIUM:
-        modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
-        break;
-      default:
-        modifierIconClasses = [...modifierIconClasses, ...md.iconContainer];
-    }
-
-    if (disabled) {
-      modifierIconClasses = [
-        ...modifierIconClasses,
-        ...onlyIconCss.disabledState,
-      ];
-    }
-
-    return `${modifierIconClasses.join(' ')}`;
-  }, [onlyIcon, size, type, disabled]);
 
   const topContainerClasses = useMemo(() => {
     let modifier = [...btnBase.topContainer];
@@ -146,7 +93,7 @@ export const Button = ({
     }
 
     return `${componentName} ${modifier.join(' ')}`;
-  }, [type, size, disabled, kind, highlighted, fitParent]);
+  }, [type, size, disabled, kind, fitParent]);
 
   const iconContainerClasses = useMemo(() => {
     let classes: Array<string> = [];
@@ -205,85 +152,53 @@ export const Button = ({
         break;
     }
 
-    return <span className={`${baseClasses.join(' ')}`}>{labelText}</span>;
-  }, [label, labelText, iconPosition, icon]);
+    return <span className={`${baseClasses.join(' ')}`}>{label}</span>;
+  }, [label, iconPosition, icon]);
 
-  const imageMarkup = useMemo(() => {
-    if (imageSrc) {
-      return (
-        <div className={imageContainerClasses.join(' ')}>
-          <Image
-            alt={label}
-            src={imageSrc}
-            loadingType={EImageLoadingType.EAGER}
-          />
-        </div>
-      );
-    } else {
-      return null;
-    }
-  }, [imageSrc, label]);
+  if (kind === EButtonKinds.BUTTON_AS_LINK) {
+    return (
+      <a
+        className={topContainerClasses}
+        href={href}
+        target={openInNewTab ? '_blank' : '_self'}
+        aria-label={label}
+      >
+        {icon &&
+          (iconPosition === EButtonIconPosition.LEFT ||
+            iconPosition === EButtonIconPosition.TOP) &&
+          iconMarkup}
 
-  if (onlyIcon) {
-    if (kind === EButtonKinds.BUTTON) {
-      return (
-        <button
-          aria-label={label}
-          className={topContainerOnlyIcon}
-          onClick={onClickEvent}
-          type="button"
-          disabled={disabled}
-        >
-          {iconMarkup}
-        </button>
-      );
-    } else {
-      console.log(`button kind ${kind} is not supported`);
-      return null;
-    }
+        {!imageSrc && textContainerMarkup}
+
+        {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
+      </a>
+    );
+  } else if (kind === EButtonKinds.BUTTON) {
+    return (
+      <button
+        aria-label={label}
+        className={topContainerClasses}
+        onClick={(evt) => {
+          if (onClickEvent && typeof onClickEvent === 'function') {
+            evt.preventDefault();
+            onClickEvent();
+          }
+        }}
+        type="button"
+        disabled={disabled}
+      >
+        {icon &&
+          (iconPosition === EButtonIconPosition.LEFT ||
+            iconPosition === EButtonIconPosition.TOP) &&
+          iconMarkup}
+
+        {textContainerMarkup}
+
+        {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
+      </button>
+    );
   } else {
-    if (kind === EButtonKinds.BUTTON_AS_LINK) {
-      return (
-        <a
-          className={topContainerClasses}
-          href={href}
-          target={openInNewTab ? '_blank' : '_self'}
-          aria-label={label}
-        >
-          {icon &&
-            (iconPosition === EButtonIconPosition.LEFT ||
-              iconPosition === EButtonIconPosition.TOP) &&
-            iconMarkup}
-          {!imageSrc && textContainerMarkup}
-          {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
-        </a>
-      );
-    } else if (kind === EButtonKinds.BUTTON) {
-      return (
-        <button
-          aria-label={label}
-          className={topContainerClasses}
-          onClick={(evt) => {
-            if (onClickEvent && typeof onClickEvent === 'function') {
-              evt.preventDefault();
-              onClickEvent();
-            }
-          }}
-          type="button"
-          disabled={disabled}
-        >
-          {icon &&
-            (iconPosition === EButtonIconPosition.LEFT ||
-              iconPosition === EButtonIconPosition.TOP) &&
-            iconMarkup}
-          {!icon && imageSrc && imageMarkup}
-          {!imageSrc && textContainerMarkup}
-          {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
-        </button>
-      );
-    } else {
-      console.log(`button kind ${kind} is not supported`);
-      return null;
-    }
+    console.log(`button kind ${kind} is not supported`);
+    return null;
   }
 };
