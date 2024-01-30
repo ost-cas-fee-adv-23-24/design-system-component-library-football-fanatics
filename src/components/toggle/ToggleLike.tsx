@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { EIConTypes } from '../icon/icon.enum';
+
 import { Icon } from '../icon/Icon';
-import { IToggleLikeComponentProps } from './toggle.interfaces';
+import { EIConTypes } from '../icon/icon.enum';
 import TextToggle from '../textToggle/TextToggle';
+import { IToggleLikeComponentProps } from './toggle.interfaces';
 
 export const ToggleLike = ({
   labelSingular,
@@ -10,6 +11,7 @@ export const ToggleLike = ({
   amount = 0,
   labelLiked,
   onIncrease,
+  effectDuration = 1000,
 }: IToggleLikeComponentProps) => {
   const [toggleEffectActive, setToggleEffectActive] = useState(false);
 
@@ -27,7 +29,7 @@ export const ToggleLike = ({
         setTimeout(() => {
           onIncrease(amount + 1);
           setToggleEffectActive(false);
-        }, 1000);
+        }, effectDuration);
       }}
     >
       <div className="flex">
