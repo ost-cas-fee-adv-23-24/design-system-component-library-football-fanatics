@@ -10,4 +10,8 @@ export * from './components/modal/Modal';
 export * from './components/typography/Paragraph';
 export * from './components/tabs/Tabs';
 export * from './components/textarea/Textarea';
-export * from './components/toggle/Toggle';
+export * from './components/toggle/ToggleLike';
+export * from './components/toggle/ToggleComment';
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {};

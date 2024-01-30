@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 import TextToggle from '../textToggle/TextToggle';
@@ -52,6 +53,7 @@ const ButtonTimed = ({
       <span className="flex mr-2">
         <Icon type={icon as EIConTypes} />
       </span>
+
       <div className="flex">
         <TextToggle
           isRunningToggle={runningEffect}
