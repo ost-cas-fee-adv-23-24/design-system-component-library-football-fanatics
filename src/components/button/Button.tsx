@@ -1,99 +1,58 @@
-import { difference as _difference } from 'lodash';
 import { useMemo } from 'react';
 
 import { Icon } from '../icon/Icon';
-import {
-  EButtonIconPosition,
-  EButtonKinds,
-  EButtonSizes,
-  EButtonTypes,
-} from './button.enum';
+import { EButtonSizes, EButtonTypes } from './button.enum';
 import { IButtonComponentProps } from './button.interface';
-import btnBase, {
-  colors,
-  lg,
-  md,
-  simpleLinkClasses,
-  stateDisabled,
-} from './button-css';
+import { lg, md } from './button-css';
 
 /**
  * Primary UI component for user interaction
  */
 export const Button = ({
   type = EButtonTypes.PRIMARY,
-  size,
-  iconPosition = EButtonIconPosition.LEFT,
+  size = EButtonSizes.MEDIUM,
   icon,
   label,
   onClickEvent,
   href,
   disabled = false,
   openInNewTab = false,
-  kind = EButtonKinds.BUTTON,
   fitParent = false,
   imageSrc,
 }: IButtonComponentProps) => {
   const componentName = 'c-button';
+  let cssClasses = 'rounded px-8 flex items-center justify-center'; // base
+  cssClasses += ' font-poppins text-base not-italic font-semibold leading-4'; // typo
 
-  const topContainerClasses = useMemo(() => {
-    let modifier = [...btnBase.topContainer];
-    switch (size) {
-      case EButtonSizes.LARGE:
-        modifier = [...modifier, ...lg.topContainer];
-        break;
-      case EButtonSizes.MEDIUM:
-        modifier = [...modifier, ...md.topContainer];
-        break;
-      default:
-        modifier = [...modifier, ...md.topContainer];
+  if (size === EButtonSizes.LARGE) {
+  } else if (size === EButtonSizes.MEDIUM) {
+  }
+
+  if (type === EButtonTypes.SECONDARY) {
+    cssClasses +=
+      ' bg-violet-600 text-white hover:outline-violet-100 hover:outline-violet-200';
+  } else if (type === EButtonTypes.TERTIARY) {
+    cssClasses +=
+      ' bg-gradient-pink-violet-5050 text-white hover:outline-violet-100 active:outline-violet-200 hover:bg-gradient-pink-violet-3070 active:bg-gradient-pink-violet-2080';
+  } else {
+    cssClasses += ' hover:outline-[3px] hover:outline hover:outline-slate-100'; // hover states
+    cssClasses +=
+      ' active:outline-[4px] active:outline active:outline-slate-200'; // active states
+    cssClasses += ' bg-slate-600 text-white'; // bg and text colors
+  }
+
+  if (disabled) {
+    cssClasses +=
+      ' disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-gray-300';
+    if (type === EButtonTypes.TERTIARY) {
+      cssClasses =
+        'hover:bg-gradient-pink-violet-3070 active:bg-gradient-pink-violet-2080 bg-gradient-pink-violet-5050';
     }
+  }
 
-    switch (type) {
-      case EButtonTypes.TERTIARY:
-        modifier = _difference(
-          [
-            ...modifier,
-            ...colors.tertiary,
-            'hover:bg-gradient-pink-violet-3070',
-            'active:bg-gradient-pink-violet-2080',
-          ],
-          ['hover:outline-slate-100', 'active:outline-slate-200'],
-        );
-
-        break;
-      case EButtonTypes.PRIMARY:
-        modifier = [...modifier, ...colors.primary];
-        break;
-      case EButtonTypes.SECONDARY:
-        modifier = _difference(
-          [...modifier, ...colors.secondary],
-          ['hover:outline-slate-100', 'active:outline-slate-200'],
-        );
-        break;
-      default:
-        modifier = [...modifier, ...colors.primary];
-    }
-
-    if (disabled) {
-      modifier = [...modifier, ...stateDisabled];
-      if (type === EButtonTypes.TERTIARY) {
-        modifier = [
-          ..._difference(modifier, [
-            'hover:bg-gradient-pink-violet-3070',
-            'active:bg-gradient-pink-violet-2080',
-            'bg-gradient-pink-violet-5050',
-          ]),
-        ];
-      }
-    }
-
-    if (fitParent) {
-      modifier.push('w-full');
-    }
-
-    return `${componentName} ${modifier.join(' ')}`;
-  }, [type, size, disabled, kind, fitParent]);
+  if (fitParent) {
+    cssClasses += ' w-full';
+  }
 
   const iconContainerClasses = useMemo(() => {
     let classes: Array<string> = [];
@@ -132,73 +91,43 @@ export const Button = ({
   }, [icon, iconContainerClasses, size]);
 
   const textContainerMarkup = useMemo(() => {
-    const baseClasses = ['c-button__text'];
-    if (icon) {
-      if (iconPosition === EButtonIconPosition.RIGHT) {
-        baseClasses.push('mr-2');
-      } else if (iconPosition === EButtonIconPosition.LEFT) {
-        baseClasses.push('ml-2');
-      } else if (iconPosition === EButtonIconPosition.TOP) {
-        baseClasses.push('mt-2');
-      }
-    }
-
-    switch (kind) {
-      case EButtonKinds.BUTTON_AS_LINK:
-        baseClasses.push(...simpleLinkClasses.textContainer);
-        break;
-      case EButtonKinds.BUTTON:
-        baseClasses.push(...btnBase.textContainer);
-        break;
-    }
+    const baseClasses = ['c-button__text ml-2'];
 
     return <span className={`${baseClasses.join(' ')}`}>{label}</span>;
-  }, [label, iconPosition, icon]);
+  }, [label, icon]);
 
-  if (kind === EButtonKinds.BUTTON_AS_LINK) {
+  if (href) {
     return (
       <a
-        className={topContainerClasses}
+        className={cssClasses}
         href={href}
         target={openInNewTab ? '_blank' : '_self'}
         aria-label={label}
       >
-        {icon &&
-          (iconPosition === EButtonIconPosition.LEFT ||
-            iconPosition === EButtonIconPosition.TOP) &&
-          iconMarkup}
-
         {!imageSrc && textContainerMarkup}
 
-        {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
+        <span className="">
+          <Icon type={icon} />
+        </span>
       </a>
     );
-  } else if (kind === EButtonKinds.BUTTON) {
-    return (
-      <button
-        aria-label={label}
-        className={topContainerClasses}
-        onClick={(evt) => {
-          if (onClickEvent && typeof onClickEvent === 'function') {
-            evt.preventDefault();
-            onClickEvent();
-          }
-        }}
-        type="button"
-        disabled={disabled}
-      >
-        {icon &&
-          (iconPosition === EButtonIconPosition.LEFT ||
-            iconPosition === EButtonIconPosition.TOP) &&
-          iconMarkup}
-
-        {textContainerMarkup}
-
-        {icon && iconPosition === EButtonIconPosition.RIGHT && iconMarkup}
-      </button>
-    );
-  } else {
-    console.log(`button kind ${kind} is not supported`);
-    return null;
   }
+  return (
+    <button
+      className={cssClasses}
+      aria-label={label}
+      onClick={(evt) => {
+        if (onClickEvent && typeof onClickEvent === 'function') {
+          evt.preventDefault();
+          onClickEvent();
+        }
+      }}
+      type="button"
+      disabled={disabled}
+    >
+      {textContainerMarkup}
+
+      {iconMarkup}
+    </button>
+  );
 };

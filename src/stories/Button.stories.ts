@@ -1,12 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../components/button/Button';
-import {
-  EButtonIconPosition,
-  EButtonKinds,
-  EButtonSizes,
-  EButtonTypes,
-} from '../components/button/button.enum';
+import { EButtonSizes, EButtonTypes } from '../components/button/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
 
 const meta: Meta<typeof Button> = {
@@ -26,17 +21,11 @@ const meta: Meta<typeof Button> = {
         EButtonTypes.TERTIARY,
       ],
     },
-    kind: {
-      options: [EButtonKinds.BUTTON, EButtonKinds.BUTTON_AS_LINK],
-    },
     size: {
       options: [EButtonSizes.MEDIUM, EButtonSizes.LARGE],
     },
     icon: {
       options: EIConTypes,
-    },
-    iconPosition: {
-      options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
     },
     clipboardData: {
       table: {
@@ -111,7 +100,6 @@ export const SecondaryMd: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Button secondary md',
     icon: EIConTypes.TIME,
-    iconPosition: EButtonIconPosition.RIGHT,
     onClickEvent: () => {},
   },
 };
@@ -122,7 +110,6 @@ export const SecondaryLg: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Button secondary lg',
     icon: EIConTypes.LOGOUT,
-    iconPosition: EButtonIconPosition.RIGHT,
     onClickEvent: () => {},
   },
 };
@@ -133,7 +120,6 @@ export const TertiaryMd: Story = {
     type: EButtonTypes.TERTIARY,
     label: 'Button tertiary md',
     icon: EIConTypes.HEART_BORDERED,
-    iconPosition: EButtonIconPosition.LEFT,
     onClickEvent: () => {},
   },
 };
@@ -143,8 +129,6 @@ export const TertiaryLg: Story = {
     type: EButtonTypes.TERTIARY,
     label: 'Button tertiary lg',
     icon: EIConTypes.COMMENT_FILLED,
-    iconPosition: EButtonIconPosition.LEFT,
-    kind: EButtonKinds.BUTTON_AS_LINK,
     href: 'https://www.google.com',
   },
 };
