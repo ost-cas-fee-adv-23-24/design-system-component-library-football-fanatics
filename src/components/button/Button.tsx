@@ -1,9 +1,6 @@
-import { useMemo } from 'react';
-
 import { Icon } from '../icon/Icon';
 import { EButtonSizes, EButtonTypes } from './button.enum';
 import { IButtonComponentProps } from './button.interface';
-import { lg, md } from './button-css';
 
 /**
  * Primary UI component for user interaction
@@ -18,14 +15,15 @@ export const Button = ({
   disabled = false,
   openInNewTab = false,
   fitParent = false,
-  imageSrc,
 }: IButtonComponentProps) => {
   const componentName = 'c-button';
   let cssClasses = 'rounded px-8 flex items-center justify-center'; // base
   cssClasses += ' font-poppins text-base not-italic font-semibold leading-4'; // typo
 
   if (size === EButtonSizes.LARGE) {
+    cssClasses += ' px-6 py-4 text-base';
   } else if (size === EButtonSizes.MEDIUM) {
+    cssClasses += ' px-3 py-3 text-sm';
   }
 
   if (type === EButtonTypes.SECONDARY) {
@@ -46,55 +44,13 @@ export const Button = ({
       ' disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-gray-300';
     if (type === EButtonTypes.TERTIARY) {
       cssClasses =
-        'hover:bg-gradient-pink-violet-3070 active:bg-gradient-pink-violet-2080 bg-gradient-pink-violet-5050';
+        ' hover:bg-gradient-pink-violet-3070 active:bg-gradient-pink-violet-2080 bg-gradient-pink-violet-5050';
     }
   }
 
   if (fitParent) {
     cssClasses += ' w-full';
   }
-
-  const iconContainerClasses = useMemo(() => {
-    let classes: Array<string> = [];
-    switch (size) {
-      case EButtonSizes.LARGE:
-        classes = [...classes, ...lg.iconContainer];
-        break;
-      case EButtonSizes.MEDIUM:
-        classes = [...classes, ...md.iconContainer];
-        break;
-      default:
-        classes = [...classes, ...md.iconContainer];
-    }
-
-    return classes.join(' ');
-  }, [size]);
-
-  const iconMarkup = useMemo(() => {
-    const classesIcon: Array<string> = ['c-button__icon', 'inline-block'];
-    switch (size) {
-      case EButtonSizes.LARGE:
-        classesIcon.push(...lg.iconContainer);
-        break;
-      case EButtonSizes.MEDIUM:
-        classesIcon.push(...md.iconContainer);
-        break;
-      default:
-        classesIcon.push(...md.iconContainer);
-    }
-
-    return icon ? (
-      <span className={`${classesIcon.join(' ')}`}>
-        <Icon type={icon} />
-      </span>
-    ) : null;
-  }, [icon, iconContainerClasses, size]);
-
-  const textContainerMarkup = useMemo(() => {
-    const baseClasses = ['c-button__text ml-2'];
-
-    return <span className={`${baseClasses.join(' ')}`}>{label}</span>;
-  }, [label, icon]);
 
   if (href) {
     return (
@@ -104,9 +60,13 @@ export const Button = ({
         target={openInNewTab ? '_blank' : '_self'}
         aria-label={label}
       >
-        {!imageSrc && textContainerMarkup}
+        <span className="mr-2">{label}</span>
 
-        <span className="">
+        <span
+          className={`inline-block ${
+            EButtonSizes.LARGE ? 'h-4 w-4 leading-none' : 'h-4 w-4 leading-none'
+          }`}
+        >
           <Icon type={icon} />
         </span>
       </a>
@@ -125,9 +85,15 @@ export const Button = ({
       type="button"
       disabled={disabled}
     >
-      {textContainerMarkup}
+      <span className="mr-2">{label}</span>
 
-      {iconMarkup}
+      <span
+        className={`inline-block ${
+          EButtonSizes.LARGE ? 'h-4 w-4 leading-none' : 'h-4 w-4 leading-none'
+        }`}
+      >
+        <Icon type={icon} />
+      </span>
     </button>
   );
 };

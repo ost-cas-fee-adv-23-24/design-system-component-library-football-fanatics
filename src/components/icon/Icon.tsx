@@ -1,19 +1,11 @@
-/**
- * Author: bladimirardiles
- * Component File Name: icon.js
- * Component Name: icon
- * Project: design-system-component-library-football-fanatics
- * Date: Mon 16/10/2023 - 13:14
- */
-
 import React, { useMemo } from 'react';
-import { EIConTypes } from './icon.enum';
+
+import { topContainer } from './css';
 import { IIconProps } from './icon.interface';
-import mumbleIcon from './svg/mumble';
+import arrowDownIcon from './svg/arrow-down';
 import arrowLeftIcon from './svg/arrow-left';
 import arrowRightIcon from './svg/arrow-right';
 import arrowUpIcon from './svg/arrow-up';
-import arrowDownIcon from './svg/arrow-down';
 import calendarIcon from './svg/calendar';
 import cancelIcon from './svg/cancel';
 import checkmarkIcon from './svg/checkmark';
@@ -26,6 +18,7 @@ import heardBorderedIcon from './svg/heart-bordered';
 import heartFilledIcon from './svg/heart-filled';
 import locationIcon from './svg/location';
 import logoutIcon from './svg/logout';
+import mumbleIcon from './svg/mumble';
 import profileIcon from './svg/profile';
 import repostIcon from './svg/repost';
 import sendIcon from './svg/send';
@@ -33,16 +26,42 @@ import settingsIcon from './svg/settings';
 import shareIcon from './svg/share';
 import timeIcon from './svg/time';
 import uploadIcon from './svg/upload';
-import { fitParent, topContainer } from './css';
-
+export enum EIConTypes {
+  ARROW_UP = 'arrowUp',
+  ARROW_DOWN = 'arrowDown',
+  ARROW_LEFT = 'arrowLeft',
+  ARROW_RIGHT = 'arrowRight',
+  MUMBLE = 'mumble',
+  CALENDAR = 'calendar',
+  CANCEL = 'cancel',
+  CHECKMARK = 'checkmark',
+  COMMENT_BORDERED = 'commentBordered',
+  COMMENT_FILLED = 'commentFilled',
+  EDIT = 'edit',
+  EYE = 'eye',
+  FULL_SCREEN = 'fullScreen',
+  HEART_BORDERED = 'heartBordered',
+  HEART_FILLED = 'heartFilled',
+  LOCATION = 'location',
+  LOGOUT = 'logout',
+  PROFILE = 'profile',
+  REPOST = 'repost',
+  SEND = 'send',
+  SETTINGS = 'settings',
+  SHARE = 'share',
+  TIME = 'time',
+  UPLOAD = 'upload',
+}
 export const Icon = ({ type, color }: IIconProps) => {
   const componentName = 'c-icon';
   const cssClasses = useMemo(() => {
-    const decorations = [...topContainer, ...fitParent];
+    const decorations = [...topContainer];
     const svgChild = [
       '[&>svg]:fill-current',
       '[&>svg]:pointer-events-none',
       '[&>svg]:leading-none',
+      '[&>svg]:grow',
+      '[&>svg]:width-full',
     ];
 
     if (color) {
@@ -103,6 +122,8 @@ export const Icon = ({ type, color }: IIconProps) => {
         return timeIcon;
       case EIConTypes.UPLOAD:
         return uploadIcon;
+      default:
+        return mumbleIcon;
     }
   }, [type]);
 

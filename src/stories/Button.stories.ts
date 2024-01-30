@@ -63,16 +63,6 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const OnlyIcon: Story = {
-  args: {
-    type: EButtonTypes.PRIMARY,
-    label: 'Btn',
-    onlyIcon: true,
-    icon: EIConTypes.MUMBLE,
-    onClickEvent: () => {},
-  },
-};
-
 export const PrimaryMd: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
