@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 import { Image } from '../image/Image';
@@ -52,7 +53,9 @@ export const ButtonMenu = ({
         rel="noreferrer"
       >
         {icon && iconMarkup}
+
         {imageSrc && imageMarkup}
+
         {!imageSrc && labelMarkup}
       </a>
     );
@@ -72,7 +75,9 @@ export const ButtonMenu = ({
       disabled={disabled}
     >
       {icon && iconMarkup}
+
       {imageSrc && imageMarkup}
+
       {!imageSrc && labelMarkup}
     </button>
   );
