@@ -16,7 +16,6 @@ export interface IButtonComponentProps extends IButtonCommonWithClickEvent {
   size?: EButtonSizes;
   icon: TIconType;
   href?: string;
-  onlyIcon?: boolean;
   openInNewTab?: boolean;
   fitParent?: boolean;
 }

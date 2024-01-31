@@ -30,32 +30,8 @@ const meta: Meta<typeof Button> = {
     icon: {
       options: EIConTypes,
     },
-    clipboardData: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardHighlightDelay: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardCopySuccessLabel: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardCopyErrorLabel: {
-      table: {
-        disable: true,
-      },
-    },
+
     fitParent: {
-      table: {
-        disable: true,
-      },
-    },
-    imageSrc: {
       table: {
         disable: true,
       },
@@ -70,9 +46,8 @@ export const PrimaryMd: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
     label: 'Button Primary md',
-    onlyIcon: false,
     icon: EIConTypes.CHECKMARK,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -81,9 +56,8 @@ export const PrimaryLg: Story = {
     type: EButtonTypes.PRIMARY,
     size: EButtonSizes.LARGE,
     label: 'Button Primary lg',
-    onlyIcon: false,
     icon: EIConTypes.SEND,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -93,7 +67,7 @@ export const SecondaryMd: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Button secondary md',
     icon: EIConTypes.TIME,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -103,7 +77,7 @@ export const SecondaryLg: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Button secondary lg',
     icon: EIConTypes.LOGOUT,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -113,14 +87,14 @@ export const TertiaryMd: Story = {
     type: EButtonTypes.TERTIARY,
     label: 'Button tertiary md',
     icon: EIConTypes.HEART_BORDERED,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 export const TertiaryLg: Story = {
   args: {
     size: EButtonSizes.LARGE,
     type: EButtonTypes.TERTIARY,
-    label: 'Button tertiary lg',
+    label: 'Button tertiary lg link',
     icon: EIConTypes.COMMENT_FILLED,
     href: 'https://www.google.com',
   },
