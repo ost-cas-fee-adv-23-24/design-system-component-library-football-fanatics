@@ -2,12 +2,12 @@ import { File } from 'buffer';
 import { get as _get } from 'lodash';
 import React, { useId, useMemo } from 'react';
 
-import { ButtonIconRounded } from '../button/ButtonIconRounded';
-import { EIConTypes } from '../icon/icon.enum';
+import { ButtonIconRounded } from '../button';
+import { EIConTypes } from '../icon';
 import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
-import { EAvatarSizes } from './avata.enum';
-import { IAvatarComponentProps } from './avatar.interface';
+import { EAvatarSizes } from './utils/avata.enum';
+import { IAvatarComponentProps } from './utils/avatar.interface';
 import {
   editableLabel,
   topContainerLg,
@@ -83,7 +83,7 @@ export const Avatar = ({
               disabled={false}
               label="edit"
               icon={EIConTypes.EDIT}
-              onClickEvent={() => {}}
+              onCustomClick={() => {}}
             />
           </div>
         </div>

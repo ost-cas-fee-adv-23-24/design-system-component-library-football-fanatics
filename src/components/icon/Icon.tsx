@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react';
 
-import { topContainer } from './css';
-import { IIconProps } from './icon.interface';
 import arrowDownIcon from './svg/arrow-down';
 import arrowLeftIcon from './svg/arrow-left';
 import arrowRightIcon from './svg/arrow-right';
@@ -26,52 +24,10 @@ import settingsIcon from './svg/settings';
 import shareIcon from './svg/share';
 import timeIcon from './svg/time';
 import uploadIcon from './svg/upload';
-export enum EIConTypes {
-  ARROW_UP = 'arrowUp',
-  ARROW_DOWN = 'arrowDown',
-  ARROW_LEFT = 'arrowLeft',
-  ARROW_RIGHT = 'arrowRight',
-  MUMBLE = 'mumble',
-  CALENDAR = 'calendar',
-  CANCEL = 'cancel',
-  CHECKMARK = 'checkmark',
-  COMMENT_BORDERED = 'commentBordered',
-  COMMENT_FILLED = 'commentFilled',
-  EDIT = 'edit',
-  EYE = 'eye',
-  FULL_SCREEN = 'fullScreen',
-  HEART_BORDERED = 'heartBordered',
-  HEART_FILLED = 'heartFilled',
-  LOCATION = 'location',
-  LOGOUT = 'logout',
-  PROFILE = 'profile',
-  REPOST = 'repost',
-  SEND = 'send',
-  SETTINGS = 'settings',
-  SHARE = 'share',
-  TIME = 'time',
-  UPLOAD = 'upload',
-}
-export const Icon = ({ type, color }: IIconProps) => {
-  const componentName = 'c-icon';
-  const cssClasses = useMemo(() => {
-    const decorations = [...topContainer];
-    const svgChild = [
-      '[&>svg]:fill-current',
-      '[&>svg]:pointer-events-none',
-      '[&>svg]:leading-none',
-      '[&>svg]:grow',
-      '[&>svg]:width-full',
-    ];
+import { IIconProps } from './utils/icon.interface';
+import { EIConTypes } from './utils/icon.enum';
 
-    if (color) {
-      decorations.push(`text-${color}-500`);
-    } else {
-      decorations.push(`text-inherit`);
-    }
-
-    return `${componentName} ${decorations.join(' ')} ${svgChild.join(' ')} `;
-  }, [color]);
+export const Icon = ({ type, color, fitParent }: IIconProps) => {
   const iconMarkup = useMemo(() => {
     switch (type) {
       case EIConTypes.MUMBLE:
@@ -127,10 +83,16 @@ export const Icon = ({ type, color }: IIconProps) => {
     }
   }, [type]);
 
+  let cssClasses = `pointer-events-none leading-none  ${
+    color ? `text-${color}-500` : 'text-inherit'
+  } [&>svg]:fill-current [&>svg]:pointer-events-none [&>svg]:leading-none [&>svg]:grow [&>svg]:w-auto`;
+
+  cssClasses += fitParent ? ' flex flex-col' : ' w-2 h-2 inline-block';
+
   return (
     <div
-      style={{ lineHeight: 0, width: 'inherit', height: 'inherit' }}
       className={cssClasses}
+      style={{ lineHeight: 0, width: 'inherit', height: 'inherit' }} // TODO: do it in tailwind
       dangerouslySetInnerHTML={{ __html: iconMarkup }}
     />
   );

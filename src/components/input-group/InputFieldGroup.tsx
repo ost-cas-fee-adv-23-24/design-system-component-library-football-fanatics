@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React, { useId } from 'react';
 import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
-import { TIconType } from '../icon/icon.interface';
+import { EIConTypes } from '../icon/utils/icon.enum';
+import { TIconType } from '../icon/utils/icon.interface';
 import { Label } from '../label/Label';
 
 export interface IInputFieldGroupProps {

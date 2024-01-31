@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
+import { EIConTypes } from '../icon/utils/icon.enum';
 import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
 import { IPropsButtonMenu } from './utils/button.interface';

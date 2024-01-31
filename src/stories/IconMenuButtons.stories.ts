@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ButtonMenu } from '../components/button/ButtonMenu';
-import { EIConTypes } from '../components/icon/icon.enum';
+import { EIConTypes } from '../components/icon/utils/icon.enum';
 
 const meta: Meta<typeof ButtonMenu> = {
   title: 'Components/IconMenuButtons',

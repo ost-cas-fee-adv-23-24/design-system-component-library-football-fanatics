@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { EIConTypes } from '../components/icon/icon.enum';
+import { EIConTypes } from '../components/icon/utils/icon.enum';
 import { InputFieldGroup } from '../components/input-group/InputFieldGroup';
 import IconOptions from './Icon.stories';
 

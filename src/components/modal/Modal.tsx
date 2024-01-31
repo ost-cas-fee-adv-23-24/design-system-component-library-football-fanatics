@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '../button/Button';
 import { EButtonTypes } from '../button/utils/button.enum';
 import { ButtonIcon } from '../button/ButtonIcon';
-import { EIConTypes } from '../icon/icon.enum';
+import { EIConTypes } from '../icon/utils/icon.enum';
 import { IModalComponentProps } from './modal.interface';
 import {
   actions,

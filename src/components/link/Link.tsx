@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
+import { EIConTypes } from '../icon/utils/icon.enum';
 
 interface IProps {
   href: string;

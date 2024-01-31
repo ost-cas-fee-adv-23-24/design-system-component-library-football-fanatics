@@ -8,7 +8,7 @@
 
 import React, { useMemo } from 'react';
 import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
+import { EIConTypes } from '../icon/utils/icon.enum';
 import MumbleGradient from './svg/mumble_gradient';
 import MumbleViolet from './svg/mumble_violet';
 import MumbleWhite from './svg/mumble_white';

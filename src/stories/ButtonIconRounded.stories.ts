@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ButtonIconRounded } from '../components/button/ButtonIconRounded';
-import { EIConTypes } from '../components/icon/icon.enum';
+import { EIConTypes } from '../components/icon/utils/icon.enum';
 
 const meta: Meta<typeof ButtonIconRounded> = {
   title: 'Components/ButtonIconRounded',

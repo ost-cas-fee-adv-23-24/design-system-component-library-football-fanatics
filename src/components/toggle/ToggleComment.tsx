@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
+import { EIConTypes } from '../icon/utils/icon.enum';
 import { IToggleCommentsComponentProps } from './toggle.interfaces';
 
 export const ToggleComment = ({

@@ -5,7 +5,7 @@ import {
   EButtonSizes,
   EButtonTypes,
 } from '../components/button/utils/button.enum';
-import { EIConTypes } from '../components/icon/icon.enum';
+import { EIConTypes } from '../components/icon/utils/icon.enum';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',

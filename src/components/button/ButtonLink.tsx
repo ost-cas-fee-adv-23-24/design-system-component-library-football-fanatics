@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
+import { EIConTypes } from '../icon/utils/icon.enum';
 import { IPropsLinkComponent } from './utils/button.interface';
 
 export const Link = ({

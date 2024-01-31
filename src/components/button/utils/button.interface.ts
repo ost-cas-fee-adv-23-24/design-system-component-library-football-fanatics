@@ -1,5 +1,5 @@
-import { EIConTypes } from '../../icon/icon.enum';
-import { TIconType } from '../../icon/icon.interface';
+import { EIConTypes } from '../../icon';
+import { TIconType } from '../../icon';
 import { EButtonSizes, EButtonTypes } from './button.enum';
 
 interface IButtonCommon {
