@@ -1,3 +1,4 @@
+'use server';
 import React, { useMemo } from 'react';
 
 import arrowDownIcon from './svg/arrow-down';
@@ -24,8 +25,8 @@ import settingsIcon from './svg/settings';
 import shareIcon from './svg/share';
 import timeIcon from './svg/time';
 import uploadIcon from './svg/upload';
-import { IIconProps } from './utils/icon.interface';
 import { EIConTypes } from './utils/icon.enum';
+import { IIconProps } from './utils/icon.interface';
 
 export const Icon = ({ type, color, fitParent }: IIconProps) => {
   const iconMarkup = useMemo(() => {

@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 
-import { Icon } from '../icon/Icon';
+import { Icon } from '../icon';
 import { IPropsButtonIcon } from './utils/button.interface';
 
 export const ButtonIcon = ({

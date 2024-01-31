@@ -1,7 +1,7 @@
+'use client';
 import React from 'react';
 
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/utils/icon.enum';
+import { EIConTypes, Icon } from '../icon';
 import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
 import { IPropsButtonMenu } from './utils/button.interface';

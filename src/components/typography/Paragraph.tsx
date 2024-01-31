@@ -1,3 +1,4 @@
+'use server';
 import clsx from 'clsx';
 
 export interface IParagraphProps {

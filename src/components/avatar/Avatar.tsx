@@ -1,45 +1,45 @@
 import { File } from 'buffer';
 import { get as _get } from 'lodash';
-import React, { useId, useMemo } from 'react';
+import React, { useId } from 'react';
 
 import { ButtonIconRounded } from '../button';
 import { EIConTypes } from '../icon';
 import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
-import { EAvatarSizes } from './utils/avata.enum';
+import { EAvatarSizes } from './utils/avatar.enum';
 import { IAvatarComponentProps } from './utils/avatar.interface';
-import {
-  editableLabel,
-  topContainerLg,
-  topContainerMd,
-  topContainerSm,
-  topContainerXl,
-} from './avatar-css';
 
 export const Avatar = ({
   imgSrc,
   onError,
   onSuccess,
   name,
-  editable,
+  editable = false,
   size = EAvatarSizes.SM,
 }: IAvatarComponentProps) => {
-  const topContainerClasses = useMemo(() => {
-    if (size === EAvatarSizes.XL || editable) {
-      return topContainerXl.join(' ');
-    } else if (size === EAvatarSizes.LG) {
-      return topContainerLg.join(' ');
-    } else if (size === EAvatarSizes.MD) {
-      return topContainerMd.join(' ');
-    } else if (size === EAvatarSizes.SM) {
-      return topContainerSm.join(' ');
+  let sizesClasses = '';
+  if (editable || size === EAvatarSizes.XL) {
+    sizesClasses = 'border-[6px] w-[160px] h-[160px]';
+  } else {
+    switch (size) {
+      case EAvatarSizes.SM:
+        sizesClasses = 'w-[40px] h-[40px]';
+        break;
+      case EAvatarSizes.MD:
+        sizesClasses = 'border-[6px] w-[64px] h-[64px]';
+        break;
+      case EAvatarSizes.LG:
+        sizesClasses = 'border-[6px] w-[96px] h-[96px]';
+        break;
     }
-  }, [size, editable]);
+  }
 
   const identifier = useId();
   return (
-    <div className="c-avatar relative">
-      <div className={topContainerClasses}>
+    <div className="relative">
+      <div
+        className={`bg-violet-200 overflow-hidden rounded-full border-slate-100 ${sizesClasses}`}
+      >
         {imgSrc && (
           <Image
             src={imgSrc}
@@ -48,6 +48,7 @@ export const Avatar = ({
           />
         )}
       </div>
+
       {editable && (
         <div className="absolute bottom-0 right-0">
           <input
@@ -77,7 +78,10 @@ export const Avatar = ({
           />
 
           <div className="relative">
-            <label className={editableLabel.join(' ')} htmlFor={identifier} />
+            <label
+              className="cursor-pointer bg-transparent inline-block absolute top-0 left-0 bottom-0 w-16 h-16"
+              htmlFor={identifier}
+            />
 
             <ButtonIconRounded
               disabled={false}

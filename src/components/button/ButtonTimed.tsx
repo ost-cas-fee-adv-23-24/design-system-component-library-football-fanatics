@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/utils/icon.enum';
+import { EIConTypes, Icon } from '../icon';
 import TextToggle from '../textToggle/TextToggle';
 import { IPropsButtonTimed } from './utils/button.interface';
 
@@ -34,7 +33,9 @@ export const ButtonTimed = ({
           })
           .catch((error: Error) => {
             setRunningEffect(false);
-            onCopyError(error.message);
+            if (error && error.message) {
+              onCopyError(error.message);
+            }
           });
       }}
       type="button"

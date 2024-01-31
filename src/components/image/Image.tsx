@@ -1,13 +1,5 @@
-/**
- * Author: bladimirardiles
- * Component File Name: Image.js
- * Component Name: Image
- * Project: design-system
- * Date: Sat 09/12/2023 - 11:19
- */
-
-import { IImageComponentProps } from './image.interface';
 import { EImageLoadingType } from './image.enum';
+import { IImageComponentProps } from './image.interface';
 import { baseImageGeneral } from './image-css';
 
 export const Image = ({

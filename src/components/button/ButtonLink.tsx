@@ -1,7 +1,7 @@
+'use server';
 import React from 'react';
 
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/utils/icon.enum';
+import { Icon } from '../icon';
 import { IPropsLinkComponent } from './utils/button.interface';
 
 export const Link = ({
