@@ -4,23 +4,14 @@ import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
-
-interface IPropsButtonMenu {
-  label: string;
-  onCustomClick?: () => void;
-  disabled: boolean;
-  icon?: string;
-  href?: string;
-  imageSrc?: string;
-  openInNewTab?: boolean;
-}
+import { IPropsButtonMenu } from './utils/button.interface';
 
 export const ButtonMenu = ({
   label,
   icon,
   onCustomClick,
   imageSrc,
-  disabled,
+  disabled = false,
   href,
   openInNewTab = false,
 }: IPropsButtonMenu) => {

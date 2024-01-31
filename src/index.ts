@@ -1,6 +1,5 @@
 export * from './components/avatar/Avatar';
-export * from './components/button/Button';
-export * from './components/button/ButtonMenu';
+export * from './components/button';
 export * from './components/button/ButtonIcon';
 export * from './components/button/ButtonIconRounded';
 export * from './components/button/ButtonTimed';

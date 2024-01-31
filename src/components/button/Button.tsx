@@ -1,22 +1,18 @@
 import { Icon } from '../icon/Icon';
-import { EButtonSizes, EButtonTypes } from './button.enum';
-import { IButtonComponentProps } from './button.interface';
+import { EButtonSizes, EButtonTypes } from './utils/button.enum';
+import { IButtonComponentProps } from './utils/button.interface';
 
-/**
- * Primary UI component for user interaction
- */
 export const Button = ({
   type = EButtonTypes.PRIMARY,
   size = EButtonSizes.MEDIUM,
   icon,
   label,
-  onClickEvent,
+  onCustomClick,
   href,
   disabled = false,
   openInNewTab = false,
   fitParent = false,
 }: IButtonComponentProps) => {
-  const componentName = 'c-button';
   let cssClasses = 'rounded px-8 flex items-center justify-center'; // base
   cssClasses += ' font-poppins text-base not-italic font-semibold leading-4'; // typo
 
@@ -77,9 +73,9 @@ export const Button = ({
       className={cssClasses}
       aria-label={label}
       onClick={(evt) => {
-        if (onClickEvent && typeof onClickEvent === 'function') {
+        if (onCustomClick && typeof onCustomClick === 'function') {
           evt.preventDefault();
-          onClickEvent();
+          onCustomClick();
         }
       }}
       type="button"

@@ -2,14 +2,7 @@ import React from 'react';
 
 import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
-
-interface IPropsLinkComponent {
-  href: string;
-  openInNewTab?: boolean;
-  label: string;
-  icon?: EIConTypes;
-  iconPosition?: 'right' | 'left';
-}
+import { IPropsLinkComponent } from './utils/button.interface';
 
 export const Link = ({
   href,
@@ -45,7 +38,9 @@ export const Link = ({
       aria-label={label}
     >
       {icon && iconPosition === 'left' && iconMarkup}
+
       <span className={textClasses.join(' ')}>{label}</span>
+
       {icon && iconPosition === 'right' && iconMarkup}
     </a>
   );

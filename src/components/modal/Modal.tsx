@@ -1,20 +1,10 @@
-/**
- * Author: bladimirardiles
- * Component File Name: Modal.js
- * Component Name: Modal
- * Project: design-system
- * Date: Sun 10/12/2023 - 21:21
- */
-
 import React from 'react';
+
 import { Button } from '../button/Button';
-import { IModalComponentProps } from './modal.interface';
+import { EButtonTypes } from '../button/utils/button.enum';
+import { ButtonIcon } from '../button/ButtonIcon';
 import { EIConTypes } from '../icon/icon.enum';
-import {
-  EButtonIconPosition,
-  EButtonSizes,
-  EButtonTypes,
-} from '../button/button.enum';
+import { IModalComponentProps } from './modal.interface';
 import {
   actions,
   content,
@@ -45,13 +35,11 @@ export const Modal = ({
           <h5 className={`c-modal__title ${titleClasses.join(' ')}`}>
             {title}
           </h5>
-          {/*we can change the button for a div with a single icon with attached events. */}
-          {/*Or update the button to not show hover/pressed states*/}
-          <Button
-            size={EButtonSizes.SMALL}
+
+          <ButtonIcon
+            disabled={false}
             type={EButtonTypes.SECONDARY}
             label=""
-            onlyIcon={true}
             icon={EIConTypes.CANCEL}
             onClickEvent={onCancel} // set active to false in parent
           />
@@ -63,7 +51,6 @@ export const Modal = ({
           <div className="w-full mr-4">
             <Button
               fitParent={true}
-              iconPosition={EButtonIconPosition.RIGHT}
               icon={EIConTypes.CANCEL}
               label="Cancel"
               onClickEvent={() => {
@@ -75,7 +62,6 @@ export const Modal = ({
             <Button
               fitParent={true}
               type={EButtonTypes.SECONDARY}
-              iconPosition={EButtonIconPosition.RIGHT}
               icon={EIConTypes.CHECKMARK}
               label="Save"
               onClickEvent={() => {

@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../components/button/Button';
-import { EButtonSizes, EButtonTypes } from '../components/button/button.enum';
+import {
+  EButtonSizes,
+  EButtonTypes,
+} from '../components/button/utils/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
 
 const meta: Meta<typeof Button> = {

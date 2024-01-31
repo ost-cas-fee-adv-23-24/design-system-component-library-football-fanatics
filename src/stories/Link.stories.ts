@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { EButtonIconPosition } from '../components/button/button.enum';
+import { EButtonIconPosition } from '../components/button/utils/button.enum';
 import { EIConTypes } from '../components/icon/icon.enum';
 import { Link } from '../components/link/Link';
 

@@ -1,27 +1,18 @@
 import React from 'react';
 
 import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
-
-interface IPropsButtonIconRounded {
-  icon: EIConTypes;
-  label: string;
-  onClickEvent?: () => void;
-  disabled?: boolean;
-  href?: string;
-  openInNewTab?: boolean;
-}
+import { IPropsButtonIconRounded } from './utils/button.interface';
 
 export const ButtonIconRounded = ({
   icon,
-  disabled,
+  disabled = false,
   label,
-  onClickEvent,
+  onCustomClick,
   href,
   openInNewTab = false,
 }: IPropsButtonIconRounded) => {
   let cssClasses =
-    'py-8 px-8 text-white rounded-full bg-slate-600 flex items-center justify-center';
+    'py-4 px-4 text-white rounded-full bg-slate-600 flex items-center justify-center';
   cssClasses += ' hover:outline-[3px] hover:outline hover:outline-slate-100'; // hover states
   cssClasses += ' active:outline-[4px] active:outline active:outline-slate-200'; // active states
   cssClasses += ' bg-slate-600 text-white'; // colors states
@@ -50,7 +41,7 @@ export const ButtonIconRounded = ({
     <button
       className={cssClasses}
       aria-label={label}
-      onClick={onClickEvent}
+      onClick={onCustomClick}
       type="button"
       disabled={disabled}
     >

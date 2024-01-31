@@ -1,20 +1,12 @@
 import React from 'react';
 
 import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
-
-interface IPropsButtonIcon {
-  label: string;
-  onClickEvent?: () => void;
-  icon: string;
-  disabled: boolean;
-  type: 'primary' | 'secondary';
-}
+import { IPropsButtonIcon } from './utils/button.interface';
 
 export const ButtonIcon = ({
   label,
   icon,
-  onClickEvent,
+  onCustomClick,
   disabled,
   type,
 }: IPropsButtonIcon) => {
@@ -31,16 +23,16 @@ export const ButtonIcon = ({
       aria-label={label}
       className={cssClasses}
       onClick={(evt) => {
-        if (onClickEvent && typeof onClickEvent === 'function') {
+        if (onCustomClick && typeof onCustomClick === 'function') {
           evt.preventDefault();
-          onClickEvent();
+          onCustomClick();
         }
       }}
       type="button"
       disabled={disabled}
     >
       <span className="h-4 w-4 leading-none mr-[4px]">
-        <Icon type={icon as EIConTypes} />
+        <Icon type={icon} />
       </span>
 
       <span className="">{label}</span>

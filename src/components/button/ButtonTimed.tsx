@@ -3,17 +3,7 @@ import React from 'react';
 import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/icon.enum';
 import TextToggle from '../textToggle/TextToggle';
-
-interface IPropsButtonTimed {
-  label: string;
-  icon: string;
-  clipboardData: string;
-  clipboardHighlightDelay: number;
-  clipboardCopySuccessLabel: string;
-  onCustomClick: () => void;
-  onCopyError: (message: string) => void;
-  disabled: boolean;
-}
+import { IPropsButtonTimed } from './utils/button.interface';
 
 export const ButtonTimed = ({
   label,
@@ -22,7 +12,7 @@ export const ButtonTimed = ({
   clipboardData,
   onCopyError,
   icon,
-  disabled,
+  disabled = false,
 }: IPropsButtonTimed) => {
   const [runningEffect, setRunningEffect] = React.useState(false);
 

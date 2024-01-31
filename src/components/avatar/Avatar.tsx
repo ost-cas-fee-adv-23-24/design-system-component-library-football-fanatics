@@ -1,20 +1,13 @@
-/**
- * Author: bladimirardiles
- * Component File Name: Avatar.js
- * Component Name: Avatar
- * Project: design-system
- * Date: Sat 09/12/2023 - 11:34
- */
-
+import { File } from 'buffer';
+import { get as _get } from 'lodash';
 import React, { useId, useMemo } from 'react';
-import { IAvatarComponentProps } from './avatar.interface';
-import { Button } from '../button/Button';
+
+import { ButtonIconRounded } from '../button/ButtonIconRounded';
 import { EIConTypes } from '../icon/icon.enum';
 import { Image } from '../image/Image';
 import { EImageLoadingType } from '../image/image.enum';
-import { get as _get } from 'lodash';
-import { File } from 'buffer';
 import { EAvatarSizes } from './avata.enum';
+import { IAvatarComponentProps } from './avatar.interface';
 import {
   editableLabel,
   topContainerLg,
@@ -86,9 +79,9 @@ export const Avatar = ({
           <div className="relative">
             <label className={editableLabel.join(' ')} htmlFor={identifier} />
 
-            <Button
+            <ButtonIconRounded
+              disabled={false}
               label="edit"
-              onlyIcon={true}
               icon={EIConTypes.EDIT}
               onClickEvent={() => {}}
             />
