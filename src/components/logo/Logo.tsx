@@ -1,20 +1,12 @@
-/**
- * Author: bladimirardiles
- * Component File Name: Logo.js
- * Component Name: Logo
- * Project: design-system
- * Date: Tue 05/12/2023 - 21:19
- */
-
 import React, { useMemo } from 'react';
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/utils/icon.enum';
+
+import { EIConTypes, Icon } from '../icon';
+import { iconColors, logoLeft, logoTop } from './css';
+import { ELogoColors, ELogoPositions } from './logo.enum';
+import { ILogoComponentProps } from './logo.interface';
 import MumbleGradient from './svg/mumble_gradient';
 import MumbleViolet from './svg/mumble_violet';
 import MumbleWhite from './svg/mumble_white';
-import { iconColors, logoLeft, logoTop } from './css';
-import { ILogoComponentProps } from './logo.interface';
-import { ELogoColors, ELogoPositions } from './logo.enum';
 
 export const Logo = ({ color, logoPosition }: ILogoComponentProps) => {
   const componentName = 'c-logo';
@@ -67,8 +59,9 @@ export const Logo = ({ color, logoPosition }: ILogoComponentProps) => {
       <div
         className={`${positionDefinitions.logoContainer} ${sloganComponent.cssClasses}`}
       >
-        <Icon type={EIConTypes.MUMBLE} />
+        <Icon type={EIConTypes.MUMBLE} fitParent={true} />
       </div>
+
       <div className="c-logo__slogan">{sloganComponent.logo}</div>
     </div>
   );

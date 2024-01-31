@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { Button } from '../button/Button';
-import { EButtonTypes } from '../button/utils/button.enum';
-import { ButtonIcon } from '../button/ButtonIcon';
-import { EIConTypes } from '../icon/utils/icon.enum';
+import { Button, ButtonIcon, EButtonTypes } from '../button';
+import { EIConTypes } from '../icon';
 import { IModalComponentProps } from './modal.interface';
 import {
   actions,
@@ -41,7 +39,7 @@ export const Modal = ({
             type={EButtonTypes.SECONDARY}
             label=""
             icon={EIConTypes.CANCEL}
-            onClickEvent={onCancel} // set active to false in parent
+            onCustomClick={onCancel} // set active to false in parent
           />
         </div>
         <div className={`c-modal__content ${content.join(' ')}`}>
@@ -53,7 +51,7 @@ export const Modal = ({
               fitParent={true}
               icon={EIConTypes.CANCEL}
               label="Cancel"
-              onClickEvent={() => {
+              onCustomClick={() => {
                 onCancel(); // set active to false in parent
               }}
             />
@@ -64,7 +62,7 @@ export const Modal = ({
               type={EButtonTypes.SECONDARY}
               icon={EIConTypes.CHECKMARK}
               label="Save"
-              onClickEvent={() => {
+              onCustomClick={() => {
                 onSave();
               }}
             />

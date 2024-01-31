@@ -1,6 +1,6 @@
 import React from 'react';
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/utils/icon.enum';
+
+import { EIConTypes, Icon } from '../icon';
 
 interface IProps {
   href: string;
@@ -44,7 +44,9 @@ export const Link = ({
       aria-label={label}
     >
       {icon && iconPosition === 'left' && iconMarkup}
+
       <span className={textClasses.join(' ')}>{label}</span>
+
       {icon && iconPosition === 'right' && iconMarkup}
     </a>
   );
