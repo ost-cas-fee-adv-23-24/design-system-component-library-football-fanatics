@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { EIConTypes } from '../components/icon/utils/icon.enum';
-import { InputFieldGroup } from '../components/input-group/InputFieldGroup';
+
+import { EIConTypes } from '../components/icon';
+import {
+  EAutoCapitalizeOptions,
+  EAutoCorrectOptions,
+  EInputFieldGroupType,
+  EStateInputFieldGroup,
+  InputFieldGroup,
+} from '../components/input-group';
 import IconOptions from './Icon.stories';
 
 const meta: Meta<typeof InputFieldGroup> = {
@@ -9,17 +16,7 @@ const meta: Meta<typeof InputFieldGroup> = {
   tags: ['autodocs'],
   argTypes: {
     as: {
-      options: [
-        'text',
-        'password',
-        'email',
-        'number',
-        'tel',
-        'url',
-        'search',
-        'file',
-        'hidden',
-      ],
+      options: EInputFieldGroupType,
       control: { type: 'select' },
     },
     labelText: {
@@ -38,18 +35,19 @@ const meta: Meta<typeof InputFieldGroup> = {
       controls: { type: 'boolean' },
     },
     state: {
-      options: ['default', 'error', 'success'],
+      options: EStateInputFieldGroup,
       control: { type: 'select' },
     },
     icon: {
-      options: IconOptions,
+      options: EIConTypes,
+      control: { type: 'select' },
     },
     autoCorrect: {
-      options: ['on', 'off'],
+      options: EAutoCorrectOptions,
       control: { type: 'select' },
     },
     autoCapitalize: {
-      options: ['sentences', 'on', 'words', 'characters', 'off', 'none'],
+      options: EAutoCapitalizeOptions,
     },
     spellCheck: {
       controls: { type: 'boolean' },
@@ -62,26 +60,26 @@ type Story = StoryObj<typeof meta>;
 
 export const InputDefault: Story = {
   args: {
-    as: 'text',
+    as: EInputFieldGroupType.TEXT,
     labelText: 'Label',
     placeholder: 'Placeholder',
     errorMessage: 'Error Message',
     text: 'Text',
     required: true,
-    state: 'default',
+    state: EStateInputFieldGroup.DEFAULT,
     icon: EIConTypes.MUMBLE,
   },
 };
 
 export const InputError: Story = {
   args: {
-    as: 'text',
+    as: EInputFieldGroupType.TEXT,
     labelText: 'Label',
     placeholder: 'Placeholder',
     errorMessage: 'Error Message',
     text: 'Text',
     required: true,
-    state: 'error',
+    state: EStateInputFieldGroup.ERROR,
     icon: EIConTypes.MUMBLE,
   },
 };

@@ -1,3 +1,4 @@
+'use server';
 import { EImageLoadingType } from './utils/image.enum';
 import { IImageComponentProps } from './utils/image.interface';
 

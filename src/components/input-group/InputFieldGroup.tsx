@@ -1,51 +1,35 @@
+'use client';
 import clsx from 'clsx';
 import React, { useId } from 'react';
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/utils/icon.enum';
-import { TIconType } from '../icon/utils/icon.interface';
-import { Label } from '../label/Label';
 
-export interface IInputFieldGroupProps {
-  text?: string;
-  placeholder: string;
-  as:
-    | 'text'
-    | 'password'
-    | 'email'
-    | 'number'
-    | 'tel'
-    | 'url'
-    | 'search'
-    | 'file'
-    | 'hidden';
-  state: 'default' | 'error' | 'success';
-  required?: boolean;
-  icon?: TIconType;
-  labelText: string;
-  errorMessage?: string;
-  spellCheck?: boolean;
-  autoCapitalize?: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
-  autoCorrect?: 'on' | 'off';
-}
+import { EIConTypes, Icon } from '../icon';
+import { Label } from '../label';
+import { IInputFieldGroupProps } from './utils/inputFieldGroup.interface';
+import {
+  EAutoCapitalizeOptions,
+  EAutoCorrectOptions,
+  EInputFieldGroupType,
+  EStateInputFieldGroup,
+} from './utils/inputFielfGroup.enum';
 
 export const InputFieldGroup = ({
   text,
   placeholder,
-  as = 'text',
-  state = 'default',
+  as = EInputFieldGroupType.TEXT,
+  state = EStateInputFieldGroup.DEFAULT,
   required = false,
   icon,
   labelText,
   errorMessage,
   spellCheck = false,
-  autoCapitalize = 'off',
-  autoCorrect = 'off',
+  autoCapitalize = EAutoCapitalizeOptions.OFF,
+  autoCorrect = EAutoCorrectOptions.OFF,
 }: IInputFieldGroupProps) => {
   const [inputText, setInputText] = React.useState(text ? text : '');
   const inputId = useId();
 
   return (
-    <div className="c-input-group flex flex-col gap-1">
+    <div className="flex flex-col gap-1">
       <div className="text-slate-700">
         <Label size="M" text={labelText} htmlFor={inputId} />
       </div>
@@ -65,19 +49,20 @@ export const InputFieldGroup = ({
             'rounded-lg outline-transparent border-solid border border-slate-200 bg-slate-50 placeholder text-slate-700 w-full h-12 p-4',
             'hover:border-violet-600',
             'focus:outline focus:outline-2',
-            state === 'default' && 'focus:border-none focus:outline-violet-600',
-            state === 'error' &&
+            state === EStateInputFieldGroup.DEFAULT &&
+              'focus:border-none focus:outline-violet-600',
+            state === EStateInputFieldGroup.ERROR &&
               'outline outline-2 outline-red hover:border-red',
-            state == 'success' && '',
+            state == EStateInputFieldGroup.DEFAULT && '',
           )}
         />
 
         <span
           className={clsx(
             'absolute flex items-center p-4 right-0 bottom-0',
-            state === 'default' && 'text-slate-600',
-            state === 'error' && 'text-red',
-            state === 'success' && '',
+            state === EStateInputFieldGroup.DEFAULT && 'text-slate-600',
+            state === EStateInputFieldGroup.ERROR && 'text-red',
+            state === EStateInputFieldGroup.SUCCESS && '',
           )}
         >
           {state === 'error' ? (
@@ -87,7 +72,8 @@ export const InputFieldGroup = ({
           )}
         </span>
       </div>
-      {state === 'error' && errorMessage && (
+
+      {state === EStateInputFieldGroup.ERROR && errorMessage && (
         <div className="text-red text-right font-poppins text-xs leading-3 font-medium w-full">
           <span>{errorMessage} </span>
         </div>
