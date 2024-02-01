@@ -2,16 +2,9 @@ import React from 'react';
 
 import { Button, ButtonIcon, EButtonTypes } from '../button';
 import { EIConTypes } from '../icon';
-import { IModalComponentProps } from './modal.interface';
-import {
-  actions,
-  content,
-  header,
-  overlay,
-  title as titleClasses,
-  topContainer,
-} from './modal-css';
+import { IModalComponentProps } from './utils/modal.interface';
 
+// TODO ADD Accessibility
 export const Modal = ({
   children,
   onSave,
@@ -21,16 +14,20 @@ export const Modal = ({
 }: IModalComponentProps) => {
   return (
     <div
-      className={`c-modal ${active ? overlay.join(' ') : 'hidden'}`}
+      className={`${
+        active
+          ? 'bg-violet-500 bg-opacity-10 relative w-screen h-screen flex items-center justify-center z-40'
+          : 'hidden'
+      }`}
       onKeyDown={(evt) => {
         if (evt.key === 'Escape') {
           onCancel(); // set active to false in parent
         }
       }}
     >
-      <div className={`c-modal__wrapper ${topContainer.join(' ')}`}>
-        <div className={`c-modal__header ${header.join(' ')}`}>
-          <h5 className={`c-modal__title ${titleClasses.join(' ')}`}>
+      <div className="w-[600px] flex flex-col m-2">
+        <div className="bg-violet-600 flex pt-6 pb-6 pl-8 pr-8 justify-between items-center self-stretch rounded-t-2xl">
+          <h5 className="text-white text-3xl not-italic font-semibold leading-10">
             {title}
           </h5>
 
@@ -42,10 +39,10 @@ export const Modal = ({
             onCustomClick={onCancel} // set active to false in parent
           />
         </div>
-        <div className={`c-modal__content ${content.join(' ')}`}>
-          {children}
-        </div>
-        <div className={`c-modal__actions ${actions.join(' ')}`}>
+
+        <div className="bg-white py-8 px-8 grow">{children}</div>
+
+        <div className="bg-white flex justify-between py-8 px-8">
           <div className="w-full mr-4">
             <Button
               fitParent={true}
@@ -56,6 +53,7 @@ export const Modal = ({
               }}
             />
           </div>
+
           <div className="w-full">
             <Button
               fitParent={true}

@@ -68,6 +68,14 @@ export const Button = ({
     cssClasses += ' w-full';
   }
 
+  const iconMarkup = (
+    <span className="inline-block h-4 w-4 leading-none">
+      <Icon type={icon} />
+    </span>
+  );
+
+  const labelMarkup = <span className="mr-2">{label}</span>;
+
   if (href) {
     return (
       <a
@@ -76,15 +84,9 @@ export const Button = ({
         target={openInNewTab ? '_blank' : '_self'}
         aria-label={label}
       >
-        <span className="mr-2">{label}</span>
+        {labelMarkup}
 
-        <span
-          className={`inline-block ${
-            EButtonSizes.LARGE ? 'h-4 w-4 leading-none' : 'h-4 w-4 leading-none'
-          }`}
-        >
-          <Icon type={icon} />
-        </span>
+        {iconMarkup}
       </a>
     );
   }
@@ -101,15 +103,9 @@ export const Button = ({
       type="button"
       disabled={disabled}
     >
-      <span className="mr-2">{label}</span>
+      {labelMarkup}
 
-      <span
-        className={`inline-block ${
-          EButtonSizes.LARGE ? 'h-4 w-4 leading-none' : 'h-4 w-4 leading-none'
-        }`}
-      >
-        <Icon type={icon} />
-      </span>
+      {iconMarkup}
     </button>
   );
 };

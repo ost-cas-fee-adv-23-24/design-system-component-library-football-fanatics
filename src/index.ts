@@ -5,7 +5,7 @@ export * from './components/input-group';
 export * from './components/image';
 export * from './components/label';
 export * from './components/logo';
-export * from './components/modal/Modal';
+export * from './components/modal';
 export * from './components/tabs/Tabs';
 export * from './components/textarea/Textarea';
 export * from './components/toggle';
