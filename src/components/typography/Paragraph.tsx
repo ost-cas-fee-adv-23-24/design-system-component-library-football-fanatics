@@ -1,10 +1,12 @@
 'use server';
 import clsx from 'clsx';
 
+import { EParagraphSizes, EParagraphTypes } from './utils/typography.enum';
+
 export interface IParagraphProps {
-  size: 'L' | 'M';
+  size: EParagraphSizes;
   text: string;
-  as?: 'p' | 'span';
+  as?: EParagraphTypes;
 }
 
 const mapDesign = {
@@ -15,7 +17,7 @@ const mapDesign = {
 export const Paragraph = ({
   text,
   size,
-  as: ParagraphComponent = 'p',
+  as: ParagraphComponent = EParagraphTypes.PARAGRAPH,
 }: IParagraphProps) => {
   return (
     <ParagraphComponent

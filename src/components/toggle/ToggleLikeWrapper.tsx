@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { IToggleBase } from './toggle.interfaces';
+import { IToggleBase } from './utils/toggle.interface';
 import { ToggleLike } from './ToggleLike';
 
 // this component should not be exported in the package

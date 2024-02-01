@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { EButtonTypes } from '../components/button/utils/button.enum';
-import { EIConTypes } from '../components/icon/utils/icon.enum';
-import { ButtonIcon } from '../components/button/ButtonIcon';
+import { ButtonIcon } from '../components/button';
+import { EButtonTypes } from '../components/button';
+import { EIConTypes } from '../components/icon';
 
 const meta: Meta<typeof ButtonIcon> = {
   title: 'Components/IconButtons',
@@ -29,7 +29,7 @@ export const IconButtonUserBlue: Story = {
     type: EButtonTypes.PRIMARY,
     label: 'Username',
     icon: EIConTypes.PROFILE,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -38,7 +38,7 @@ export const IconButtonTimestampGray: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Timestamp',
     icon: EIConTypes.TIME,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -47,7 +47,7 @@ export const IconButtonLocationGray: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Location',
     icon: EIConTypes.LOCATION,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -56,6 +56,6 @@ export const IconButtonJoinedGray: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Joined',
     icon: EIConTypes.CALENDAR,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };

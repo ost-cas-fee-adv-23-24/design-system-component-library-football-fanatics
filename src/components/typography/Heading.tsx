@@ -1,41 +1,41 @@
 'use server';
 import clsx from 'clsx';
 
-export interface ITypographyProps {
-  level: '1' | '2' | '3' | '4';
-  text: string;
-}
+import { ETypographyLevels } from './utils/typography.enum';
+import { ITypographyProps } from './utils/typography.interface';
 
 const mapDesign = {
-  '1': 'text-5xl not-italic font-bold leading-tight',
-  '2': 'text-[40px] not-italic font-bold leading-tight',
-  '3': 'text-[32px] not-italic font-semibold ',
-  '4': 'text-2xl not-italic font-semibold leading-tight',
+  [ETypographyLevels.ONE]: 'text-5xl not-italic font-bold leading-tight',
+  [ETypographyLevels.TWO]: 'text-[40px] not-italic font-bold leading-tight',
+  [ETypographyLevels.THREE]: 'text-[32px] not-italic font-semibold ',
+  [ETypographyLevels.FOUR]: 'text-2xl not-italic font-semibold leading-tight',
 };
+
+const baseTypo = 'text-slate-600 font-poppins';
 
 export const Heading = ({ text, level }: ITypographyProps) => {
   switch (level) {
-    case '1':
+    case ETypographyLevels.ONE:
       return (
-        <h1 className={clsx('text-slate-600 font-poppins', mapDesign[level])}>
+        <h1 className={clsx(baseTypo, mapDesign[ETypographyLevels.ONE])}>
           {text}
         </h1>
       );
-    case '2':
+    case ETypographyLevels.TWO:
       return (
-        <h2 className={clsx('text-slate-600 font-poppins', mapDesign[level])}>
+        <h2 className={clsx(baseTypo, mapDesign[ETypographyLevels.TWO])}>
           {text}
         </h2>
       );
-    case '3':
+    case ETypographyLevels.THREE:
       return (
-        <h3 className={clsx('text-slate-600 font-poppins', mapDesign[level])}>
+        <h3 className={clsx(baseTypo, mapDesign[ETypographyLevels.THREE])}>
           {text}
         </h3>
       );
-    case '4':
+    case ETypographyLevels.FOUR:
       return (
-        <h4 className={clsx('text-slate-600 font-poppins', mapDesign[level])}>
+        <h4 className={clsx(baseTypo, mapDesign[ETypographyLevels.FOUR])}>
           {text}
         </h4>
       );

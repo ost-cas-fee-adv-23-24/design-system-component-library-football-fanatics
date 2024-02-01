@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Icon } from '../icon/Icon';
 import { EIConTypes } from '../icon/utils/icon.enum';
 import TextToggle from '../textToggle/TextToggle';
-import { IToggleLikeComponentProps } from './toggle.interfaces';
+import { IToggleLikeComponentProps } from './utils/toggle.interface';
 
 export const ToggleLike = ({
   labelSingular,

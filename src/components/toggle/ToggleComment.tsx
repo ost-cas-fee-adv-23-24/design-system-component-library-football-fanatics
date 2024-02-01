@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/utils/icon.enum';
-import { IToggleCommentsComponentProps } from './toggle.interfaces';
+import { EIConTypes, Icon } from '../icon';
+import { IToggleCommentsComponentProps } from './utils/toggle.interface';
 
 export const ToggleComment = ({
   labelSingular,
