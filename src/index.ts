@@ -7,7 +7,7 @@ export * from './components/label';
 export * from './components/logo';
 export * from './components/modal';
 export * from './components/tabs';
-export * from './components/textarea/Textarea';
+export * from './components/textarea';
 export * from './components/toggle';
 export * from './components/typography';
 
