@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IProps {
-  isRunningToggle: boolean;
-  mainText: string;
-  secondaryText: string;
-}
+import { ITextToggleProps } from './utils/textToggle.interface';
 
-const TextToggle = ({ isRunningToggle, mainText, secondaryText }: IProps) => {
+const TextToggle = ({
+  isRunningToggle,
+  mainText,
+  secondaryText,
+}: ITextToggleProps) => {
   return (
     <div className="flex relative h-4">
       <div

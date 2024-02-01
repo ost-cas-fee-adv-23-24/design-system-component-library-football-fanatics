@@ -24,8 +24,3 @@ export enum EAutoCapitalizeOptions {
   WORDS = 'words',
   CHARACTERS = 'characters',
 }
-
-export enum EAutoCorrectOptions {
-  ON = 'on',
-  OFF = 'off',
-}

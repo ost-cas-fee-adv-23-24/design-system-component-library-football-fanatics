@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Textarea } from '../components/textarea/Textarea';
+
+import { EStateCommonOnOff, Textarea } from '../components/textarea';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Components/Textarea',
@@ -54,7 +55,7 @@ export const FilledTextarea: Story = {
     value: 'This is a textarea',
     placeholder: 'Placeholder',
     required: false,
-    autoCorrect: 'on',
+    autoCorrect: EStateCommonOnOff.OFF,
     spellCheck: true,
     minLength: 0,
     maxLength: 100,
@@ -70,7 +71,7 @@ export const EmptyTextarea: Story = {
     value: '',
     placeholder: 'This is the Placeholder',
     required: true,
-    autoCorrect: 'off',
+    autoCorrect: EStateCommonOnOff.OFF,
     spellCheck: false,
     disabled: false,
     readOnly: false,

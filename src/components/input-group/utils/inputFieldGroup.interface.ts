@@ -1,7 +1,7 @@
 import { EIConTypes } from '../../icon';
+import { EStateCommonOnOff } from '../../textarea/utils/textArea.enum';
 import {
   EAutoCapitalizeOptions,
-  EAutoCorrectOptions,
   EInputFieldGroupType,
   EStateInputFieldGroup,
 } from './inputFielfGroup.enum';
@@ -17,5 +17,5 @@ export interface IInputFieldGroupProps {
   errorMessage?: string;
   spellCheck?: boolean;
   autoCapitalize?: EAutoCapitalizeOptions;
-  autoCorrect?: EAutoCorrectOptions;
+  autoCorrect?: EStateCommonOnOff;
 }
