@@ -4,10 +4,10 @@ import React, { useId } from 'react';
 
 import { EIConTypes, Icon } from '../icon';
 import { ELabelSize, Label } from '../label';
+import { EStateCommonOnOff } from '../textarea';
 import { IInputFieldGroupProps } from './utils/inputFieldGroup.interface';
 import {
   EAutoCapitalizeOptions,
-  EAutoCorrectOptions,
   EInputFieldGroupType,
   EStateInputFieldGroup,
 } from './utils/inputFielfGroup.enum';
@@ -23,7 +23,7 @@ export const InputFieldGroup = ({
   errorMessage,
   spellCheck = false,
   autoCapitalize = EAutoCapitalizeOptions.OFF,
-  autoCorrect = EAutoCorrectOptions.OFF,
+  autoCorrect = EStateCommonOnOff.OFF,
 }: IInputFieldGroupProps) => {
   const [inputText, setInputText] = React.useState(text ? text : '');
   const inputId = useId();
