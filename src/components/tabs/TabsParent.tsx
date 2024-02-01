@@ -1,27 +1,13 @@
 import React, { useState } from 'react';
 
 import { Tabs } from './Tabs';
+import { ITabsItemProps } from './utils/tabs.interface';
 
-const tabsData = [
-  {
-    isActive: true,
-    text: 'Tabbb 1',
-    identifier: 'tab-1',
-  },
-  {
-    isActive: false,
-    text: 'Tab 2',
-    identifier: 'tab-2',
-  },
-  {
-    isActive: false,
-    text: 'Tabitete 3',
-    identifier: 'tab-3',
-  },
-];
-
-export const TabsGroup = () => {
-  const [tabItems, setTabs] = useState(tabsData);
+interface IProps {
+  tabItemsMock: Array<ITabsItemProps>;
+}
+export const TabsGroup = ({ tabItemsMock }: IProps) => {
+  const [tabItems, setTabs] = useState<Array<ITabsItemProps>>(tabItemsMock);
 
   const updateSelection = (tabIndexNumber: number) => {
     const tabsUpdated = tabItems.map((tabItem, index) => {

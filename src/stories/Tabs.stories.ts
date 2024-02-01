@@ -7,8 +7,10 @@ const meta: Meta<typeof TabsGroup> = {
   component: TabsGroup,
   tags: ['autodocs'],
   argTypes: {
-    tabItems: {
-      controls: { type: 'object' },
+    tabItemsMock: {
+      table: {
+        disable: true,
+      },
     },
   },
 };
@@ -18,18 +20,26 @@ type Story = StoryObj<typeof meta>;
 
 export const Tabs: Story = {
   args: {
-    tabItems: [
+    tabItemsMock: [
       {
-        text: 'Tab 0',
         isActive: true,
+        text: 'Tabbb 1',
+        identifier: 'tab-1',
       },
       {
-        text: 'Tab 1',
         isActive: false,
-      },
-      {
         text: 'Tab 2',
+        identifier: 'tab-2',
+      },
+      {
         isActive: false,
+        text: 'Tabitete 3',
+        identifier: 'tab-3',
+      },
+      {
+        isActive: false,
+        text: 'Tabitete 4',
+        identifier: 'tab-4',
       },
     ],
   },

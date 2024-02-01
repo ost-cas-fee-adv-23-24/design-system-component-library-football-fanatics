@@ -1,23 +1,7 @@
 import clsx from 'clsx';
 import React, { useEffect, useRef } from 'react';
 
-export interface ITabsItemProps {
-  isActive: boolean;
-  text: string;
-  onClick?: () => void;
-  width: number;
-  notifyValueToParent: ({
-    width,
-    identifier,
-    position,
-  }: {
-    identifier: string;
-    width: number;
-    position: number;
-  }) => void;
-  position: number;
-  identifier: string;
-}
+import { ITabSingleItemProps } from './utils/tabs.interface';
 
 export const TabsItem = ({
   position,
@@ -26,7 +10,7 @@ export const TabsItem = ({
   onClick,
   notifyValueToParent,
   identifier,
-}: ITabsItemProps) => {
+}: ITabSingleItemProps) => {
   const ref = useRef(null);
   const [width, setWidth] = React.useState(0);
 
@@ -50,7 +34,14 @@ export const TabsItem = ({
         isActive ? 'text-violet-600  ' : 'text-slate-600 hover:text-slate-800',
       )}
     >
-      <button aria-label="Tab Item" onClick={onClick}>
+      <button
+        aria-label="Tab Item"
+        onClick={() => {
+          if (typeof onClick === 'function') {
+            onClick();
+          }
+        }}
+      >
         {text}
       </button>
     </li>
