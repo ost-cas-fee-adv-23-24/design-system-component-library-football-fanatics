@@ -30,7 +30,7 @@ export const TabsItem = ({
       ref={ref}
       className={clsx(
         'cursor-pointer rounded-md py-[10px] px-[14px]',
-        'text-xl not-italic font-semibold leading-none text-current font-poppins',
+        'text-xl not-italic font-semibold leading-none text-current font-poppins transition-all ease-in duration-300',
         isActive ? 'text-violet-600  ' : 'text-slate-600 hover:text-slate-800',
       )}
     >
