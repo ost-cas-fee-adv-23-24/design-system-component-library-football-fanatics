@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import React, { useId } from 'react';
 
 import { EIConTypes, Icon } from '../icon';
-import { Label } from '../label';
+import { ELabelSize, Label } from '../label';
 import { IInputFieldGroupProps } from './utils/inputFieldGroup.interface';
 import {
   EAutoCapitalizeOptions,
@@ -31,7 +31,7 @@ export const InputFieldGroup = ({
   return (
     <div className="flex flex-col gap-1">
       <div className="text-slate-700">
-        <Label size="M" text={labelText} htmlFor={inputId} />
+        <Label size={ELabelSize.M} text={labelText} htmlFor={inputId} />
       </div>
 
       <div className="relative">
