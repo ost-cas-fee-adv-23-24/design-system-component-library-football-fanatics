@@ -5,7 +5,7 @@ import React, { useId } from 'react';
 import { ButtonIconRounded } from '../button';
 import { EIConTypes } from '../icon';
 import { Image } from '../image/Image';
-import { EImageLoadingType } from '../image/image.enum';
+import { EImageLoadingType } from '../image/utils/image.enum';
 import { EAvatarSizes } from './utils/avatar.enum';
 import { IAvatarComponentProps } from './utils/avatar.interface';
 

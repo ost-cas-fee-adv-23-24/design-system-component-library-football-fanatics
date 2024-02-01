@@ -1,20 +1,15 @@
-import { EImageLoadingType } from './image.enum';
-import { IImageComponentProps } from './image.interface';
-import { baseImageGeneral } from './image-css';
+import { EImageLoadingType } from './utils/image.enum';
+import { IImageComponentProps } from './utils/image.interface';
 
 export const Image = ({
   src,
   loadingType = EImageLoadingType.EAGER,
   alt,
 }: IImageComponentProps) => {
-  const componentName = 'c-image';
-
   return (
-    <div
-      className={`${componentName} ${baseImageGeneral.topContainer.join(' ')}`}
-    >
+    <div className="relative block">
       <img
-        className={`${baseImageGeneral.imageContainer.join(' ')}`}
+        className="block max-w-full w-full object-cover object-center"
         src={src}
         alt={alt}
         loading={loadingType}

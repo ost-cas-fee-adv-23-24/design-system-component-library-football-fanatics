@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Link } from '../components/button';
 import { EIConTypes } from '../components/icon';
-import { Link } from '../components/link/Link';
 
 const meta: Meta<typeof Link> = {
   title: 'Components/Link',

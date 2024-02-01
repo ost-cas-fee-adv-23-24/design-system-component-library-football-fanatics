@@ -3,7 +3,7 @@ import React from 'react';
 
 import { EIConTypes, Icon } from '../icon';
 import { Image } from '../image/Image';
-import { EImageLoadingType } from '../image/image.enum';
+import { EImageLoadingType } from '../image/utils/image.enum';
 import { IPropsButtonMenu } from './utils/button.interface';
 
 export const ButtonMenu = ({
