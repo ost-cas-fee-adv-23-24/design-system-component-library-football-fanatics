@@ -1,4 +1,3 @@
-'use server';
 import clsx from 'clsx';
 
 import { ELabelSize } from './utils/label.enum';

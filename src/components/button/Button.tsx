@@ -1,4 +1,3 @@
-'use client';
 import { Icon } from '../icon';
 import { EButtonSizes, EButtonTypes } from './utils/button.enum';
 import { IButtonComponentProps } from './utils/button.interface';

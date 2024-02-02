@@ -1,4 +1,3 @@
-'use server';
 import clsx from 'clsx';
 
 import { EParagraphSizes, EParagraphTypes } from './utils/typography.enum';

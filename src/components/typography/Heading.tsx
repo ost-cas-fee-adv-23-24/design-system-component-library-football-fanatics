@@ -1,4 +1,3 @@
-'use server';
 import clsx from 'clsx';
 
 import { ETypographyLevels } from './utils/typography.enum';

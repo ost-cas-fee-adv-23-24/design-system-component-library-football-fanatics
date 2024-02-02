@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/utils/icon.enum';
+import { Icon } from '../icon';
+import { EIConTypes } from '../icon';
 import TextToggle from '../textToggle/TextToggle';
 import { IToggleLikeComponentProps } from './utils/toggle.interface';
 

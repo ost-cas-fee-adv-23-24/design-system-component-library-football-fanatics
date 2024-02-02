@@ -1,4 +1,3 @@
-'use server';
 import React, { useMemo } from 'react';
 
 import arrowDownIcon from './svg/arrow-down';

@@ -10,6 +10,7 @@ export * from './components/tabs';
 export * from './components/textarea';
 export * from './components/toggle';
 export * from './components/typography';
+export * from './config/tailwind';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {};
