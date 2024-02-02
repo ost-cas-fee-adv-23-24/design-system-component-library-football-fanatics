@@ -1,6 +1,6 @@
 {
   "name": "@ost-cas-fee-adv-23-24/elbmum-design",
-  "version": "0.1.0",
+  "version": "1.35.0-beta3",
   "description": "Design System Component Library",
   "keywords": [
     "tailwindcss",
@@ -32,7 +32,7 @@
     "build:clean": "rm -rf ./lib",
     "build:esm": "tsc -p ./tsconfig.esm.json",
     "build:cjs": "tsc -p ./tsconfig.cjs.json && mv lib/cjs/index.js lib/cjs/index.cjs",
-    "build:tailwind": "npx tailwindcss -i ./src/globals/globals.css -o ./lib/globals.css --minify && cp ./tailwind.config.ts ./lib",
+    "build:tailwind": "npx tailwindcss -i ./src/globals/globals.css -o ./lib/globals.css --minify",
     "start": "storybook dev -p 6006",
     "lint": "next lint --fix --dir .",
     "format:check": "prettier . --check",
@@ -89,7 +89,7 @@
     ".": {
       "types": "./lib/types/index.d.ts",
       "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js"
+      "require": "./lib/cjs/index.cjs"
     },
     "./index.css": "./lib/globals.css",
     "./tailwind.config.js": "./lib/tailwind.config.js"
