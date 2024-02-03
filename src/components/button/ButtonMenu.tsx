@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { EIConTypes, Icon } from '../icon';
-import { Image } from '../image/Image';
-import { EImageLoadingType } from '../image/utils/image.enum';
+import { Image } from '../image';
+import { EImageLoadingType } from '../image';
 import { IPropsButtonMenu } from './utils/button.interface';
 
 export const ButtonMenu = ({
