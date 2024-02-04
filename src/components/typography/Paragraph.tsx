@@ -6,9 +6,9 @@ export const Paragraph = ({
   size,
   as: ParagraphComponent = EParagraphTypes.PARAGRAPH,
 }: IParagraphProps) => {
-  let cssClasses = 'text-slate-600 font-poppins not-italic';
-  const largeDefinitions = ' text-2xl font-medium leading-[1.45]';
-  const mediumDefinitions = ' text-lg font-bold leading-[1.40]';
+  let cssClasses = 'text-slate-600 font-poppins not-italic font-medium';
+  const largeDefinitions = ' text-2xl leading-[1.45]';
+  const mediumDefinitions = ' text-lg leading-[1.40]';
 
   if (size === EParagraphSizes.LARGE) {
     cssClasses += largeDefinitions;
