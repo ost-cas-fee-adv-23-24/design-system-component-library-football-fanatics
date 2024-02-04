@@ -16,7 +16,7 @@ export const ToggleLike = ({
   const [toggleEffectActive, setToggleEffectActive] = useState(false);
 
   const cssBase =
-    'group px-6 py-4 flex items-center justify-center rounded-2xl transition-all ease-in delay-50 font-poppins text-base not-italic font-semibold leading-4 hover:text-pink-600 hover:bg-pink-50';
+    'group px-3 py-2 flex items-center justify-center rounded-2xl transition-all ease-in delay-50 font-poppins text-base not-italic font-semibold leading-4 hover:text-pink-600 hover:bg-pink-50';
 
   return (
     <button
