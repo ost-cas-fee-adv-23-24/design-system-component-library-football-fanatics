@@ -10,9 +10,15 @@ const mapDesign = {
   [ETypographyLevels.FOUR]: 'text-2xl not-italic font-semibold leading-tight',
 };
 
-const baseTypo = 'text-slate-600 font-poppins';
+export const Heading = ({
+  text,
+  level,
+  inheritColor = false,
+}: ITypographyProps) => {
+  const baseTypo = `${
+    inheritColor ? 'text-inherit' : 'text-slate-600'
+  } font-poppins`;
 
-export const Heading = ({ text, level }: ITypographyProps) => {
   switch (level) {
     case ETypographyLevels.ONE:
       return (
