@@ -19,17 +19,17 @@ export const Avatar = ({
 }: IAvatarComponentProps) => {
   let sizesClasses = '';
   if (editable || size === EAvatarSizes.XL) {
-    sizesClasses = 'border-[6px] w-[160px] h-[160px]';
+    sizesClasses = 'border-[6px] w-[172px] h-[172px]';
   } else {
     switch (size) {
       case EAvatarSizes.SM:
         sizesClasses = 'w-[40px] h-[40px]';
         break;
       case EAvatarSizes.MD:
-        sizesClasses = 'border-[6px] w-[64px] h-[64px]';
+        sizesClasses = 'border-[6px] w-[76px] h-[76px]';
         break;
       case EAvatarSizes.LG:
-        sizesClasses = 'border-[6px] w-[96px] h-[96px]';
+        sizesClasses = 'border-[6px] w-[108px] h-[108px]';
         break;
     }
   }
@@ -63,12 +63,16 @@ export const Avatar = ({
                   null,
                 );
                 if (imageFile) {
-                  onSuccess(imageFile as File);
+                  if (onSuccess && typeof onSuccess === 'function') {
+                    onSuccess(imageFile as File);
+                  }
                 } else {
                   throw new Error('No image selected/found');
                 }
               } catch (error) {
-                onError(error as Error);
+                if (onError && typeof onError === 'function') {
+                  onError(error as Error);
+                }
               }
             }}
             name={identifier}
