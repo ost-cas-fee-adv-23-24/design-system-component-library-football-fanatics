@@ -15,7 +15,7 @@ export const ButtonMenu = ({
   openInNewTab = false,
 }: IPropsButtonMenu) => {
   let cssClasses =
-    'inline-flex h-[54px] p-2 w-[54px] flex-col justify-center items-center flex-shrink-0 bg-violet-600 text-white rounded-lg'; //layout
+    'inline-flex h-[54px] p-2 min-w-[54px] flex-col justify-center items-center flex-shrink-0 bg-violet-600 text-white rounded-lg'; //layout
   cssClasses += ' font-poppins text-base not-italic font-semibold leading-4'; // font
   cssClasses += ' hover:bg-violet-700'; // states
 

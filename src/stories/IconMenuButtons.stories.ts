@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ButtonMenu } from '../components/button/ButtonMenu';
-import { EIConTypes } from '../components/icon/utils/icon.enum';
+import { ButtonMenu } from '../components/button';
+import { EIConTypes } from '../components/icon';
 
 const meta: Meta<typeof ButtonMenu> = {
   title: 'Components/IconMenuButtons',
@@ -66,7 +66,7 @@ export const IconButtonSettingsBlue: Story = {
 
 export const IconButtonLogoutLinkBlue: Story = {
   args: {
-    label: 'Link',
+    label: 'Link long',
     icon: EIConTypes.LOGOUT,
     href: 'https://www.google.com',
   },
