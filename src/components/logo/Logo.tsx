@@ -1,75 +1,53 @@
-/**
- * Author: bladimirardiles
- * Component File Name: Logo.js
- * Component Name: Logo
- * Project: design-system
- * Date: Tue 05/12/2023 - 21:19
- */
+import React from 'react';
 
-import React, { useMemo } from 'react';
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
+import { EIConTypes, Icon } from '../icon';
+import { ELogoColors, ELogoPositions } from './utils/logo.enum';
+import { ILogoComponentProps } from './utils/logo.interface';
 import MumbleGradient from './svg/mumble_gradient';
 import MumbleViolet from './svg/mumble_violet';
 import MumbleWhite from './svg/mumble_white';
-import { iconColors, logoLeft, logoTop } from './css';
-import { ILogoComponentProps } from './logo.interface';
-import { ELogoColors, ELogoPositions } from './logo.enum';
 
-export const Logo = ({ color, logoPosition }: ILogoComponentProps) => {
-  const componentName = 'c-logo';
-  const positionDefinitions = useMemo(() => {
-    let topContainer = [componentName];
-    let logoContainer = ['c-logo__logo'];
-    switch (logoPosition) {
-      case ELogoPositions.LEFT:
-        topContainer = [...topContainer, ...logoLeft.topContainer];
-        logoContainer = [...logoContainer, ...logoLeft.logoContainer];
-        break;
-      case ELogoPositions.TOP:
-        topContainer = [...topContainer, ...logoTop.topContainer];
-        logoContainer = [...logoContainer, ...logoTop.logoContainer];
-        break;
-    }
+export const Logo = ({
+  color = ELogoColors.VIOLET,
+  logoPosition,
+}: ILogoComponentProps) => {
+  let topContainer = ['flex', 'items-center', 'justify-center'];
+  let logoPositionClasses;
+  switch (logoPosition) {
+    case ELogoPositions.LEFT:
+      topContainer = [...topContainer, 'flex-row'];
+      logoPositionClasses = 'mr-6';
+      break;
+    case ELogoPositions.TOP:
+      topContainer = [...topContainer, 'flex-col'];
+      logoPositionClasses = 'mb-4';
+      break;
+  }
 
-    return {
-      topContainer: topContainer.join(' '),
-      logoContainer: logoContainer.join(' '),
-    };
-  }, [logoPosition]);
-
-  const sloganComponent = useMemo(() => {
-    let logo = <MumbleViolet />;
-    let cssClasses = [iconColors.violet];
-    switch (color) {
-      case ELogoColors.WHITE:
-        logo = <MumbleWhite />;
-        cssClasses = [iconColors.white];
-        break;
-      case ELogoColors.VIOLET:
-        logo = <MumbleViolet />;
-        cssClasses = [iconColors.violet];
-        break;
-      case ELogoColors.GRADIENT:
-        logo = <MumbleGradient />;
-        cssClasses = [iconColors.gradient];
-        break;
-    }
-
-    return {
-      logo,
-      cssClasses: cssClasses.join(' '),
-    };
-  }, [color]);
+  let logo;
+  let cssColorLogo;
+  switch (color) {
+    case ELogoColors.WHITE:
+      logo = <MumbleWhite />;
+      cssColorLogo = 'text-white';
+      break;
+    case ELogoColors.GRADIENT:
+      logo = <MumbleGradient />;
+      cssColorLogo = 'text-violet-500';
+      break;
+    default:
+      logo = <MumbleViolet />;
+      cssColorLogo = 'text-violet-500';
+      break;
+  }
 
   return (
-    <div className={positionDefinitions.topContainer}>
-      <div
-        className={`${positionDefinitions.logoContainer} ${sloganComponent.cssClasses}`}
-      >
-        <Icon type={EIConTypes.MUMBLE} />
+    <div className={topContainer.join(' ')}>
+      <div className={`w-16 h-16 ${logoPositionClasses} ${cssColorLogo}`}>
+        <Icon type={EIConTypes.MUMBLE} fitParent={true} />
       </div>
-      <div className="c-logo__slogan">{sloganComponent.logo}</div>
+
+      <div className="c-logo__slogan">{logo}</div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 export interface IToggleLikeComponentProps extends IToggleBase {
   onIncrease: (amount: number) => void;
   labelLiked: string;
+  effectDuration?: number;
 }
 
 export interface IToggleCommentsComponentProps extends IToggleBase {

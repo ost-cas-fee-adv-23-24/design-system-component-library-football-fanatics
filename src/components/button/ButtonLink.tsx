@@ -1,14 +1,7 @@
 import React from 'react';
-import { Icon } from '../icon/Icon';
-import { EIConTypes } from '../icon/icon.enum';
 
-interface IProps {
-  href: string;
-  openInNewTab?: boolean;
-  label: string;
-  icon?: EIConTypes;
-  iconPosition?: 'right' | 'left';
-}
+import { Icon } from '../icon';
+import { IPropsLinkComponent } from './utils/button.interface';
 
 export const Link = ({
   href,
@@ -16,14 +9,14 @@ export const Link = ({
   label,
   icon,
   iconPosition = 'left',
-}: IProps) => {
+}: IPropsLinkComponent) => {
   const iconMarkup = icon ? (
-    <span className="c-button__icon inline-block">
+    <span className="inline-block">
       <Icon type={icon} />
     </span>
   ) : null;
 
-  const textClasses = ['c-button__text', 'p-0'];
+  const textClasses = ['p-0'];
 
   if (icon) {
     if (iconPosition === 'right') {
@@ -44,7 +37,9 @@ export const Link = ({
       aria-label={label}
     >
       {icon && iconPosition === 'left' && iconMarkup}
+
       <span className={textClasses.join(' ')}>{label}</span>
+
       {icon && iconPosition === 'right' && iconMarkup}
     </a>
   );

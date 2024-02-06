@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Icon } from '../components/icon/Icon';
-import { EIconColors, EIConTypes } from '../components/icon/icon.enum';
+import { Icon } from '../components/icon';
+import { EIconColors, EIConTypes } from '../components/icon';
 
 const meta: Meta<typeof Icon> = {
   title: 'Components/Icons',

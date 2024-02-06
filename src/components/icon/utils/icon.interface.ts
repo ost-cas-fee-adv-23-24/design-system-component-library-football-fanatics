@@ -27,6 +27,7 @@ export type TIconType =
   | EIConTypes.UPLOAD;
 
 export interface IIconProps {
+  fitParent?: boolean;
   type: TIconType;
   color?: EIconColors.PINK | EIconColors.VIOLET | EIconColors.SLATE;
 }

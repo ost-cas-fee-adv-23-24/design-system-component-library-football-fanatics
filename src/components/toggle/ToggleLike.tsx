@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { EIConTypes } from '../icon/icon.enum';
-import { Icon } from '../icon/Icon';
-import { IToggleLikeComponentProps } from './toggle.interfaces';
+
+import { Icon } from '../icon';
+import { EIConTypes } from '../icon';
+import TextToggle from '../textToggle/TextToggle';
+import { IToggleLikeComponentProps } from './utils/toggle.interface';
 
 export const ToggleLike = ({
   labelSingular,
@@ -9,11 +11,12 @@ export const ToggleLike = ({
   amount = 0,
   labelLiked,
   onIncrease,
+  effectDuration = 1000,
 }: IToggleLikeComponentProps) => {
   const [toggleEffectActive, setToggleEffectActive] = useState(false);
 
   const cssBase =
-    'group px-6 py-4 flex items-center justify-center rounded-2xl transition-all ease-in delay-50 font-poppins text-base not-italic font-semibold leading-4 hover:text-pink-600 hover:bg-pink-50';
+    'group px-3 py-2 flex items-center justify-center rounded-2xl transition-all ease-in delay-50 font-poppins text-base not-italic font-semibold leading-4 hover:text-pink-600 hover:bg-pink-50';
 
   return (
     <button
@@ -26,7 +29,7 @@ export const ToggleLike = ({
         setTimeout(() => {
           onIncrease(amount + 1);
           setToggleEffectActive(false);
-        }, 1000);
+        }, effectDuration);
       }}
     >
       <div className="flex">
@@ -43,22 +46,15 @@ export const ToggleLike = ({
             }
           />
         </span>
+
         <div className="flex relative h-4">
-          <div
-            className={`flex transition-opacity duration-300 ${
-              toggleEffectActive ? 'opacity-0' : 'opacity-100'
+          <TextToggle
+            isRunningToggle={toggleEffectActive}
+            mainText={`${amount > 0 ? amount : ''} ${
+              amount > 1 ? labelPlural : labelSingular
             }`}
-          >
-            {amount > 0 && <div className="mr-1">{amount}</div>}
-            <div className={''}>{amount > 1 ? labelPlural : labelSingular}</div>
-          </div>
-          <div
-            className={`absolute transition-opacity duration-300 ${
-              toggleEffectActive ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            {labelLiked}
-          </div>
+            secondaryText={labelLiked}
+          />
         </div>
       </div>
     </button>

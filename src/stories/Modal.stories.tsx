@@ -5,7 +5,10 @@ import { Label } from '../components/label';
 import { Paragraph } from '../components/typography/Paragraph';
 import { Button } from '../components/button/Button';
 import { Logo } from '../components/logo/Logo';
-import { ELogoColors, ELogoPositions } from '../components/logo/logo.enum';
+import {
+  ELogoColors,
+  ELogoPositions,
+} from '../components/logo/utils/logo.enum';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',

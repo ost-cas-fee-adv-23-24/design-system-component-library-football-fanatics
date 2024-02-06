@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Paragraph } from '../components/typography/Paragraph';
+import { EParagraphSizes, Paragraph } from '../components/typography';
 
 const meta: Meta<typeof Paragraph> = {
   title: 'Components/Typography/Paragraph',
@@ -8,11 +8,16 @@ const meta: Meta<typeof Paragraph> = {
   tags: ['autodocs'],
   argTypes: {
     size: {
-      options: ['L', 'M'],
+      options: EParagraphSizes,
       control: { type: 'select' },
     },
     text: {
       controls: { type: 'text' },
+    },
+    as: {
+      table: {
+        disable: true,
+      },
     },
   },
 };
@@ -22,13 +27,13 @@ type Story = StoryObj<typeof meta>;
 
 export const ParagraphLarge: Story = {
   args: {
-    size: 'L',
+    size: EParagraphSizes.LARGE,
     text: 'Paragraph Large',
   },
 };
 export const ParagraphMedium: Story = {
   args: {
-    size: 'M',
+    size: EParagraphSizes.MEDIUM,
     text: 'Paragraph Medium',
   },
 };

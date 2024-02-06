@@ -1,26 +1,20 @@
-import clsx from 'clsx';
-
-export interface IParagraphProps {
-  size: 'L' | 'M';
-  text: string;
-  as?: 'p' | 'span';
-}
-
-const mapDesign = {
-  L: 'text-2xl not-italic font-medium leading-[1.45]',
-  M: 'text-lg not-italic font-bold leading-[1.40]',
-};
+import { EParagraphSizes, EParagraphTypes } from './utils/typography.enum';
+import { IParagraphProps } from './utils/typography.interface';
 
 export const Paragraph = ({
   text,
   size,
-  as: ParagraphComponent = 'p',
+  as: ParagraphComponent = EParagraphTypes.PARAGRAPH,
 }: IParagraphProps) => {
-  return (
-    <ParagraphComponent
-      className={clsx('text-slate-600 font-poppins', mapDesign[size])}
-    >
-      {text}
-    </ParagraphComponent>
-  );
+  let cssClasses = 'text-slate-600 font-poppins not-italic font-medium';
+  const largeDefinitions = ' text-2xl leading-[1.45]';
+  const mediumDefinitions = ' text-lg leading-[1.40]';
+
+  if (size === EParagraphSizes.LARGE) {
+    cssClasses += largeDefinitions;
+  } else if (size === EParagraphSizes.MEDIUM) {
+    cssClasses += mediumDefinitions;
+  }
+
+  return <ParagraphComponent className={cssClasses}>{text}</ParagraphComponent>;
 };

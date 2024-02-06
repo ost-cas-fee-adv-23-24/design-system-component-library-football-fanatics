@@ -1,19 +1,9 @@
-/**
- * Author: bladimirardiles
- * Component File Name: icon.js
- * Component Name: icon
- * Project: design-system-component-library-football-fanatics
- * Date: Mon 16/10/2023 - 13:14
- */
-
 import React, { useMemo } from 'react';
-import { EIConTypes } from './icon.enum';
-import { IIconProps } from './icon.interface';
-import mumbleIcon from './svg/mumble';
+
+import arrowDownIcon from './svg/arrow-down';
 import arrowLeftIcon from './svg/arrow-left';
 import arrowRightIcon from './svg/arrow-right';
 import arrowUpIcon from './svg/arrow-up';
-import arrowDownIcon from './svg/arrow-down';
 import calendarIcon from './svg/calendar';
 import cancelIcon from './svg/cancel';
 import checkmarkIcon from './svg/checkmark';
@@ -26,6 +16,7 @@ import heardBorderedIcon from './svg/heart-bordered';
 import heartFilledIcon from './svg/heart-filled';
 import locationIcon from './svg/location';
 import logoutIcon from './svg/logout';
+import mumbleIcon from './svg/mumble';
 import profileIcon from './svg/profile';
 import repostIcon from './svg/repost';
 import sendIcon from './svg/send';
@@ -33,26 +24,10 @@ import settingsIcon from './svg/settings';
 import shareIcon from './svg/share';
 import timeIcon from './svg/time';
 import uploadIcon from './svg/upload';
-import { fitParent, topContainer } from './css';
+import { EIConTypes } from './utils/icon.enum';
+import { IIconProps } from './utils/icon.interface';
 
-export const Icon = ({ type, color }: IIconProps) => {
-  const componentName = 'c-icon';
-  const cssClasses = useMemo(() => {
-    const decorations = [...topContainer, ...fitParent];
-    const svgChild = [
-      '[&>svg]:fill-current',
-      '[&>svg]:pointer-events-none',
-      '[&>svg]:leading-none',
-    ];
-
-    if (color) {
-      decorations.push(`text-${color}-500`);
-    } else {
-      decorations.push(`text-inherit`);
-    }
-
-    return `${componentName} ${decorations.join(' ')} ${svgChild.join(' ')} `;
-  }, [color]);
+export const Icon = ({ type, color, fitParent }: IIconProps) => {
   const iconMarkup = useMemo(() => {
     switch (type) {
       case EIConTypes.MUMBLE:
@@ -103,13 +78,21 @@ export const Icon = ({ type, color }: IIconProps) => {
         return timeIcon;
       case EIConTypes.UPLOAD:
         return uploadIcon;
+      default:
+        return mumbleIcon;
     }
   }, [type]);
 
+  let cssClasses = `pointer-events-none leading-none  ${
+    color ? `text-${color}-500` : 'text-inherit'
+  } [&>svg]:fill-current [&>svg]:pointer-events-none [&>svg]:leading-none [&>svg]:grow [&>svg]:w-auto`;
+
+  cssClasses += fitParent ? ' flex flex-col' : ' w-2 h-2 inline-block';
+
   return (
     <div
-      style={{ lineHeight: 0, width: 'inherit', height: 'inherit' }}
       className={cssClasses}
+      style={{ lineHeight: 0, width: 'inherit', height: 'inherit' }} // TODO: do it in tailwind
       dangerouslySetInnerHTML={{ __html: iconMarkup }}
     />
   );

@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
+
 import { Tabs } from './Tabs';
-import { ITabsItemProps, TabsItem } from './TabsItem';
+import { ITabsItemProps } from './utils/tabs.interface';
 
-type ITabParentProps = {
-  tabItems: ITabsItemProps[];
-};
+interface IProps {
+  tabItemsMock: Array<ITabsItemProps>;
+}
+export const TabsGroup = ({ tabItemsMock }: IProps) => {
+  const [tabItems, setTabs] = useState<Array<ITabsItemProps>>(tabItemsMock);
 
-export const TabsGroup = ({ tabItems }: ITabParentProps) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const updateSelection = (tabIndexNumber: number) => {
+    const tabsUpdated = tabItems.map((tabItem, index) => {
+      if (tabIndexNumber === index) {
+        return { ...tabItem, isActive: true };
+      }
+      return { ...tabItem, isActive: false };
+    });
+    setTabs(tabsUpdated);
+  };
 
   return (
-    <Tabs>
-      {tabItems.map((tabItem, index) => (
-        <div key={index}>
-          <TabsItem
-            key={index}
-            text={tabItem.text}
-            onClick={() => setActiveTab(index)}
-            isActive={activeTab === index}
-          />
-        </div>
-      ))}
-    </Tabs>
+    <div className="tabs-parent">
+      <Tabs
+        tabItems={tabItems}
+        updateSelection={(tabIndex) => {
+          updateSelection(tabIndex);
+        }}
+      />
+    </div>
   );
 };

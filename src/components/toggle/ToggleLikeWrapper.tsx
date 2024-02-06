@@ -1,14 +1,7 @@
-/**
- * Author: bladimirardiles
- * Component File Name: ToggleWrapper.js
- * Component Name: ToggleWrapper
- * Project: design-system
- * Date: Sat 27/01/2024 - 08:44
- */
-
 import React, { useState } from 'react';
+
 import { ToggleLike } from './ToggleLike';
-import { IToggleBase } from './toggle.interfaces';
+import { IToggleBase } from './utils/toggle.interface';
 
 // this component should not be exported in the package
 // only for storybook show

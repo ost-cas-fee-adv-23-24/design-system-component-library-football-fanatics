@@ -1,20 +1,48 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar } from '../components/avatar/Avatar';
-import { EAvatarSizes } from '../components/avatar/avata.enum';
+import { Avatar } from '../components/avatar';
+import { EAvatarSizes } from '../components/avatar';
+import { EButtonTypes } from '../components/button';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Avatar> = {
   title: 'Components/Avatar',
   component: Avatar,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
+
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {},
+
+  argTypes: {
+    imgSrc: {
+      table: {
+        disable: true,
+      },
+    },
+    name: {
+      control: {
+        type: 'text',
+      },
+    },
+    size: {
+      options: EAvatarSizes,
+    },
+    editable: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    onSuccess: {
+      table: {
+        disable: true,
+      },
+    },
+    onError: {
+      table: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -38,6 +66,7 @@ export const AvatarSm: Story = {
       'https://i.pinimg.com/originals/52/b3/3b/52b33b1a9834e893a56f743e8e81d5b1.png',
     name: 'test',
     size: EAvatarSizes.SM,
+    editable: false,
   },
 };
 

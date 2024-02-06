@@ -1,16 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '../components/button/Button';
-import {
-  EButtonIconPosition,
-  EButtonKinds,
-  EButtonTypes,
-} from '../components/button/button.enum';
-import { EIConTypes } from '../components/icon/icon.enum';
+import { ButtonIcon } from '../components/button';
+import { EButtonTypes } from '../components/button';
+import { EIConTypes } from '../components/icon';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof ButtonIcon> = {
   title: 'Components/IconButtons',
-  component: Button,
+  component: ButtonIcon,
   parameters: {
     layout: 'centered',
   },
@@ -19,66 +15,8 @@ const meta: Meta<typeof Button> = {
     type: {
       options: [EButtonTypes.PRIMARY, EButtonTypes.SECONDARY],
     },
-    kind: {
-      table: {
-        disable: true,
-      },
-    },
-    size: {
-      table: {
-        disable: true,
-      },
-    },
-    href: {
-      table: {
-        disable: true,
-      },
-    },
     icon: {
       options: EIConTypes,
-    },
-    iconPosition: {
-      options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
-    },
-    onlyIcon: {
-      table: {
-        disable: true,
-      },
-    },
-    openInNewTab: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardData: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardHighlightDelay: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardCopySuccessLabel: {
-      table: {
-        disable: true,
-      },
-    },
-    clipboardCopyErrorLabel: {
-      table: {
-        disable: true,
-      },
-    },
-    fitParent: {
-      table: {
-        disable: true,
-      },
-    },
-    imageSrc: {
-      table: {
-        disable: true,
-      },
     },
   },
 };
@@ -90,10 +28,8 @@ export const IconButtonUserBlue: Story = {
   args: {
     type: EButtonTypes.PRIMARY,
     label: 'Username',
-    kind: EButtonKinds.BUTTON_ICON,
     icon: EIConTypes.PROFILE,
-    href: 'https://www.google.com',
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -101,9 +37,8 @@ export const IconButtonTimestampGray: Story = {
   args: {
     type: EButtonTypes.SECONDARY,
     label: 'Timestamp',
-    kind: EButtonKinds.BUTTON_ICON,
     icon: EIConTypes.TIME,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -111,9 +46,8 @@ export const IconButtonLocationGray: Story = {
   args: {
     type: EButtonTypes.SECONDARY,
     label: 'Location',
-    kind: EButtonKinds.BUTTON_ICON,
     icon: EIConTypes.LOCATION,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };
 
@@ -121,8 +55,7 @@ export const IconButtonJoinedGray: Story = {
   args: {
     type: EButtonTypes.SECONDARY,
     label: 'Joined',
-    kind: EButtonKinds.BUTTON_ICON,
     icon: EIConTypes.CALENDAR,
-    onClickEvent: () => {},
+    onCustomClick: () => {},
   },
 };

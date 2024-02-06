@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { EIConTypes } from '../components/icon/icon.enum';
-import { EButtonIconPosition } from '../components/button/button.enum';
-import { Link } from '../components/link/Link';
+import { Link } from '../components/button';
+import { EIConTypes } from '../components/icon';
 
 const meta: Meta<typeof Link> = {
   title: 'Components/Link',
@@ -18,7 +17,7 @@ const meta: Meta<typeof Link> = {
       options: EIConTypes,
     },
     iconPosition: {
-      options: [EButtonIconPosition.RIGHT, EButtonIconPosition.LEFT],
+      options: ['right', 'left'],
     },
   },
 };
@@ -46,6 +45,6 @@ export const LinkComponentWithIconRight: Story = {
     label: 'Link in mumble',
     href: '#',
     icon: EIConTypes.MUMBLE,
-    iconPosition: EButtonIconPosition.RIGHT,
+    iconPosition: 'right',
   },
 };

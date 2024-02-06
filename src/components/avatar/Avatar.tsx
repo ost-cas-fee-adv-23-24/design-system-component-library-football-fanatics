@@ -1,52 +1,45 @@
-/**
- * Author: bladimirardiles
- * Component File Name: Avatar.js
- * Component Name: Avatar
- * Project: design-system
- * Date: Sat 09/12/2023 - 11:34
- */
-
-import React, { useId, useMemo } from 'react';
-import { IAvatarComponentProps } from './avatar.interface';
-import { Button } from '../button/Button';
-import { EIConTypes } from '../icon/icon.enum';
-import { Image } from '../image/Image';
-import { EImageLoadingType } from '../image/image.enum';
-import { get as _get } from 'lodash';
 import { File } from 'buffer';
-import { EAvatarSizes } from './avata.enum';
-import {
-  editableLabel,
-  topContainerLg,
-  topContainerMd,
-  topContainerSm,
-  topContainerXl,
-} from './avatar-css';
+import { get as _get } from 'lodash';
+import React, { useId } from 'react';
+
+import { ButtonIconRounded } from '../button';
+import { EIConTypes } from '../icon';
+import { Image } from '../image';
+import { EImageLoadingType } from '../image';
+import { EAvatarSizes } from './utils/avatar.enum';
+import { IAvatarComponentProps } from './utils/avatar.interface';
 
 export const Avatar = ({
   imgSrc,
   onError,
   onSuccess,
   name,
-  editable,
+  editable = false,
   size = EAvatarSizes.SM,
 }: IAvatarComponentProps) => {
-  const topContainerClasses = useMemo(() => {
-    if (size === EAvatarSizes.XL || editable) {
-      return topContainerXl.join(' ');
-    } else if (size === EAvatarSizes.LG) {
-      return topContainerLg.join(' ');
-    } else if (size === EAvatarSizes.MD) {
-      return topContainerMd.join(' ');
-    } else if (size === EAvatarSizes.SM) {
-      return topContainerSm.join(' ');
+  let sizesClasses = '';
+  if (editable || size === EAvatarSizes.XL) {
+    sizesClasses = 'border-[6px] w-[172px] h-[172px]';
+  } else {
+    switch (size) {
+      case EAvatarSizes.SM:
+        sizesClasses = 'w-[40px] h-[40px]';
+        break;
+      case EAvatarSizes.MD:
+        sizesClasses = 'border-[6px] w-[76px] h-[76px]';
+        break;
+      case EAvatarSizes.LG:
+        sizesClasses = 'border-[6px] w-[108px] h-[108px]';
+        break;
     }
-  }, [size, editable]);
+  }
 
   const identifier = useId();
   return (
-    <div className="c-avatar relative">
-      <div className={topContainerClasses}>
+    <div className="relative">
+      <div
+        className={`bg-violet-200 overflow-hidden rounded-full border-slate-100 ${sizesClasses}`}
+      >
         {imgSrc && (
           <Image
             src={imgSrc}
@@ -55,6 +48,7 @@ export const Avatar = ({
           />
         )}
       </div>
+
       {editable && (
         <div className="absolute bottom-0 right-0">
           <input
@@ -69,12 +63,16 @@ export const Avatar = ({
                   null,
                 );
                 if (imageFile) {
-                  onSuccess(imageFile as File);
+                  if (onSuccess && typeof onSuccess === 'function') {
+                    onSuccess(imageFile as File);
+                  }
                 } else {
                   throw new Error('No image selected/found');
                 }
               } catch (error) {
-                onError(error as Error);
+                if (onError && typeof onError === 'function') {
+                  onError(error as Error);
+                }
               }
             }}
             name={identifier}
@@ -82,16 +80,18 @@ export const Avatar = ({
             spellCheck="false"
             type="file"
           />
+
           <div className="relative">
             <label
-              className={editableLabel.join(' ')}
+              className="cursor-pointer bg-transparent inline-block absolute top-0 left-0 bottom-0 w-16 h-16"
               htmlFor={identifier}
-            ></label>
-            <Button
+            />
+
+            <ButtonIconRounded
+              disabled={false}
               label="edit"
-              onlyIcon={true}
               icon={EIConTypes.EDIT}
-              onClickEvent={() => {}}
+              onCustomClick={() => {}}
             />
           </div>
         </div>

@@ -1,29 +1,15 @@
 import clsx from 'clsx';
-import { ChangeEvent } from 'react';
 
-export interface ITextareaProps {
-  value?: string;
-  placeholder: string;
-  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  required?: boolean;
-  spellCheck?: boolean;
-  autoComplete?: 'on' | 'off';
-  autoCorrect?: 'on' | 'off';
-  autoCapitalize?: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
-  minLength?: number;
-  maxLength?: number;
-  disabled?: boolean;
-  rows?: number;
-  name?: string;
-  readOnly?: boolean;
-}
+import { EAutoCapitalizeOptions } from '../input-group';
+import { EStateCommonOnOff } from './utils/textArea.enum';
+import { ITextareaProps } from './utils/textArea.interface';
 
 export const Textarea = ({
   value,
   placeholder,
   required,
   spellCheck = false,
-  autoCorrect = 'off',
+  autoCorrect = EStateCommonOnOff.OFF,
   onChange,
   minLength,
   maxLength,
@@ -31,8 +17,8 @@ export const Textarea = ({
   rows,
   name,
   readOnly,
-  autoComplete = 'off',
-  autoCapitalize = 'off',
+  autoComplete = EStateCommonOnOff.OFF,
+  autoCapitalize = EAutoCapitalizeOptions.OFF,
 }: ITextareaProps) => {
   return (
     <textarea
