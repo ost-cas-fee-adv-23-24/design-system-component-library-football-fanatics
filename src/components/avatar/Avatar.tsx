@@ -1,11 +1,10 @@
 import { File } from 'buffer';
 import { get as _get } from 'lodash';
-import React, { useId } from 'react';
+import { useId } from 'react';
 
 import { ButtonIconRounded } from '../button';
 import { EIConTypes } from '../icon';
-import { Image } from '../image';
-import { EImageLoadingType } from '../image';
+import { EImageLoadingType, Image } from '../image';
 import { EAvatarSizes } from './utils/avatar.enum';
 import { IAvatarComponentProps } from './utils/avatar.interface';
 
@@ -19,17 +18,17 @@ export const Avatar = ({
 }: IAvatarComponentProps) => {
   let sizesClasses = '';
   if (editable || size === EAvatarSizes.XL) {
-    sizesClasses = 'border-[6px] w-[172px] h-[172px]';
+    sizesClasses = 'border-[6px] w-[160px] h-[160px]';
   } else {
     switch (size) {
       case EAvatarSizes.SM:
         sizesClasses = 'w-[40px] h-[40px]';
         break;
       case EAvatarSizes.MD:
-        sizesClasses = 'border-[6px] w-[76px] h-[76px]';
+        sizesClasses = 'border-[6px] w-[64px] h-[64px]';
         break;
       case EAvatarSizes.LG:
-        sizesClasses = 'border-[6px] w-[108px] h-[108px]';
+        sizesClasses = 'border-[6px] w-[96px] h-[96px]';
         break;
     }
   }
@@ -91,7 +90,7 @@ export const Avatar = ({
               disabled={false}
               label="edit"
               icon={EIConTypes.EDIT}
-              onCustomClick={() => {}}
+              onCustomClick={() => { }}
             />
           </div>
         </div>
