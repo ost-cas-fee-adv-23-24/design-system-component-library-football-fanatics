@@ -5,8 +5,9 @@ export const Paragraph = ({
   text,
   size,
   as: ParagraphComponent = EParagraphTypes.PARAGRAPH,
+  inheritColor = false,
 }: IParagraphProps) => {
-  let cssClasses = 'text-slate-600 font-poppins not-italic font-medium';
+  let cssClasses = `${inheritColor ? 'text-inherit' : 'text-slate-600'} font-poppins not-italic font-medium`;
   const largeDefinitions = ' text-2xl leading-[1.45]';
   const mediumDefinitions = ' text-lg leading-[1.40]';
 

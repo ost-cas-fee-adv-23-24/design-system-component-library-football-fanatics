@@ -14,4 +14,5 @@ export interface IParagraphProps {
   size: EParagraphSizes;
   text: string;
   as?: EParagraphTypes;
+  inheritColor?: boolean;
 }
