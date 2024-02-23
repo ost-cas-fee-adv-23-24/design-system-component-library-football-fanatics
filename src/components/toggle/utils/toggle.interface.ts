@@ -15,6 +15,13 @@ export interface IToggleCommentsComponentProps extends IToggleBase {
   prefetch?: boolean;
 }
 
+export interface INextLinkProps {
+  href?: string;
+  replace?: boolean;
+  scroll?: boolean;
+  prefetch?: boolean;
+}
+
 export interface IToggleBase {
   labelSingular: string;
   labelPlural: string;
