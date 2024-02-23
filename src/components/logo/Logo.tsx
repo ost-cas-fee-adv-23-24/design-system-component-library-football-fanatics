@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { EIConTypes, Icon } from '../icon';
-import { ELogoColors, ELogoPositions } from './utils/logo.enum';
-import { ILogoComponentProps } from './utils/logo.interface';
 import MumbleGradient from './svg/mumble_gradient';
 import MumbleViolet from './svg/mumble_violet';
 import MumbleWhite from './svg/mumble_white';
+import { ELogoColors, ELogoPositions } from './utils/logo.enum';
+import { ILogoComponentProps } from './utils/logo.interface';
 
 export const Logo = ({
   color = ELogoColors.VIOLET,

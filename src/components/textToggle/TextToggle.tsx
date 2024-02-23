@@ -16,6 +16,7 @@ const TextToggle = ({
       >
         <div>{mainText}</div>
       </div>
+
       <div
         className={`absolute transition-opacity duration-300 ${
           isRunningToggle ? 'opacity-100' : 'opacity-0'

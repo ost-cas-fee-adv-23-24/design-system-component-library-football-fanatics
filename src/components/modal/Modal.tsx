@@ -16,7 +16,7 @@ export const Modal = ({
     <div
       className={`${
         active
-          ? 'bg-violet-500 bg-opacity-10 relative w-screen h-screen flex items-center justify-center z-40'
+          ? 'bg-violet-500 bg-opacity-10 absolute top-0 bottom-0 right-0 left-0 w-screen h-screen flex items-center justify-center z-40'
           : 'hidden'
       }`}
       onKeyDown={(evt) => {

@@ -5,7 +5,8 @@ export interface IToggleLikeComponentProps extends IToggleBase {
 }
 
 export interface IToggleCommentsComponentProps extends IToggleBase {
-  customClickEvent: () => void;
+  isNextLink?: boolean;
+  customClickEvent?: () => void;
 }
 
 export interface IToggleBase {
