@@ -1,3 +1,5 @@
+import { Component } from 'react';
+
 export interface IToggleLikeComponentProps extends IToggleBase {
   onIncrease: (amount: number) => void;
   labelLiked: string;
@@ -5,8 +7,12 @@ export interface IToggleLikeComponentProps extends IToggleBase {
 }
 
 export interface IToggleCommentsComponentProps extends IToggleBase {
-  isNextLink?: boolean;
+  NextLinkComponent?: Component;
   customClickEvent?: () => void;
+  href?: string;
+  replace?: boolean;
+  scroll?: boolean;
+  prefetch?: boolean;
 }
 
 export interface IToggleBase {
