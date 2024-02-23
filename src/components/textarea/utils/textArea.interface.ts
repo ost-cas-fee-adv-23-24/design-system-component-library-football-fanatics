@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
-import { EStateCommonOnOff } from './textArea.enum';
+
 import { EAutoCapitalizeOptions } from '../../input-group';
+import { EStateCommonOnOff } from './textArea.enum';
 
 export interface ITextareaProps {
   value?: string;
