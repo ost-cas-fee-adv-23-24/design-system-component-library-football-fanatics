@@ -1,5 +1,6 @@
 import { EIConTypes } from '../../icon';
 import { TIconType } from '../../icon';
+import { INextLinkProps } from '../../toggle';
 import { EButtonSizes, EButtonTypes } from './button.enum';
 
 interface IButtonCommon {
@@ -23,6 +24,7 @@ export interface IButtonComponentProps extends IButtonCommonWithClickEvent {
 export interface IPropsButtonIcon extends IButtonCommonWithClickEvent {
   icon: EIConTypes;
   type: EButtonTypes.PRIMARY | EButtonTypes.SECONDARY;
+  next?: INextLinkProps;
 }
 
 export interface IPropsButtonIconRounded extends IButtonCommonWithClickEvent {

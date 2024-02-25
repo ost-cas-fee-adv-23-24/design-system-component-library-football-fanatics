@@ -39,7 +39,6 @@ export const ToggleComment = ({
   );
 
   if (NextLinkComponent) {
-    const LinkComponent = `Link`;
     return (
       // @ts-ignore
       <NextLinkComponent
