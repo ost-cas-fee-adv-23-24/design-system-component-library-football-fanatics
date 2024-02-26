@@ -4,6 +4,7 @@ import { EIConTypes, Icon } from '../icon';
 import { Image } from '../image';
 import { EImageLoadingType } from '../image';
 import { IPropsButtonMenu } from './utils/button.interface';
+import { EButtonKinds } from './utils/button.enum';
 
 export const ButtonMenu = ({
   label,
@@ -13,6 +14,9 @@ export const ButtonMenu = ({
   disabled = false,
   href,
   openInNewTab = false,
+  next,
+  name,
+  htmlType = EButtonKinds.BUTTON,
 }: IPropsButtonMenu) => {
   let cssClasses =
     'inline-flex h-[54px] p-2 min-w-[54px] flex-col justify-center items-center flex-shrink-0 bg-violet-600 text-white rounded-lg'; //layout
@@ -51,8 +55,29 @@ export const ButtonMenu = ({
     );
   }
 
+  if (next && next.NextLinkComponent) {
+    return (
+      // @ts-ignore
+      <next.NextLinkComponent
+        href={next.href}
+        prefetch={next.prefetch || true}
+        replace={next.replace || false}
+        scroll={next.scroll || true}
+      >
+        <div className={cssClasses}>
+          {icon && iconMarkup}
+
+          {imageSrc && imageMarkup}
+
+          {!imageSrc && labelMarkup}
+        </div>
+      </next.NextLinkComponent>
+    );
+  }
+
   return (
     <button
+      name={name}
       className={cssClasses}
       aria-label={label}
       onClick={(evt) => {
@@ -61,7 +86,7 @@ export const ButtonMenu = ({
           onCustomClick();
         }
       }}
-      type="button"
+      type={htmlType}
       disabled={disabled}
     >
       {icon && iconMarkup}

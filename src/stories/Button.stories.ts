@@ -44,6 +44,7 @@ export const PrimaryMd: Story = {
     type: EButtonTypes.PRIMARY,
     label: 'Button Primary md',
     icon: EIConTypes.CHECKMARK,
+    name: 'form-name',
     onCustomClick: () => {},
   },
 };
@@ -54,6 +55,7 @@ export const PrimaryLg: Story = {
     size: EButtonSizes.LARGE,
     label: 'Button Primary lg',
     icon: EIConTypes.SEND,
+    name: 'form-name-2',
     onCustomClick: () => {},
   },
 };
@@ -64,6 +66,7 @@ export const SecondaryMd: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Button secondary md',
     icon: EIConTypes.TIME,
+    name: 'form-name-3',
     onCustomClick: () => {},
   },
 };
@@ -74,6 +77,7 @@ export const SecondaryLg: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Button secondary lg',
     icon: EIConTypes.LOGOUT,
+    name: 'form-name-4',
     onCustomClick: () => {},
   },
 };
@@ -84,6 +88,7 @@ export const TertiaryMd: Story = {
     type: EButtonTypes.TERTIARY,
     label: 'Button tertiary md',
     icon: EIConTypes.HEART_BORDERED,
+    name: 'form-name-5',
     onCustomClick: () => {},
   },
 };
@@ -94,5 +99,6 @@ export const TertiaryLg: Story = {
     label: 'Button tertiary lg link',
     icon: EIConTypes.COMMENT_FILLED,
     href: 'https://www.google.com',
+    name: 'form-name-6',
   },
 };

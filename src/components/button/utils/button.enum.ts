@@ -8,3 +8,9 @@ export enum EButtonSizes {
   MEDIUM = 'md',
   LARGE = 'lg',
 }
+
+export enum EButtonKinds {
+  BUTTON = 'button',
+  SUBMIT = 'submit',
+  RESET = 'reset',
+}

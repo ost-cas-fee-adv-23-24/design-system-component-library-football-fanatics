@@ -1,6 +1,7 @@
 import { Icon } from '../icon';
-import { EButtonSizes, EButtonTypes } from './utils/button.enum';
+import { EButtonKinds, EButtonSizes, EButtonTypes } from './utils/button.enum';
 import { IButtonComponentProps } from './utils/button.interface';
+import React from 'react';
 
 export const Button = ({
   type = EButtonTypes.PRIMARY,
@@ -12,6 +13,9 @@ export const Button = ({
   disabled = false,
   openInNewTab = false,
   fitParent = false,
+  name,
+  htmlType = EButtonKinds.BUTTON,
+  next,
 }: IButtonComponentProps) => {
   const typo = 'font-poppins text-base not-italic font-semibold leading-4';
   const layout = 'rounded px-8 flex items-center justify-center';
@@ -89,8 +93,28 @@ export const Button = ({
       </a>
     );
   }
+
+  if (next && next.NextLinkComponent) {
+    return (
+      // @ts-ignore
+      <next.NextLinkComponent
+        href={next.href}
+        prefetch={next.prefetch || true}
+        replace={next.replace || false}
+        scroll={next.scroll || true}
+      >
+        <div className={`${typo} ${layout} ${cssClasses}`}>
+          {labelMarkup}
+
+          {iconMarkup}
+        </div>
+      </next.NextLinkComponent>
+    );
+  }
+
   return (
     <button
+      name={name}
       className={`${typo} ${layout} ${cssClasses}`}
       aria-label={label}
       onClick={(evt) => {
@@ -99,7 +123,7 @@ export const Button = ({
           onCustomClick();
         }
       }}
-      type="button"
+      type={htmlType}
       disabled={disabled}
     >
       {labelMarkup}

@@ -27,5 +27,6 @@ export const TimedButton: Story = {
     clipboardData: 'https://www.google.com',
     clipboardHighlightDelay: 3000,
     clipboardCopySuccessLabel: 'Copied!',
+    name: 'copy-link',
   },
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Icon } from '../icon/Icon';
+import { Icon } from '../icon';
+import { EButtonKinds } from './utils/button.enum';
 import { IPropsButtonIconRounded } from './utils/button.interface';
 
 export const ButtonIconRounded = ({
@@ -10,6 +11,9 @@ export const ButtonIconRounded = ({
   onCustomClick,
   href,
   openInNewTab = false,
+  htmlType = EButtonKinds.BUTTON,
+  name,
+  next,
 }: IPropsButtonIconRounded) => {
   let cssClasses =
     'py-4 px-4 text-white rounded-full bg-slate-600 flex items-center justify-center';
@@ -37,12 +41,27 @@ export const ButtonIconRounded = ({
     );
   }
 
+  if (next && next.NextLinkComponent) {
+    return (
+      // @ts-ignore
+      <next.NextLinkComponent
+        href={next.href}
+        prefetch={next.prefetch || true}
+        replace={next.replace || false}
+        scroll={next.scroll || true}
+      >
+        <div className={cssClasses}>{iconMarkup}</div>
+      </next.NextLinkComponent>
+    );
+  }
+
   return (
     <button
+      name={name}
       className={cssClasses}
       aria-label={label}
       onClick={onCustomClick}
-      type="button"
+      type={htmlType}
       disabled={disabled}
     >
       {iconMarkup}
