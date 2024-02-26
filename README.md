@@ -20,7 +20,7 @@ npm ci
 # build repo
 npm run build
 
-# start storybook
+# start storybook server
 npm run start
 
 ```
