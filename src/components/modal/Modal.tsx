@@ -32,6 +32,7 @@ export const Modal = ({
           </h5>
 
           <ButtonIcon
+            name="close-modal"
             disabled={false}
             type={EButtonTypes.SECONDARY}
             label=""
@@ -45,6 +46,7 @@ export const Modal = ({
         <div className="bg-white flex justify-between py-8 px-8">
           <div className="w-full mr-4">
             <Button
+              name="modal-close-button"
               fitParent={true}
               icon={EIConTypes.CANCEL}
               label="Cancel"
@@ -56,6 +58,7 @@ export const Modal = ({
 
           <div className="w-full">
             <Button
+              name="modal-save-button"
               fitParent={true}
               type={EButtonTypes.SECONDARY}
               icon={EIConTypes.CHECKMARK}

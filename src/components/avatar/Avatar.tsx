@@ -15,6 +15,7 @@ export const Avatar = ({
   name,
   editable = false,
   size = EAvatarSizes.SM,
+  nameHtml,
 }: IAvatarComponentProps) => {
   let sizesClasses = '';
   if (editable || size === EAvatarSizes.XL) {
@@ -74,7 +75,7 @@ export const Avatar = ({
                 }
               }
             }}
-            name={identifier}
+            name={nameHtml}
             placeholder=""
             spellCheck="false"
             type="file"
@@ -87,10 +88,11 @@ export const Avatar = ({
             />
 
             <ButtonIconRounded
+              name={nameHtml}
               disabled={false}
               label="edit"
               icon={EIConTypes.EDIT}
-              onCustomClick={() => { }}
+              onCustomClick={() => {}}
             />
           </div>
         </div>

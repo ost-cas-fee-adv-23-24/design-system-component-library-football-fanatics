@@ -9,4 +9,5 @@ export interface IAvatarComponentProps {
   onError?: (error: Error) => void;
   editable?: boolean;
   size: EAvatarSizes;
+  nameHtml: string;
 }
