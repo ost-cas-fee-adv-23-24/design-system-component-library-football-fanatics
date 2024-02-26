@@ -1,11 +1,13 @@
 import { EIConTypes } from '../../icon';
 import { TIconType } from '../../icon';
 import { INextLinkProps } from '../../toggle';
-import { EButtonSizes, EButtonTypes } from './button.enum';
+import { EButtonKinds, EButtonSizes, EButtonTypes } from './button.enum';
 
 interface IButtonCommon {
   label: string;
   disabled?: boolean;
+  name: string;
+  htmlType?: EButtonKinds;
 }
 
 interface IButtonCommonWithClickEvent extends IButtonCommon {

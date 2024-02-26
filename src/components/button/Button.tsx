@@ -1,5 +1,5 @@
 import { Icon } from '../icon';
-import { EButtonSizes, EButtonTypes } from './utils/button.enum';
+import { EButtonKinds, EButtonSizes, EButtonTypes } from './utils/button.enum';
 import { IButtonComponentProps } from './utils/button.interface';
 
 export const Button = ({
@@ -12,6 +12,8 @@ export const Button = ({
   disabled = false,
   openInNewTab = false,
   fitParent = false,
+  name,
+  htmlType = EButtonKinds.BUTTON,
 }: IButtonComponentProps) => {
   const typo = 'font-poppins text-base not-italic font-semibold leading-4';
   const layout = 'rounded px-8 flex items-center justify-center';
@@ -91,6 +93,7 @@ export const Button = ({
   }
   return (
     <button
+      name={name}
       className={`${typo} ${layout} ${cssClasses}`}
       aria-label={label}
       onClick={(evt) => {
@@ -99,7 +102,7 @@ export const Button = ({
           onCustomClick();
         }
       }}
-      type="button"
+      type={htmlType}
       disabled={disabled}
     >
       {labelMarkup}
