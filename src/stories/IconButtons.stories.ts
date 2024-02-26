@@ -30,6 +30,7 @@ export const IconButtonUserBlue: Story = {
     label: 'Username',
     icon: EIConTypes.PROFILE,
     onCustomClick: () => {},
+    name: 'username',
   },
 };
 
@@ -39,6 +40,7 @@ export const IconButtonTimestampGray: Story = {
     label: 'Timestamp',
     icon: EIConTypes.TIME,
     onCustomClick: () => {},
+    name: 'username2',
   },
 };
 
@@ -47,6 +49,7 @@ export const IconButtonLocationGray: Story = {
     type: EButtonTypes.SECONDARY,
     label: 'Location',
     icon: EIConTypes.LOCATION,
+    name: 'username3',
     onCustomClick: () => {},
   },
 };
@@ -57,5 +60,6 @@ export const IconButtonJoinedGray: Story = {
     label: 'Joined',
     icon: EIConTypes.CALENDAR,
     onCustomClick: () => {},
+    name: 'username4',
   },
 };

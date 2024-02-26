@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Icon } from '../icon';
 import { IPropsButtonIcon } from './utils/button.interface';
+import { EButtonKinds } from './utils/button.enum';
 
 export const ButtonIcon = ({
   label,
@@ -10,6 +11,8 @@ export const ButtonIcon = ({
   disabled,
   type,
   next = undefined,
+  name,
+  htmlType = EButtonKinds.BUTTON,
 }: IPropsButtonIcon) => {
   let cssClasses =
     'rounded flex items-center justify-center font-poppins  text-sm not-italic font-semibold leading-3 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-gray-300 transition-all ease-in delay-50 rounded disabled:bg-gray-200';
@@ -46,6 +49,7 @@ export const ButtonIcon = ({
 
   return (
     <button
+      name={name}
       aria-label={label}
       className={cssClasses}
       onClick={(evt) => {
@@ -54,7 +58,7 @@ export const ButtonIcon = ({
           onCustomClick();
         }
       }}
-      type="button"
+      type={htmlType}
       disabled={disabled}
     >
       {internMarkup}

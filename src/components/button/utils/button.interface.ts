@@ -21,6 +21,7 @@ export interface IButtonComponentProps extends IButtonCommonWithClickEvent {
   href?: string;
   openInNewTab?: boolean;
   fitParent?: boolean;
+  next?: INextLinkProps;
 }
 
 export interface IPropsButtonIcon extends IButtonCommonWithClickEvent {
@@ -34,6 +35,7 @@ export interface IPropsButtonIconRounded extends IButtonCommonWithClickEvent {
   disabled?: boolean;
   href?: string;
   openInNewTab?: boolean;
+  next?: INextLinkProps;
 }
 
 export interface IPropsLinkComponent extends IButtonCommon {
@@ -41,6 +43,7 @@ export interface IPropsLinkComponent extends IButtonCommon {
   openInNewTab?: boolean;
   icon?: EIConTypes;
   iconPosition?: 'right' | 'left';
+  next?: INextLinkProps;
 }
 
 export interface IPropsButtonMenu extends IButtonCommonWithClickEvent {
@@ -48,6 +51,7 @@ export interface IPropsButtonMenu extends IButtonCommonWithClickEvent {
   href?: string;
   imageSrc?: string;
   openInNewTab?: boolean;
+  next?: INextLinkProps;
 }
 
 export interface IPropsButtonTimed extends IButtonCommonWithClickEvent {

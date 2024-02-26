@@ -2,6 +2,7 @@ import React from 'react';
 
 import { EIConTypes, Icon } from '../icon';
 import TextToggle from '../textToggle/TextToggle';
+import { EButtonKinds } from './utils/button.enum';
 import { IPropsButtonTimed } from './utils/button.interface';
 
 export const ButtonTimed = ({
@@ -12,6 +13,8 @@ export const ButtonTimed = ({
   onCopyError,
   icon,
   disabled = false,
+  name,
+  htmlType = EButtonKinds.BUTTON,
 }: IPropsButtonTimed) => {
   const [runningEffect, setRunningEffect] = React.useState(false);
 
@@ -20,6 +23,7 @@ export const ButtonTimed = ({
 
   return (
     <button
+      name={name}
       className={cssBaseClasses}
       aria-label={label}
       onClick={() => {
@@ -38,7 +42,7 @@ export const ButtonTimed = ({
             }
           });
       }}
-      type="button"
+      type={htmlType}
       disabled={disabled}
     >
       <span className="flex mr-2">
