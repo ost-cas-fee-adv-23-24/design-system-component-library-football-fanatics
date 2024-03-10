@@ -1,7 +1,8 @@
-export enum ELogoColors {
+export enum ELogoTypes {
   WHITE = 'white',
   VIOLET = 'violet',
   GRADIENT = 'gradient',
+  HEADER = 'header',
 }
 
 export enum ELogoPositions {

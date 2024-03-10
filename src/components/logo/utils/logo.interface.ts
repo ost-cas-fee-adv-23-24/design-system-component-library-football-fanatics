@@ -1,6 +1,7 @@
-import { ELogoColors, ELogoPositions } from './logo.enum';
+import { ELogoPositions,ELogoTypes } from './logo.enum';
 
 export interface ILogoComponentProps {
   logoPosition: ELogoPositions;
-  color: ELogoColors;
+  color: ELogoTypes;
+  isHeader?: boolean;
 }

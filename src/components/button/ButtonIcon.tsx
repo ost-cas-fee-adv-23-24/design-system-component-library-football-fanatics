@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Icon } from '../icon';
-import { IPropsButtonIcon } from './utils/button.interface';
 import { EButtonKinds } from './utils/button.enum';
+import { IPropsButtonIcon } from './utils/button.interface';
 
 export const ButtonIcon = ({
   label,

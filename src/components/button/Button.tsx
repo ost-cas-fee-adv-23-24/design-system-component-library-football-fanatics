@@ -1,7 +1,8 @@
+import React from 'react';
+
 import { Icon } from '../icon';
 import { EButtonKinds, EButtonSizes, EButtonTypes } from './utils/button.enum';
 import { IButtonComponentProps } from './utils/button.interface';
-import React from 'react';
 
 export const Button = ({
   type = EButtonTypes.PRIMARY,

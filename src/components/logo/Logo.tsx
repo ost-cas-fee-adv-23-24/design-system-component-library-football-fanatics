@@ -2,14 +2,16 @@ import React from 'react';
 
 import { EIConTypes, Icon } from '../icon';
 import MumbleGradient from './svg/mumble_gradient';
+import MumbleHeader from './svg/mumble_header';
 import MumbleViolet from './svg/mumble_violet';
 import MumbleWhite from './svg/mumble_white';
-import { ELogoColors, ELogoPositions } from './utils/logo.enum';
+import { ELogoPositions,ELogoTypes } from './utils/logo.enum';
 import { ILogoComponentProps } from './utils/logo.interface';
 
 export const Logo = ({
-  color = ELogoColors.VIOLET,
+  color = ELogoTypes.VIOLET,
   logoPosition,
+  isHeader,
 }: ILogoComponentProps) => {
   let topContainer = ['flex', 'items-center', 'justify-center'];
   let logoPositionClasses;
@@ -25,29 +27,37 @@ export const Logo = ({
   }
 
   let logo;
-  let cssColorLogo;
+  let cssLogo;
   switch (color) {
-    case ELogoColors.WHITE:
+    case ELogoTypes.WHITE:
       logo = <MumbleWhite />;
-      cssColorLogo = 'text-white';
+      cssLogo = 'w-16 h-16 text-white';
       break;
-    case ELogoColors.GRADIENT:
+    case ELogoTypes.GRADIENT:
       logo = <MumbleGradient />;
-      cssColorLogo = 'text-violet-500';
+      cssLogo = 'w-16 h-16 text-violet-500';
+      break;
+    case ELogoTypes.HEADER:
+      logo = <MumbleHeader />;
+      cssLogo = 'w-10 h-10 text-white';
       break;
     default:
-      logo = <MumbleViolet />;
-      cssColorLogo = 'text-violet-500';
+      logo = (
+        <div className="text-violet-500">
+          <MumbleViolet />
+        </div>
+      );
+      cssLogo = 'w-16 h-16 text-violet-500';
       break;
   }
 
   return (
     <div className={topContainer.join(' ')}>
-      <div className={`w-16 h-16 ${logoPositionClasses} ${cssColorLogo}`}>
+      <div className={`${logoPositionClasses} ${cssLogo}`}>
         <Icon type={EIConTypes.MUMBLE} fitParent={true} />
       </div>
 
-      <div className="c-logo__slogan">{logo}</div>
+      <div>{logo}</div>
     </div>
   );
 };

@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Logo } from '../components/logo/Logo';
-import {
-  ELogoColors,
-  ELogoPositions,
-} from '../components/logo/utils/logo.enum';
+import { ELogoPositions,ELogoTypes } from '../components/logo/utils/logo.enum';
 const meta: Meta<typeof Logo> = {
   title: 'Components/Logo',
   component: Logo,
@@ -16,7 +13,7 @@ const meta: Meta<typeof Logo> = {
     },
     color: {
       control: { type: 'select' },
-      options: ELogoColors,
+      options: ELogoTypes,
     },
   },
 };
@@ -24,44 +21,50 @@ const meta: Meta<typeof Logo> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const LogoLeftVioletHeader: Story = {
+  args: {
+    color: ELogoTypes.HEADER,
+    logoPosition: ELogoPositions.LEFT,
+  },
+};
 export const LogoLeftViolet: Story = {
   args: {
-    color: ELogoColors.VIOLET,
+    color: ELogoTypes.VIOLET,
     logoPosition: ELogoPositions.LEFT,
   },
 };
 
 export const LogoLeftGradient: Story = {
   args: {
-    color: ELogoColors.GRADIENT,
+    color: ELogoTypes.GRADIENT,
     logoPosition: ELogoPositions.LEFT,
   },
 };
 
 export const LogoLeftWhite: Story = {
   args: {
-    color: ELogoColors.WHITE,
+    color: ELogoTypes.WHITE,
     logoPosition: ELogoPositions.LEFT,
   },
 };
 
 export const LogoTopWhite: Story = {
   args: {
-    color: ELogoColors.WHITE,
+    color: ELogoTypes.WHITE,
     logoPosition: ELogoPositions.TOP,
   },
 };
 
 export const LogoTopViolet: Story = {
   args: {
-    color: ELogoColors.VIOLET,
+    color: ELogoTypes.VIOLET,
     logoPosition: ELogoPositions.TOP,
   },
 };
 
 export const LogoTopGradient: Story = {
   args: {
-    color: ELogoColors.GRADIENT,
+    color: ELogoTypes.GRADIENT,
     logoPosition: ELogoPositions.TOP,
   },
 };

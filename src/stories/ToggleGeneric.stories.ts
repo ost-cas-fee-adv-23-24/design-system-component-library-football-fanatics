@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ToggleGeneric } from '../components/toggle/ToggleGeneric';
 import { EIConTypes } from '../components/icon';
+import { ToggleGeneric } from '../components/toggle/ToggleGeneric';
 
 const meta: Meta<typeof ToggleGeneric> = {
   title: 'Components/ToggleGeneric',

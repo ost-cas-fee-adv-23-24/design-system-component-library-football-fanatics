@@ -3,8 +3,8 @@ import React from 'react';
 import { EIConTypes, Icon } from '../icon';
 import { Image } from '../image';
 import { EImageLoadingType } from '../image';
-import { IPropsButtonMenu } from './utils/button.interface';
 import { EButtonKinds } from './utils/button.enum';
+import { IPropsButtonMenu } from './utils/button.interface';
 
 export const ButtonMenu = ({
   label,
