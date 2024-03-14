@@ -22,7 +22,7 @@ export const Tabs: Story = {
   args: {
     tabItemsMock: [
       {
-        isActive: true,
+        isActive: false,
         text: 'Tabbb 1',
         identifier: 'tab-1',
       },
@@ -32,7 +32,7 @@ export const Tabs: Story = {
         identifier: 'tab-2',
       },
       {
-        isActive: false,
+        isActive: true,
         text: 'Tabitete 3',
         identifier: 'tab-3',
       },

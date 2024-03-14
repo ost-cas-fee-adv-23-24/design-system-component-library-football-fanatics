@@ -10,6 +10,7 @@ export const Tabs = ({ tabItems, updateSelection }: ITabsProps) => {
       width: number;
     }>
   >([]);
+
   const [currentActive, setCurrentActive] = useState(0);
 
   useEffect(() => {
@@ -17,6 +18,13 @@ export const Tabs = ({ tabItems, updateSelection }: ITabsProps) => {
       return { identifier: tabItem.identifier, width: 0 };
     });
     setTabWidths(widthsInfo);
+
+    setTimeout(() => {
+      const indexSelectedTab = tabItems.findIndex(
+        (tabItem) => tabItem.isActive,
+      );
+      setCurrentActive(indexSelectedTab);
+    }, 10);
   }, []);
 
   const selectedTabWidth = useMemo(() => {
