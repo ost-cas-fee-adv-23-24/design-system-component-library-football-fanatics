@@ -28,6 +28,7 @@ export interface IPropsButtonIcon extends IButtonCommonWithClickEvent {
   icon: EIConTypes;
   type: EButtonTypes.PRIMARY | EButtonTypes.SECONDARY;
   next?: INextLinkProps;
+  truncate?: boolean;
 }
 
 export interface IPropsButtonIconRounded extends IButtonCommonWithClickEvent {
