@@ -18,4 +18,5 @@ export interface IInputFieldGroupProps {
   spellCheck?: boolean;
   autoCapitalize?: EAutoCapitalizeOptions;
   autoCorrect?: EStateCommonOnOff;
+  notifyValueChange: (value: string) => void;
 }

@@ -3,12 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { EIConTypes } from '../components/icon';
 import {
   EAutoCapitalizeOptions,
-  EAutoCorrectOptions,
   EInputFieldGroupType,
   EStateInputFieldGroup,
   InputFieldGroup,
 } from '../components/input-group';
-import IconOptions from './Icon.stories';
 
 const meta: Meta<typeof InputFieldGroup> = {
   title: 'Components/InputFieldGroup',
@@ -42,10 +40,6 @@ const meta: Meta<typeof InputFieldGroup> = {
       options: EIConTypes,
       control: { type: 'select' },
     },
-    autoCorrect: {
-      options: EAutoCorrectOptions,
-      control: { type: 'select' },
-    },
     autoCapitalize: {
       options: EAutoCapitalizeOptions,
     },
@@ -55,6 +49,7 @@ const meta: Meta<typeof InputFieldGroup> = {
   },
 };
 
+// todo, add a wrapper to be able to update the texts on storybook (control the state of the component)
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -68,6 +63,7 @@ export const InputDefault: Story = {
     required: true,
     state: EStateInputFieldGroup.DEFAULT,
     icon: EIConTypes.MUMBLE,
+    notifyValueChange: (value: string) => console.log(value),
   },
 };
 
@@ -81,5 +77,6 @@ export const InputError: Story = {
     required: true,
     state: EStateInputFieldGroup.ERROR,
     icon: EIConTypes.MUMBLE,
+    notifyValueChange: (value: string) => console.log(value),
   },
 };

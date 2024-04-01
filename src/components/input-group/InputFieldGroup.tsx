@@ -23,8 +23,8 @@ export const InputFieldGroup = ({
   spellCheck = false,
   autoCapitalize = EAutoCapitalizeOptions.OFF,
   autoCorrect = EStateCommonOnOff.OFF,
+  notifyValueChange,
 }: IInputFieldGroupProps) => {
-  const [inputText, setInputText] = React.useState(text ? text : '');
   const inputId = useId();
 
   return (
@@ -38,8 +38,11 @@ export const InputFieldGroup = ({
           id={inputId}
           type={as}
           placeholder={placeholder}
-          value={inputText}
-          onChange={(event) => setInputText(event.target.value)}
+          value={text}
+          onChange={(event) => {
+            event.preventDefault();
+            notifyValueChange(event.target.value);
+          }}
           required={required}
           autoCorrect={autoCorrect}
           autoCapitalize={autoCapitalize}
