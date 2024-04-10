@@ -10,4 +10,5 @@ export interface IAvatarComponentProps {
   editable?: boolean;
   size: EAvatarSizes;
   nameHtml: string;
+  children?: React.ReactNode;
 }

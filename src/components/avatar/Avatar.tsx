@@ -16,6 +16,7 @@ export const Avatar = ({
   editable = false,
   size = EAvatarSizes.SM,
   nameHtml,
+  children,
 }: IAvatarComponentProps) => {
   let sizesClasses = '';
   if (editable || size === EAvatarSizes.XL) {
@@ -40,13 +41,17 @@ export const Avatar = ({
       <div
         className={`bg-violet-200 overflow-hidden rounded-full border-slate-100 ${sizesClasses}`}
       >
-        {imgSrc && (
+        {imgSrc && !children && (
           <Image
+            width={200}
+            height={200}
             src={imgSrc}
             alt={name ? name : ''}
             loadingType={EImageLoadingType.EAGER}
           />
         )}
+
+        {!imgSrc && children && children}
       </div>
 
       {editable && (
