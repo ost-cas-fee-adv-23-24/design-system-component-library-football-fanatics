@@ -42,6 +42,7 @@ export const ToggleComment = ({
     return (
       // @ts-ignore
       <NextLinkComponent
+        className="flex"
         href={href}
         prefetch={prefetch}
         replace={replace}
