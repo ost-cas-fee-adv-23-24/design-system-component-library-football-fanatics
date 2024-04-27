@@ -22,6 +22,7 @@ export interface IButtonComponentProps extends IButtonCommonWithClickEvent {
   openInNewTab?: boolean;
   fitParent?: boolean;
   next?: INextLinkProps;
+  selected?: boolean;
 }
 
 export interface IPropsButtonIcon extends IButtonCommonWithClickEvent {

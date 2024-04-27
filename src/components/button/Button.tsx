@@ -17,11 +17,17 @@ export const Button = ({
   name,
   htmlType = EButtonKinds.BUTTON,
   next,
+  selected,
 }: IButtonComponentProps) => {
   const typo = 'font-poppins text-base not-italic font-semibold leading-4';
   const layout = 'rounded px-8 flex items-center justify-center';
   const layoutLarge = 'px-6 py-4 text-base';
   const layoutMedium = 'px-3 py-3 text-sm';
+
+  const colorsSelected =
+    'bg-slate-white text-violet-600 outline-[3px] outline outline-slate-300';
+  const hoverStatesSelected =
+    'hover:outline-[3px] hover:outline hover:outline-slate-300';
 
   const colorsPrimary = 'bg-slate-600 text-white';
   const hoverStatesPrimary =
@@ -53,12 +59,16 @@ export const Button = ({
     cssClasses = `${layoutMedium}`;
   }
 
-  if (type === EButtonTypes.SECONDARY) {
-    cssClasses += ` ${colorsSecondary} ${hoverStatesSecondary}`;
-  } else if (type === EButtonTypes.TERTIARY) {
-    cssClasses += ` ${colorsTertiary} ${hoverStatesTertiary} ${activeStatesTertiary}`;
+  if (selected) {
+    cssClasses += ` ${colorsSelected} ${hoverStatesSelected}`;
   } else {
-    cssClasses += ` ${hoverStatesPrimary} ${activeStatesPrimary} ${colorsPrimary}`;
+    if (type === EButtonTypes.SECONDARY) {
+      cssClasses += ` ${colorsSecondary} ${hoverStatesSecondary}`;
+    } else if (type === EButtonTypes.TERTIARY) {
+      cssClasses += ` ${colorsTertiary} ${hoverStatesTertiary} ${activeStatesTertiary}`;
+    } else {
+      cssClasses += ` ${hoverStatesPrimary} ${activeStatesPrimary} ${colorsPrimary}`;
+    }
   }
 
   if (disabled) {
