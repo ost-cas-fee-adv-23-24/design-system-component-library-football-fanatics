@@ -20,17 +20,17 @@ export const Avatar = ({
 }: IAvatarComponentProps) => {
   let sizesClasses = '';
   if (editable || size === EAvatarSizes.XL) {
-    sizesClasses = 'border-[6px] w-[160px] h-[160px]';
+    sizesClasses = 'border-[6px] w-[160px] h-[160px] box-content';
   } else {
     switch (size) {
       case EAvatarSizes.SM:
-        sizesClasses = 'w-[40px] h-[40px]';
+        sizesClasses = 'w-[40px] h-[40px] box-content';
         break;
       case EAvatarSizes.MD:
-        sizesClasses = 'border-[6px] w-[64px] h-[64px]';
+        sizesClasses = 'border-[6px] w-[64px] h-[64px] box-content';
         break;
       case EAvatarSizes.LG:
-        sizesClasses = 'border-[6px] w-[96px] h-[96px]';
+        sizesClasses = 'border-[6px] w-[96px] h-[96px] box-content';
         break;
     }
   }
