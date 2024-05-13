@@ -24,7 +24,8 @@ export type TIconType =
   | EIConTypes.SETTINGS
   | EIConTypes.SHARE
   | EIConTypes.TIME
-  | EIConTypes.UPLOAD;
+  | EIConTypes.UPLOAD
+  | EIConTypes.PICTURE;
 
 export interface IIconProps {
   fitParent?: boolean;

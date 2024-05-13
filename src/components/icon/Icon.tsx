@@ -24,6 +24,7 @@ import settingsIcon from './svg/settings';
 import shareIcon from './svg/share';
 import timeIcon from './svg/time';
 import uploadIcon from './svg/upload';
+import pictureIcon from './svg/picture';
 import { EIConTypes } from './utils/icon.enum';
 import { IIconProps } from './utils/icon.interface';
 
@@ -78,6 +79,8 @@ export const Icon = ({ type, color, fitParent }: IIconProps) => {
         return timeIcon;
       case EIConTypes.UPLOAD:
         return uploadIcon;
+      case EIConTypes.PICTURE:
+        return pictureIcon;
       default:
         return mumbleIcon;
     }

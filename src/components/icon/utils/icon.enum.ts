@@ -23,6 +23,7 @@ export enum EIConTypes {
   SHARE = 'share',
   TIME = 'time',
   UPLOAD = 'upload',
+  PICTURE = 'picture',
 }
 
 export enum EIconColors {
