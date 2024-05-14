@@ -1,0 +1,10 @@
+# ignore single files
+package-lock.json
+tsconfig.json
+package.json
+
+# ignore artifacts
+build
+coverage
+storybook-static
+
