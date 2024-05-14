@@ -24,6 +24,7 @@ export enum EIConTypes {
   TIME = 'time',
   UPLOAD = 'upload',
   PICTURE = 'picture',
+  BIN = 'bin',
 }
 
 export enum EIconColors {

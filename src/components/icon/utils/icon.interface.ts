@@ -25,6 +25,7 @@ export type TIconType =
   | EIConTypes.SHARE
   | EIConTypes.TIME
   | EIConTypes.UPLOAD
+  | EIConTypes.BIN
   | EIConTypes.PICTURE;
 
 export interface IIconProps {

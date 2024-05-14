@@ -22,6 +22,12 @@ const meta: Meta<typeof Icon> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const IconBin: Story = {
+  args: {
+    type: EIConTypes.BIN,
+  },
+};
+
 export const IconPicture: Story = {
   args: {
     type: EIConTypes.PICTURE,

@@ -4,6 +4,7 @@ import arrowDownIcon from './svg/arrow-down';
 import arrowLeftIcon from './svg/arrow-left';
 import arrowRightIcon from './svg/arrow-right';
 import arrowUpIcon from './svg/arrow-up';
+import binIcon from './svg/bin';
 import calendarIcon from './svg/calendar';
 import cancelIcon from './svg/cancel';
 import checkmarkIcon from './svg/checkmark';
@@ -17,6 +18,7 @@ import heartFilledIcon from './svg/heart-filled';
 import locationIcon from './svg/location';
 import logoutIcon from './svg/logout';
 import mumbleIcon from './svg/mumble';
+import pictureIcon from './svg/picture';
 import profileIcon from './svg/profile';
 import repostIcon from './svg/repost';
 import sendIcon from './svg/send';
@@ -24,7 +26,6 @@ import settingsIcon from './svg/settings';
 import shareIcon from './svg/share';
 import timeIcon from './svg/time';
 import uploadIcon from './svg/upload';
-import pictureIcon from './svg/picture';
 import { EIConTypes } from './utils/icon.enum';
 import { IIconProps } from './utils/icon.interface';
 
@@ -81,6 +82,8 @@ export const Icon = ({ type, color, fitParent }: IIconProps) => {
         return uploadIcon;
       case EIConTypes.PICTURE:
         return pictureIcon;
+      case EIConTypes.BIN:
+        return binIcon;
       default:
         return mumbleIcon;
     }
